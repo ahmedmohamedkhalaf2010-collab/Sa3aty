@@ -81,7 +81,7 @@
     <header class="glass-nav sticky top-0 z-40 px-4 lg:px-8 py-3 transition-all">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             
-            <!-- Left Controls: Tabs & Lang -->
+            <!-- Left Controls: Tabs, Custom Builder & Lang -->
             <div class="flex items-center space-x-3 space-x-reverse">
                 <div class="hidden md:flex items-center bg-brandDark p-1 border border-amber-500/20">
                     <button onclick="filterCategory('all')" id="tab-all" class="px-4 py-1.5 text-xs font-bold transition-all text-amber-300 bg-amber-500/20 border border-amber-500/40">
@@ -92,13 +92,19 @@
                     </button>
                 </div>
 
+                <!-- Custom Watch Button -->
+                <button onclick="openCustomWatchModal()" class="bg-gradient-to-r from-amber-500/20 to-amber-400/10 border border-amber-500/50 hover:bg-amber-500/30 text-amber-300 px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                    <span>صمّم ساعتك</span>
+                </button>
+
                 <button onclick="toggleLanguage()" class="px-2.5 py-1.5 bg-brandDark border border-amber-500/30 text-amber-400 hover:bg-amber-500/10 text-xs font-black transition-all flex items-center gap-1">
                     <i class="fa-solid fa-globe"></i>
                     <span id="langSwitchText">EN</span>
                 </button>
             </div>
 
-            <!-- Center Logo Image -->
+            <!-- Center Logo -->
             <a href="#" onclick="filterCategory('all')" class="flex items-center gap-2 group">
                 <i class="fa-solid fa-clock text-amber-400 text-2xl group-hover:rotate-12 transition-transform"></i>
                 <span class="text-xl font-black tracking-wider text-amber-400">SA3ATY</span>
@@ -163,6 +169,69 @@
             <h3 id="txt-empty-title" class="text-xl font-bold text-slate-200 mb-2">المتجر فاضي حالياً!</h3>
         </div>
     </main>
+
+    <!-- Custom Watch Builder Modal -->
+    <div id="customWatchModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-panel max-w-lg w-full p-6 sm:p-8 border border-amber-500/40 relative my-8">
+            <button onclick="closeCustomWatchModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <i class="fa-solid fa-sliders text-amber-400 text-3xl mb-2"></i>
+                <h3 class="text-xl font-bold text-slate-100">صمّم ساعتك الخاصة على ذوقك ✨</h3>
+                <p class="text-xs text-slate-400 mt-1">اختر المواصفات اللي تحبها وسجل طلبك وهيترتب معاك عالواتساب مباشرة</p>
+            </div>
+
+            <form onsubmit="submitCustomWatchOrder(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-300 mb-1">نوع الهيكل / الإطار (Case Material)</label>
+                    <select id="customCase" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400">
+                        <option value="فضي استيل (Stainless Steel)">فضي استيل (Stainless Steel)</option>
+                        <option value="ذهبي فاخر (Gold Plated)">ذهبي فاخر (Gold Plated)</option>
+                        <option value="أسود مطفي (Matte Black)">أسود مطفي (Matte Black)</option>
+                        <option value="روز جولد (Rose Gold)">روز جولد (Rose Gold)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-300 mb-1">لون المينا (Dial Color)</label>
+                    <select id="customDial" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400">
+                        <option value="أسود كلاسيك">أسود كلاسيك</option>
+                        <option value="أبيض كحلي">أبيض ناصع</option>
+                        <option value="أزرق ملكي (Royal Blue)">أزرق ملكي (Royal Blue)</option>
+                        <option value="أخضر زمردي (Emerald Green)">أخضر زمردي (Emerald Green)</option>
+                        <option value="هيكل شفاف (Skeleton)">هيكل شفاف (Skeleton)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-300 mb-1">نوع ونوع السير / الحزام (Strap Material)</label>
+                    <select id="customStrap" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400">
+                        <option value="جلد طبيعي أسود">جلد طبيعي أسود</option>
+                        <option value="جلد طبيعي بني">جلد طبيعي بني</option>
+                        <option value="معدن استيل فضي">معدن استيل فضي</option>
+                        <option value="معدن استيل ذهبي">معدن استيل ذهبي</option>
+                        <option value="مطاط رياضي (Rubber)">مطاط رياضي (Rubber)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-300 mb-1">نقش اسم أو جملة خاصة على الظهر (اختياري)</label>
+                    <input type="text" id="customEngraving" placeholder="مثال: Ahmed - 2026" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400">
+                </div>
+
+                <div class="border-t border-amber-500/20 pt-3">
+                    <label class="block font-semibold text-slate-300 mb-1">اسمك الكريم</label>
+                    <input type="text" id="customCustomerName" required placeholder="ادخل اسمك" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400 mb-3">
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold p-3 text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-base"></i> إرسال التصميم الخاص عبر الواتساب
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Watch Details & Comments Modal -->
     <div id="watchDetailModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
@@ -555,6 +624,30 @@
             }
         }
 
+        // Custom Watch Builder Logic
+        function openCustomWatchModal() { document.getElementById('customWatchModal').classList.remove('hidden'); }
+        function closeCustomWatchModal() { document.getElementById('customWatchModal').classList.add('hidden'); }
+
+        function submitCustomWatchOrder(e) {
+            e.preventDefault();
+            const caseMat = document.getElementById('customCase').value;
+            const dialCol = document.getElementById('customDial').value;
+            const strapMat = document.getElementById('customStrap').value;
+            const engrave = document.getElementById('customEngraving').value.trim();
+            const name = document.getElementById('customCustomerName').value.trim();
+
+            let msg = `🛠️ *طلب تصميم ساعة خاصة (Custom Watch)*\n\n`;
+            msg += `👤 *العميل:* ${name}\n`;
+            msg += `▫️ *الهيكل/الإطار:* ${caseMat}\n`;
+            msg += `▫️ *لون المينا:* ${dialCol}\n`;
+            msg += `▫️ *نوع السير:* ${strapMat}\n`;
+            if (engrave) { msg += `✍️ *النقش المطلوبة:* ${engrave}\n`; }
+            msg += `\nأرجو إفادتي بالتكلفة المتاحة ومدة التنفيذ وشكراً!`;
+
+            window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+            closeCustomWatchModal();
+        }
+
         function filterCategory(cat) { activeCategory = cat; renderStore(); }
         function handleSearch() { searchQuery = document.getElementById('searchInput').value.trim().toLowerCase(); renderStore(); }
         function handleSortChange() { sortBy = document.getElementById('sortSelect').value; renderStore(); }
@@ -562,7 +655,14 @@
         function renderStore() {
             const grid = document.getElementById('watchesGrid');
             const emptyState = document.getElementById('emptyState');
-            let filtered = (window.watches || []).filter(w => activeCategory === 'offers' ? (w.tag === 'offer' || w.oldPrice > w.price) : true);
+            
+            // All watches will now show under 'all' without exclusion
+            let filtered = (window.watches || []).filter(w => {
+                if (activeCategory === 'offers') {
+                    return w.tag === 'offer' || (w.oldPrice && w.oldPrice > w.price);
+                }
+                return true; // Shows ALL products in 'all' category
+            });
 
             if (searchQuery) { filtered = filtered.filter(w => w.title.toLowerCase().includes(searchQuery)); }
             filtered.sort((a, b) => sortBy === 'price-low' ? a.price - b.price : sortBy === 'price-high' ? b.price - a.price : (b.createdAt || 0) - (a.createdAt || 0));
