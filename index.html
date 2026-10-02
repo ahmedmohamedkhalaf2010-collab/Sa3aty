@@ -178,56 +178,85 @@
             </button>
 
             <div class="text-center mb-6">
-                <i class="fa-solid fa-sliders text-amber-400 text-3xl mb-2"></i>
+                <i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-3xl mb-2"></i>
                 <h3 class="text-xl font-bold text-slate-100">صمّم ساعتك الخاصة على ذوقك ✨</h3>
-                <p class="text-xs text-slate-400 mt-1">اختر المواصفات اللي تحبها وسجل طلبك وهيترتب معاك عالواتساب مباشرة</p>
+                <p class="text-xs text-slate-400 mt-1">اختر المواصفات، أو ارفع صورة للساعة المطلوبة واكتب التفاصيل بسهولة</p>
             </div>
 
             <form onsubmit="submitCustomWatchOrder(event)" class="space-y-4 text-xs">
-                <div>
-                    <label class="block font-semibold text-slate-300 mb-1">نوع الهيكل / الإطار (Case Material)</label>
-                    <select id="customCase" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400">
-                        <option value="فضي استيل (Stainless Steel)">فضي استيل (Stainless Steel)</option>
-                        <option value="ذهبي فاخر (Gold Plated)">ذهبي فاخر (Gold Plated)</option>
-                        <option value="أسود مطفي (Matte Black)">أسود مطفي (Matte Black)</option>
-                        <option value="روز جولد (Rose Gold)">روز جولد (Rose Gold)</option>
-                    </select>
+                <!-- Image Upload Option -->
+                <div class="bg-brandDark/60 p-3 border border-amber-500/20">
+                    <label class="block font-semibold text-amber-400 mb-1 flex items-center gap-1.5">
+                        <i class="fa-solid fa-image"></i> عندك صورة للديزاين المطلوب؟ (اختياري)
+                    </label>
+                    <input type="file" id="customWatchImage" accept="image/*" onchange="previewCustomImage(event)" class="block w-full text-slate-300 file:py-1.5 file:px-3 file:bg-amber-500/20 file:text-amber-300 cursor-pointer bg-brandDark border border-amber-500/30 mb-2">
+                    <div id="customImgPreview" class="hidden justify-center items-center">
+                        <img id="customImgPreviewSrc" src="" class="h-28 object-contain border border-amber-500/40 my-1">
+                    </div>
                 </div>
 
+                <!-- Custom Free Text Option -->
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">لون المينا (Dial Color)</label>
-                    <select id="customDial" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400">
-                        <option value="أسود كلاسيك">أسود كلاسيك</option>
-                        <option value="أبيض كحلي">أبيض ناصع</option>
-                        <option value="أزرق ملكي (Royal Blue)">أزرق ملكي (Royal Blue)</option>
-                        <option value="أخضر زمردي (Emerald Green)">أخضر زمردي (Emerald Green)</option>
-                        <option value="هيكل شفاف (Skeleton)">هيكل شفاف (Skeleton)</option>
-                    </select>
+                    <label class="block font-semibold text-slate-300 mb-1">وصف أو تفاصيل الساعة المطلوبة (اختياري)</label>
+                    <textarea id="customFreeText" rows="2" placeholder="اكتب كل التفاصيل اللي في دماغك هنا..." class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400"></textarea>
                 </div>
 
-                <div>
-                    <label class="block font-semibold text-slate-300 mb-1">نوع ونوع السير / الحزام (Strap Material)</label>
-                    <select id="customStrap" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400">
-                        <option value="جلد طبيعي أسود">جلد طبيعي أسود</option>
-                        <option value="جلد طبيعي بني">جلد طبيعي بني</option>
-                        <option value="معدن استيل فضي">معدن استيل فضي</option>
-                        <option value="معدن استيل ذهبي">معدن استيل ذهبي</option>
-                        <option value="مطاط رياضي (Rubber)">مطاط رياضي (Rubber)</option>
-                    </select>
+                <div class="relative flex py-1 items-center">
+                    <div class="flex-grow border-t border-amber-500/20"></div>
+                    <span class="flex-shrink mx-3 text-slate-500 text-[10px]">أو اختر المواصفات الجاهزة</span>
+                    <div class="flex-grow border-t border-amber-500/20"></div>
                 </div>
 
-                <div>
-                    <label class="block font-semibold text-slate-300 mb-1">نقش اسم أو جملة خاصة على الظهر (اختياري)</label>
-                    <input type="text" id="customEngraving" placeholder="مثال: Ahmed - 2026" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-300 mb-1">نوع الهيكل</label>
+                        <select id="customCase" class="w-full bg-brandDark border border-amber-500/30 p-2 text-slate-100 focus:outline-none focus:border-amber-400">
+                            <option value="">بدون تحديد</option>
+                            <option value="فضي استيل">فضي استيل</option>
+                            <option value="ذهبي فاخر">ذهبي فاخر</option>
+                            <option value="أسود مطفي">أسود مطفي</option>
+                            <option value="روز جولد">روز جولد</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-300 mb-1">لون المينا</label>
+                        <select id="customDial" class="w-full bg-brandDark border border-amber-500/30 p-2 text-slate-100 focus:outline-none focus:border-amber-400">
+                            <option value="">بدون تحديد</option>
+                            <option value="أسود كلاسيك">أسود كلاسيك</option>
+                            <option value="أبيض ناصع">أبيض ناصع</option>
+                            <option value="أزرق ملكي">أزرق ملكي</option>
+                            <option value="أخضر زمردي">أخضر زمردي</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-300 mb-1">نوع السير</label>
+                        <select id="customStrap" class="w-full bg-brandDark border border-amber-500/30 p-2 text-slate-100 focus:outline-none focus:border-amber-400">
+                            <option value="">بدون تحديد</option>
+                            <option value="جلد طبيعي أسود">جلد طبيعي أسود</option>
+                            <option value="جلد طبيعي بني">جلد طبيعي بني</option>
+                            <option value="معدن استيل فضي">معدن استيل فضي</option>
+                            <option value="معدن استيل ذهبي">معدن استيل ذهبي</option>
+                            <option value="مطاط رياضي">مطاط رياضي</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-300 mb-1">نقش اسم خاص</label>
+                        <input type="text" id="customEngraving" placeholder="مثال: Ahmed" class="w-full bg-brandDark border border-amber-500/30 p-2 text-slate-100 focus:outline-none focus:border-amber-400">
+                    </div>
                 </div>
 
                 <div class="border-t border-amber-500/20 pt-3">
                     <label class="block font-semibold text-slate-300 mb-1">اسمك الكريم</label>
-                    <input type="text" id="customCustomerName" required placeholder="ادخل اسمك" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400 mb-3">
+                    <input type="text" id="customCustomerName" required placeholder="ادخل اسمك بالكامل" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400 mb-3">
                 </div>
 
                 <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold p-3 text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
-                    <i class="fa-brands fa-whatsapp text-base"></i> إرسال التصميم الخاص عبر الواتساب
+                    <i class="fa-brands fa-whatsapp text-base"></i> إرسال الطلب عبر الواتساب
                 </button>
             </form>
         </div>
@@ -416,6 +445,7 @@
         window.searchQuery = '';
         window.sortBy = 'newest';
         window.uploadedImagesBase64 = [];
+        window.customWatchImageBase64 = '';
         window.currentWatchDetailId = null;
 
         try { window.cart = JSON.parse(localStorage.getItem('sa3aty_cart')) || []; } catch(e) { window.cart = []; }
@@ -628,8 +658,23 @@
         function openCustomWatchModal() { document.getElementById('customWatchModal').classList.remove('hidden'); }
         function closeCustomWatchModal() { document.getElementById('customWatchModal').classList.add('hidden'); }
 
+        function previewCustomImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    customWatchImageBase64 = e.target.result;
+                    document.getElementById('customImgPreviewSrc').src = e.target.result;
+                    document.getElementById('customImgPreview').classList.remove('hidden');
+                    document.getElementById('customImgPreview').classList.add('flex');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
         function submitCustomWatchOrder(e) {
             e.preventDefault();
+            const freeText = document.getElementById('customFreeText').value.trim();
             const caseMat = document.getElementById('customCase').value;
             const dialCol = document.getElementById('customDial').value;
             const strapMat = document.getElementById('customStrap').value;
@@ -638,10 +683,14 @@
 
             let msg = `🛠️ *طلب تصميم ساعة خاصة (Custom Watch)*\n\n`;
             msg += `👤 *العميل:* ${name}\n`;
-            msg += `▫️ *الهيكل/الإطار:* ${caseMat}\n`;
-            msg += `▫️ *لون المينا:* ${dialCol}\n`;
-            msg += `▫️ *نوع السير:* ${strapMat}\n`;
+
+            if (freeText) { msg += `📝 *التفاصيل المطلوبة:* ${freeText}\n`; }
+            if (caseMat) { msg += `▫️ *الهيكل/الإطار:* ${caseMat}\n`; }
+            if (dialCol) { msg += `▫️ *لون المينا:* ${dialCol}\n`; }
+            if (strapMat) { msg += `▫️ *نوع السير:* ${strapMat}\n`; }
             if (engrave) { msg += `✍️ *النقش المطلوبة:* ${engrave}\n`; }
+            if (customWatchImageBase64) { msg += `🖼️ *(ملاحظة: تم إرفاق صورة التصميم المطلوبة، برجاء إرسالها هنا في الشات)*\n`; }
+
             msg += `\nأرجو إفادتي بالتكلفة المتاحة ومدة التنفيذ وشكراً!`;
 
             window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
@@ -656,12 +705,11 @@
             const grid = document.getElementById('watchesGrid');
             const emptyState = document.getElementById('emptyState');
             
-            // All watches will now show under 'all' without exclusion
             let filtered = (window.watches || []).filter(w => {
                 if (activeCategory === 'offers') {
                     return w.tag === 'offer' || (w.oldPrice && w.oldPrice > w.price);
                 }
-                return true; // Shows ALL products in 'all' category
+                return true;
             });
 
             if (searchQuery) { filtered = filtered.filter(w => w.title.toLowerCase().includes(searchQuery)); }
