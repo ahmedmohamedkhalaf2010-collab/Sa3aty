@@ -19,16 +19,12 @@
                         cairo: ['Cairo', 'sans-serif'],
                     },
                     colors: {
-                        brandDark: '#050505',
-                        brandCharcoal: '#0d0d0e',
-                        brandPanel: '#121214',
-                        brandGold: {
-                            300: '#fde047',
-                            400: '#facc15',
-                            500: '#eab308',
-                            600: '#ca8a04',
-                            accent: '#fbbf24'
-                        }
+                        bgMain: '#F8FAFC',       // أبيض كريمي / Ice White
+                        cardBg: '#FFFFFF',       // أبيض ناصع للكروت
+                        textPrimary: '#0F172A',  // أسود كحلي عميق
+                        goldAccent: '#D97706',   // ذهبي عميق للأزرار والتحديدات
+                        goldHover: '#B45309',    // درجة أغمق للـ Hover
+                        borderLight: '#E2E8F0',  // حدود خفيفة
                     }
                 }
             }
@@ -38,93 +34,94 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background: radial-gradient(circle at top, #18181b 0%, #0d0d0e 50%, #050505 100%);
+            background-color: #F8FAFC;
             min-height: 100vh;
-            color: #f1f5f9;
+            color: #0F172A;
         }
 
         .glass-panel {
-            background: rgba(18, 18, 20, 0.75);
+            background: rgba(255, 255, 255, 0.90);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(250, 204, 21, 0.2);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
         }
 
         .glass-nav {
-            background: rgba(5, 5, 5, 0.90);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(250, 204, 21, 0.25);
+            border-bottom: 1px solid #E2E8F0;
         }
 
         .gold-glow {
-            box-shadow: 0 0 15px rgba(250, 204, 21, 0.25);
+            box-shadow: 0 4px 14px 0 rgba(217, 119, 6, 0.25);
         }
 
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #050505;
+            background: #F8FAFC;
         }
         ::-webkit-scrollbar-thumb {
-            background: #27272a;
+            background: #CBD5E1;
+            border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #ca8a04;
+            background: #D97706;
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen selection:bg-brandGold-400 selection:text-black">
+<body class="flex flex-col min-h-screen selection:bg-goldAccent selection:text-white">
 
     <!-- Header / Navbar -->
-    <header class="glass-nav sticky top-0 z-40 px-4 lg:px-8 py-3 transition-all">
+    <header class="glass-nav sticky top-0 z-40 px-4 lg:px-8 py-3.5 transition-all">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             
             <!-- Left Controls: Tabs, Custom Builder & Lang -->
             <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="hidden md:flex items-center bg-brandDark p-1 border border-amber-500/20">
-                    <button onclick="filterCategory('all')" id="tab-all" class="px-4 py-1.5 text-xs font-bold transition-all text-amber-300 bg-amber-500/20 border border-amber-500/40">
+                <div class="hidden md:flex items-center bg-bgMain p-1 border border-borderLight rounded-xl">
+                    <button onclick="filterCategory('all')" id="tab-all" class="px-4 py-1.5 text-xs font-bold transition-all text-textPrimary bg-white rounded-lg shadow-sm border border-borderLight">
                         <i class="fa-solid fa-border-all ml-1"></i> <span id="txt-tab-all">الكل</span>
                     </button>
-                    <button onclick="filterCategory('offers')" id="tab-offers" class="px-4 py-1.5 text-xs font-bold transition-all text-slate-400 hover:text-amber-300">
-                        <i class="fa-solid fa-fire text-amber-400 ml-1"></i> <span id="txt-tab-offers">العروض</span>
+                    <button onclick="filterCategory('offers')" id="tab-offers" class="px-4 py-1.5 text-xs font-bold transition-all text-gray-500 hover:text-goldAccent">
+                        <i class="fa-solid fa-fire text-goldAccent ml-1"></i> <span id="txt-tab-offers">العروض</span>
                     </button>
                 </div>
 
                 <!-- Custom Watch Button -->
-                <button onclick="openCustomWatchModal()" class="bg-gradient-to-r from-amber-500/20 to-amber-400/10 border border-amber-500/50 hover:bg-amber-500/30 text-amber-300 px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5">
-                    <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                <button onclick="openCustomWatchModal()" class="bg-goldAccent/10 border border-goldAccent/30 hover:bg-goldAccent hover:text-white text-goldAccent px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <span>صمّم ساعتك</span>
                 </button>
 
-                <button onclick="toggleLanguage()" class="px-2.5 py-1.5 bg-brandDark border border-amber-500/30 text-amber-400 hover:bg-amber-500/10 text-xs font-black transition-all flex items-center gap-1">
-                    <i class="fa-solid fa-globe"></i>
+                <button onclick="toggleLanguage()" class="px-3 py-1.5 bg-bgMain border border-borderLight text-textPrimary hover:border-goldAccent text-xs font-black rounded-xl transition-all flex items-center gap-1">
+                    <i class="fa-solid fa-globe text-goldAccent"></i>
                     <span id="langSwitchText">EN</span>
                 </button>
             </div>
 
             <!-- Center Logo -->
             <a href="#" onclick="filterCategory('all')" class="flex items-center gap-2 group">
-                <i class="fa-solid fa-clock text-amber-400 text-2xl group-hover:rotate-12 transition-transform"></i>
-                <span class="text-xl font-black tracking-wider text-amber-400">SA3ATY</span>
+                <i class="fa-solid fa-clock text-goldAccent text-2xl group-hover:rotate-12 transition-transform"></i>
+                <span class="text-xl font-black tracking-wider text-textPrimary">SA3ATY</span>
             </a>
 
             <!-- Right Controls: Add Watch, Cart & Admin -->
             <div class="flex items-center space-x-3 space-x-reverse">
-                <button id="ownerAddBtn" onclick="openAddWatchModal()" class="hidden bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-3 py-1.5 text-xs shadow-lg gold-glow transition-all active:scale-95 flex items-center gap-1">
+                <button id="ownerAddBtn" onclick="openAddWatchModal()" class="hidden bg-goldAccent hover:bg-goldHover text-white font-black px-3.5 py-1.5 text-xs rounded-xl shadow-md gold-glow transition-all active:scale-95 flex items-center gap-1">
                     <i class="fa-solid fa-plus text-sm"></i>
                     <span id="txt-add-btn" class="hidden sm:inline">إضافة ساعة</span>
                 </button>
 
-                <button onclick="openCartModal()" class="relative p-2 bg-brandDark border border-amber-500/30 text-amber-400 hover:bg-amber-500/10 transition-all">
+                <button onclick="openCartModal()" class="relative p-2.5 bg-bgMain border border-borderLight text-textPrimary hover:border-goldAccent rounded-xl transition-all">
                     <i class="fa-solid fa-bag-shopping text-base"></i>
-                    <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-amber-400 text-slate-950 text-[10px] font-black w-4 h-4 flex items-center justify-center border border-brandDark shadow">
+                    <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-goldAccent text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow">
                         0
                     </span>
                 </button>
 
-                <button id="adminToggleBtn" onclick="handleAdminToggle()" class="p-2 bg-brandDark border border-slate-700 text-slate-400 hover:text-amber-400 hover:border-amber-500/40 transition-all" title="وضع الأدمن">
+                <button id="adminToggleBtn" onclick="handleAdminToggle()" class="p-2.5 bg-bgMain border border-borderLight text-gray-400 hover:text-goldAccent hover:border-goldAccent rounded-xl transition-all" title="وضع الأدمن">
                     <i id="adminLockIcon" class="fa-solid fa-lock text-sm"></i>
                 </button>
             </div>
@@ -134,26 +131,26 @@
     <!-- Main Content Body -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
         
-        <div id="adminBanner" class="hidden mb-6 p-4 bg-amber-500/10 border border-amber-500/40 flex flex-wrap justify-between items-center text-amber-200 gap-2">
-            <div class="flex items-center space-x-3 space-x-reverse text-sm">
-                <i class="fa-solid fa-crown text-amber-400 text-lg"></i>
+        <div id="adminBanner" class="hidden mb-6 p-4 bg-goldAccent/10 border border-goldAccent/30 rounded-2xl flex flex-wrap justify-between items-center text-textPrimary gap-2">
+            <div class="flex items-center space-x-3 space-x-reverse text-sm font-semibold">
+                <i class="fa-solid fa-crown text-goldAccent text-lg"></i>
                 <span id="txt-admin-banner">أهلاً بك يا <strong>صاحب المتجر!</strong> (وضع الأدمن مفعّل).</span>
             </div>
-            <button onclick="logoutAdmin()" id="txt-admin-logout" class="text-xs text-rose-400 hover:text-rose-300 underline font-bold">
+            <button onclick="logoutAdmin()" id="txt-admin-logout" class="text-xs text-rose-600 hover:text-rose-700 underline font-bold">
                 خروج من وضع الأدمن
             </button>
         </div>
 
-        <div class="glass-panel p-4 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="glass-panel p-4 mb-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="relative w-full md:w-80">
-                <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-1/2 -translate-y-1/2 text-amber-500/60 text-sm"></i>
+                <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
                 <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ابحث باسم الساعة..."
-                    class="w-full bg-brandDark border border-amber-500/20 pr-10 pl-4 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400 transition-colors">
+                    class="w-full bg-bgMain border border-borderLight rounded-xl pr-10 pl-4 py-2.5 text-xs sm:text-sm text-textPrimary placeholder-gray-400 focus:outline-none focus:border-goldAccent transition-colors">
             </div>
 
             <div class="flex items-center justify-between md:justify-end w-full md:w-auto gap-4">
-                <span id="productCount" class="text-xs text-amber-400/90 font-semibold">جاري تحميل البيانات...</span>
-                <select id="sortSelect" onchange="handleSortChange()" class="bg-brandDark border border-amber-500/20 text-slate-200 text-xs sm:text-sm px-3 py-2.5 focus:outline-none focus:border-amber-400 cursor-pointer">
+                <span id="productCount" class="text-xs text-gray-500 font-bold">جاري تحميل البيانات...</span>
+                <select id="sortSelect" onchange="handleSortChange()" class="bg-bgMain border border-borderLight rounded-xl text-textPrimary text-xs sm:text-sm px-3 py-2.5 focus:outline-none focus:border-goldAccent cursor-pointer font-semibold">
                     <option value="newest" id="opt-newest">الأحدث إضافة</option>
                     <option value="price-low" id="opt-price-low">السعر: من الأقل للأعلى</option>
                     <option value="price-high" id="opt-price-high">السعر: من الأعلى للأقل</option>
@@ -165,52 +162,52 @@
         <div id="watchesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
 
         <!-- Empty State -->
-        <div id="emptyState" class="hidden flex-col items-center justify-center text-center py-20 px-4 glass-panel my-6 border border-dashed border-amber-500/30">
-            <h3 id="txt-empty-title" class="text-xl font-bold text-slate-200 mb-2">المتجر فاضي حالياً!</h3>
+        <div id="emptyState" class="hidden flex-col items-center justify-center text-center py-20 px-4 glass-panel rounded-2xl my-6 border border-dashed border-borderLight">
+            <h3 id="txt-empty-title" class="text-xl font-bold text-textPrimary mb-2">المتجر فاضي حالياً!</h3>
         </div>
     </main>
 
     <!-- Custom Watch Builder Modal -->
-    <div id="customWatchModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="glass-panel max-w-lg w-full p-6 sm:p-8 border border-amber-500/40 relative my-8">
-            <button onclick="closeCustomWatchModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+    <div id="customWatchModal" class="fixed inset-0 bg-textPrimary/40 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-borderLight shadow-2xl relative my-8">
+            <button onclick="closeCustomWatchModal()" class="absolute top-4 left-4 text-gray-400 hover:text-textPrimary">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
 
             <div class="text-center mb-6">
-                <i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-3xl mb-2"></i>
-                <h3 class="text-xl font-bold text-slate-100">صمّم ساعتك الخاصة على ذوقك ✨</h3>
-                <p class="text-xs text-slate-400 mt-1">اختر المواصفات، أو ارفع صورة للساعة المطلوبة واكتب التفاصيل بسهولة</p>
+                <i class="fa-solid fa-wand-magic-sparkles text-goldAccent text-3xl mb-2"></i>
+                <h3 class="text-xl font-bold text-textPrimary">صمّم ساعتك الخاصة على ذوقك ✨</h3>
+                <p class="text-xs text-gray-500 mt-1">اختر المواصفات، أو ارفع صورة للساعة المطلوبة واكتب التفاصيل بسهولة</p>
             </div>
 
             <form onsubmit="submitCustomWatchOrder(event)" class="space-y-4 text-xs">
                 <!-- Image Upload Option -->
-                <div class="bg-brandDark/60 p-3 border border-amber-500/20">
-                    <label class="block font-semibold text-amber-400 mb-1 flex items-center gap-1.5">
+                <div class="bg-bgMain p-3 border border-borderLight rounded-xl">
+                    <label class="block font-semibold text-goldAccent mb-1 flex items-center gap-1.5">
                         <i class="fa-solid fa-image"></i> عندك صورة للديزاين المطلوب؟ (اختياري)
                     </label>
-                    <input type="file" id="customWatchImage" accept="image/*" onchange="previewCustomImage(event)" class="block w-full text-slate-300 file:py-1.5 file:px-3 file:bg-amber-500/20 file:text-amber-300 cursor-pointer bg-brandDark border border-amber-500/30 mb-2">
+                    <input type="file" id="customWatchImage" accept="image/*" onchange="previewCustomImage(event)" class="block w-full text-gray-600 file:py-1.5 file:px-3 file:bg-goldAccent/10 file:text-goldAccent file:rounded-lg file:border-0 cursor-pointer bg-white border border-borderLight rounded-lg mb-2">
                     <div id="customImgPreview" class="hidden justify-center items-center">
-                        <img id="customImgPreviewSrc" src="" class="h-28 object-contain border border-amber-500/40 my-1">
+                        <img id="customImgPreviewSrc" src="" class="h-28 object-contain border border-borderLight rounded-lg my-1">
                     </div>
                 </div>
 
                 <!-- Custom Free Text Option -->
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">وصف أو تفاصيل الساعة المطلوبة (اختياري)</label>
-                    <textarea id="customFreeText" rows="2" placeholder="اكتب كل التفاصيل اللي في دماغك هنا..." class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400"></textarea>
+                    <label class="block font-semibold text-textPrimary mb-1">وصف أو تفاصيل الساعة المطلوبة (اختياري)</label>
+                    <textarea id="customFreeText" rows="2" placeholder="اكتب كل التفاصيل اللي في دماغك هنا..." class="w-full bg-bgMain border border-borderLight rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
                 </div>
 
                 <div class="relative flex py-1 items-center">
-                    <div class="flex-grow border-t border-amber-500/20"></div>
-                    <span class="flex-shrink mx-3 text-slate-500 text-[10px]">أو اختر المواصفات الجاهزة</span>
-                    <div class="flex-grow border-t border-amber-500/20"></div>
+                    <div class="flex-grow border-t border-borderLight"></div>
+                    <span class="flex-shrink mx-3 text-gray-400 text-[10px]">أو اختر المواصفات الجاهزة</span>
+                    <div class="flex-grow border-t border-borderLight"></div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">نوع الهيكل</label>
-                        <select id="customCase" class="w-full bg-brandDark border border-amber-500/30 p-2 text-slate-100 focus:outline-none focus:border-amber-400">
+                        <label class="block font-semibold text-textPrimary mb-1">نوع الهيكل</label>
+                        <select id="customCase" class="w-full bg-bgMain border border-borderLight rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
                             <option value="">بدون تحديد</option>
                             <option value="فضي استيل">فضي استيل</option>
                             <option value="ذهبي فاخر">ذهبي فاخر</option>
@@ -220,8 +217,8 @@
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">لون المينا</label>
-                        <select id="customDial" class="w-full bg-brandDark border border-amber-500/30 p-2 text-slate-100 focus:outline-none focus:border-amber-400">
+                        <label class="block font-semibold text-textPrimary mb-1">لون المينا</label>
+                        <select id="customDial" class="w-full bg-bgMain border border-borderLight rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
                             <option value="">بدون تحديد</option>
                             <option value="أسود كلاسيك">أسود كلاسيك</option>
                             <option value="أبيض ناصع">أبيض ناصع</option>
@@ -233,8 +230,8 @@
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">نوع السير</label>
-                        <select id="customStrap" class="w-full bg-brandDark border border-amber-500/30 p-2 text-slate-100 focus:outline-none focus:border-amber-400">
+                        <label class="block font-semibold text-textPrimary mb-1">نوع السير</label>
+                        <select id="customStrap" class="w-full bg-bgMain border border-borderLight rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
                             <option value="">بدون تحديد</option>
                             <option value="جلد طبيعي أسود">جلد طبيعي أسود</option>
                             <option value="جلد طبيعي بني">جلد طبيعي بني</option>
@@ -245,17 +242,17 @@
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">نقش اسم خاص</label>
-                        <input type="text" id="customEngraving" placeholder="مثال: Ahmed" class="w-full bg-brandDark border border-amber-500/30 p-2 text-slate-100 focus:outline-none focus:border-amber-400">
+                        <label class="block font-semibold text-textPrimary mb-1">نقش اسم خاص</label>
+                        <input type="text" id="customEngraving" placeholder="مثال: Ahmed" class="w-full bg-bgMain border border-borderLight rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
                     </div>
                 </div>
 
-                <div class="border-t border-amber-500/20 pt-3">
-                    <label class="block font-semibold text-slate-300 mb-1">اسمك الكريم</label>
-                    <input type="text" id="customCustomerName" required placeholder="ادخل اسمك بالكامل" class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-slate-100 focus:outline-none focus:border-amber-400 mb-3">
+                <div class="border-t border-borderLight pt-3">
+                    <label class="block font-semibold text-textPrimary mb-1">اسمك الكريم</label>
+                    <input type="text" id="customCustomerName" required placeholder="ادخل اسمك بالكامل" class="w-full bg-bgMain border border-borderLight rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent mb-3">
                 </div>
 
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold p-3 text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
                     <i class="fa-brands fa-whatsapp text-base"></i> إرسال الطلب عبر الواتساب
                 </button>
             </form>
@@ -263,16 +260,16 @@
     </div>
 
     <!-- Watch Details & Comments Modal -->
-    <div id="watchDetailModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="glass-panel max-w-3xl w-full p-6 sm:p-8 border border-amber-500/40 relative my-8">
-            <button onclick="closeWatchDetailModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+    <div id="watchDetailModal" class="fixed inset-0 bg-textPrimary/40 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 border border-borderLight shadow-2xl relative my-8">
+            <button onclick="closeWatchDetailModal()" class="absolute top-4 left-4 text-gray-400 hover:text-textPrimary">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Image Slider -->
                 <div>
-                    <div class="w-full h-64 sm:h-80 bg-brandDark border border-amber-500/20 overflow-hidden mb-3">
+                    <div class="w-full h-64 sm:h-80 bg-bgMain rounded-2xl border border-borderLight overflow-hidden mb-3 flex items-center justify-center">
                         <img id="detailMainImg" src="" class="w-full h-full object-contain">
                     </div>
                     <div id="detailThumbnails" class="flex gap-2 overflow-x-auto pb-2"></div>
@@ -281,30 +278,30 @@
                 <!-- Info & Comments -->
                 <div class="flex flex-col justify-between">
                     <div>
-                        <h2 id="detailTitle" class="text-xl font-bold text-slate-100 mb-2"></h2>
+                        <h2 id="detailTitle" class="text-xl font-bold text-textPrimary mb-2"></h2>
                         <div class="flex items-center gap-3 mb-3">
-                            <span id="detailPrice" class="text-xl font-black text-amber-300 font-mono"></span>
-                            <span id="detailOldPrice" class="text-xs text-slate-500 line-through font-mono"></span>
+                            <span id="detailPrice" class="text-2xl font-black text-goldAccent font-mono"></span>
+                            <span id="detailOldPrice" class="text-xs text-gray-400 line-through font-mono"></span>
                         </div>
-                        <p id="detailDesc" class="text-xs text-slate-300 leading-relaxed mb-4 bg-brandDark/50 p-3 border border-amber-500/10"></p>
+                        <p id="detailDesc" class="text-xs text-gray-600 leading-relaxed mb-4 bg-bgMain p-3 rounded-xl border border-borderLight"></p>
                         
-                        <button id="detailAddToCartBtn" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-2.5 text-xs sm:text-sm mb-6 shadow-lg gold-glow flex items-center justify-center gap-2">
+                        <button id="detailAddToCartBtn" class="w-full bg-textPrimary hover:bg-goldAccent text-white font-bold py-3 rounded-xl text-xs sm:text-sm mb-6 shadow-md transition-all duration-300 flex items-center justify-center gap-2">
                             <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                         </button>
                     </div>
 
                     <!-- Comments Section -->
-                    <div class="border-t border-amber-500/20 pt-4">
-                        <h4 class="text-xs font-bold text-amber-400 mb-2 flex items-center gap-1.5">
+                    <div class="border-t border-borderLight pt-4">
+                        <h4 class="text-xs font-bold text-goldAccent mb-2 flex items-center gap-1.5">
                             <i class="fa-solid fa-comments"></i> التعليقات والآراء (<span id="commentsCount">0</span>)
                         </h4>
                         
                         <div id="commentsList" class="space-y-2 max-h-36 overflow-y-auto pr-1 mb-3 text-xs"></div>
 
                         <form onsubmit="handleAddComment(event)" class="flex gap-2">
-                            <input type="text" id="commentAuthorInput" placeholder="اسمك" required class="w-1/3 bg-brandDark border border-amber-500/20 px-2 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
-                            <input type="text" id="commentTextInput" placeholder="اكتب تعليقك هنا..." required class="w-2/3 bg-brandDark border border-amber-500/20 px-2 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
-                            <button type="submit" class="bg-amber-500 text-slate-950 font-bold px-3 py-1.5 text-xs hover:bg-amber-400">إرسال</button>
+                            <input type="text" id="commentAuthorInput" placeholder="اسمك" required class="w-1/3 bg-bgMain border border-borderLight rounded-lg px-2.5 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
+                            <input type="text" id="commentTextInput" placeholder="اكتب تعليقك هنا..." required class="w-2/3 bg-bgMain border border-borderLight rounded-lg px-2.5 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
+                            <button type="submit" class="bg-goldAccent text-white font-bold px-4 py-1.5 rounded-lg text-xs hover:bg-goldHover transition">إرسال</button>
                         </form>
                     </div>
                 </div>
@@ -313,104 +310,104 @@
     </div>
 
     <!-- Admin Password Modal -->
-    <div id="passwordModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-md w-full p-6 sm:p-8 border border-amber-500/40 relative">
-            <button onclick="closePasswordModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+    <div id="passwordModal" class="fixed inset-0 bg-textPrimary/40 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 border border-borderLight shadow-2xl relative">
+            <button onclick="closePasswordModal()" class="absolute top-4 left-4 text-gray-400 hover:text-textPrimary">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <form onsubmit="verifyAdminPin(event)" class="space-y-4">
-                <input type="password" id="adminPinInput" placeholder="أدخل الرمز السري..." required class="w-full bg-brandDark border border-amber-500/30 px-4 py-3 text-center tracking-widest text-xl text-amber-300 focus:outline-none focus:border-amber-400">
-                <p id="pinErrorMsg" class="text-xs text-rose-400 hidden text-center">الرمز السري خاطئ!</p>
-                <button type="submit" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 font-extrabold py-3 text-sm text-slate-950">دخول كصاحب المتجر</button>
+                <input type="password" id="adminPinInput" placeholder="أدخل الرمز السري..." required class="w-full bg-bgMain border border-borderLight rounded-xl px-4 py-3 text-center tracking-widest text-xl text-goldAccent font-bold focus:outline-none focus:border-goldAccent">
+                <p id="pinErrorMsg" class="text-xs text-rose-600 hidden text-center font-bold">الرمز السري خاطئ!</p>
+                <button type="submit" class="w-full bg-textPrimary hover:bg-goldAccent text-white font-extrabold py-3 rounded-xl text-sm transition">دخول كصاحب المتجر</button>
             </form>
         </div>
     </div>
 
     <!-- Add Watch Modal -->
-    <div id="addWatchModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="glass-panel max-w-lg w-full p-6 sm:p-8 border border-amber-500/40 relative my-8">
-            <button onclick="closeAddWatchModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white">
+    <div id="addWatchModal" class="fixed inset-0 bg-textPrimary/40 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-borderLight shadow-2xl relative my-8">
+            <button onclick="closeAddWatchModal()" class="absolute top-5 left-5 text-gray-400 hover:text-textPrimary">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
 
-            <h3 class="text-xl font-bold text-slate-100 mb-4" id="watchModalTitle">إضافة / تعديل ساعة</h3>
+            <h3 class="text-xl font-bold text-textPrimary mb-4" id="watchModalTitle">إضافة / تعديل ساعة</h3>
 
             <form onsubmit="handleSaveWatchSubmit(event)" class="space-y-4">
                 <input type="hidden" id="editingWatchId" value="">
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">اسم الساعة والموديل</label>
-                    <input type="text" id="watchTitleInput" required class="w-full bg-brandDark border border-amber-500/30 px-4 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                    <label class="block text-xs font-semibold text-textPrimary mb-1">اسم الساعة والموديل</label>
+                    <input type="text" id="watchTitleInput" required class="w-full bg-bgMain border border-borderLight rounded-xl px-4 py-2 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">صور الساعة (يمكنك اختيار أكثر من صورة)</label>
-                    <input type="file" id="watchFileInput" accept="image/*" multiple onchange="previewSelectedImages(event)" class="block w-full text-xs text-slate-300 file:py-1.5 file:px-3 file:bg-amber-500/20 file:text-amber-300 cursor-pointer bg-brandDark border border-amber-500/30 mb-2">
+                    <label class="block text-xs font-semibold text-textPrimary mb-1">صور الساعة (يمكنك اختيار أكثر من صورة)</label>
+                    <input type="file" id="watchFileInput" accept="image/*" multiple onchange="previewSelectedImages(event)" class="block w-full text-xs text-gray-600 file:py-1.5 file:px-3 file:bg-goldAccent/10 file:text-goldAccent file:rounded-lg file:border-0 cursor-pointer bg-bgMain border border-borderLight rounded-xl mb-2">
                     <div id="imagesPreviewContainer" class="flex gap-2 overflow-x-auto py-2"></div>
-                    <textarea id="watchImageUrlsInput" rows="2" placeholder="أو أدخل روابط الصور مفصولة بفواصل (URL1, URL2...)" class="w-full bg-brandDark border border-amber-500/30 px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400"></textarea>
+                    <textarea id="watchImageUrlsInput" rows="2" placeholder="أو أدخل روابط الصور مفصولة بفواصل (URL1, URL2...)" class="w-full bg-bgMain border border-borderLight rounded-xl px-3 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">السعر (ج.م)</label>
-                        <input type="number" id="watchPriceInput" required class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none">
+                        <label class="block text-xs font-semibold text-textPrimary mb-1">السعر (ج.م)</label>
+                        <input type="number" id="watchPriceInput" required class="w-full bg-bgMain border border-borderLight rounded-xl px-3 py-2 text-xs text-textPrimary focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">السعر القديم (اختياري)</label>
-                        <input type="number" id="watchOldPriceInput" class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none">
+                        <label class="block text-xs font-semibold text-textPrimary mb-1">السعر القديم (اختياري)</label>
+                        <input type="number" id="watchOldPriceInput" class="w-full bg-bgMain border border-borderLight rounded-xl px-3 py-2 text-xs text-textPrimary focus:outline-none">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">تصنيف المنتَج</label>
-                    <select id="watchTagInput" class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100">
+                    <label class="block text-xs font-semibold text-textPrimary mb-1">تصنيف المنتَج</label>
+                    <select id="watchTagInput" class="w-full bg-bgMain border border-borderLight rounded-xl px-3 py-2 text-xs text-textPrimary">
                         <option value="regular">منتج عادي</option>
                         <option value="offer">عرض خاص (Offers 🔥)</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">وصف مختصر</label>
-                    <textarea id="watchDescInput" rows="2" class="w-full bg-brandDark border border-amber-500/30 px-3 py-1.5 text-xs text-slate-100 focus:outline-none"></textarea>
+                    <label class="block text-xs font-semibold text-textPrimary mb-1">وصف مختصر</label>
+                    <textarea id="watchDescInput" rows="2" class="w-full bg-bgMain border border-borderLight rounded-xl px-3 py-1.5 text-xs text-textPrimary focus:outline-none"></textarea>
                 </div>
 
                 <div class="flex justify-end gap-3 pt-2">
-                    <button type="button" onclick="closeAddWatchModal()" class="px-4 py-2 text-xs text-slate-400">إلغاء</button>
-                    <button type="submit" class="bg-amber-400 text-slate-950 font-black px-6 py-2 text-xs">حفظ الساعة</button>
+                    <button type="button" onclick="closeAddWatchModal()" class="px-4 py-2 text-xs text-gray-500 font-bold">إلغاء</button>
+                    <button type="submit" class="bg-goldAccent text-white font-black px-6 py-2 rounded-xl text-xs hover:bg-goldHover transition">حفظ الساعة</button>
                 </div>
             </form>
         </div>
     </div>
 
     <!-- Customer Modal -->
-    <div id="customerModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-md w-full p-6 border border-amber-500/40 relative">
-            <button onclick="closeCustomerModal()" class="absolute top-4 left-4 text-slate-400"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-lg font-bold text-slate-100 mb-4 text-center">تأكيد الطلب</h3>
+    <div id="customerModal" class="fixed inset-0 bg-textPrimary/40 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 border border-borderLight shadow-2xl relative">
+            <button onclick="closeCustomerModal()" class="absolute top-4 left-4 text-gray-400"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-lg font-bold text-textPrimary mb-4 text-center">تأكيد الطلب</h3>
             <form onsubmit="submitCustomerOrder(event)" class="space-y-4">
-                <input type="text" id="customerNameInput" placeholder="الاسم بالكامل" required class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-xs text-slate-100">
-                <input type="tel" id="customerPhoneInput" placeholder="رقم الهاتف (واتساب)" required class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-xs text-slate-100">
-                <button type="submit" class="w-full bg-emerald-600 text-white font-bold p-3 text-xs flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp"></i> إرسال عبر الواتساب</button>
+                <input type="text" id="customerNameInput" placeholder="الاسم بالكامل" required class="w-full bg-bgMain border border-borderLight rounded-xl p-2.5 text-xs text-textPrimary">
+                <input type="tel" id="customerPhoneInput" placeholder="رقم الهاتف (واتساب)" required class="w-full bg-bgMain border border-borderLight rounded-xl p-2.5 text-xs text-textPrimary">
+                <button type="submit" class="w-full bg-emerald-600 text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-emerald-700 transition"><i class="fa-brands fa-whatsapp"></i> إرسال عبر الواتساب</button>
             </form>
         </div>
     </div>
 
     <!-- Cart Panel -->
-    <div id="cartModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex justify-end">
-        <div class="glass-panel max-w-md w-full h-full p-6 border-r border-amber-500/30 flex flex-col justify-between">
+    <div id="cartModal" class="fixed inset-0 bg-textPrimary/30 backdrop-blur-md z-50 hidden flex justify-end">
+        <div class="bg-white max-w-md w-full h-full p-6 border-l border-borderLight shadow-2xl flex flex-col justify-between">
             <div>
-                <div class="flex items-center justify-between border-b border-amber-500/20 pb-4 mb-4">
-                    <h3 class="text-lg font-bold text-slate-100">سلة المشتريات</h3>
-                    <button onclick="closeCartModal()" class="text-slate-400"><i class="fa-solid fa-xmark"></i></button>
+                <div class="flex items-center justify-between border-b border-borderLight pb-4 mb-4">
+                    <h3 class="text-lg font-bold text-textPrimary">سلة المشتريات</h3>
+                    <button onclick="closeCartModal()" class="text-gray-400 hover:text-textPrimary"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 <div id="cartItemsContainer" class="space-y-3 max-h-[60vh] overflow-y-auto"></div>
             </div>
-            <div class="border-t border-amber-500/20 pt-4">
-                <div class="flex justify-between mb-4 font-bold text-amber-300">
+            <div class="border-t border-borderLight pt-4">
+                <div class="flex justify-between mb-4 font-bold text-goldAccent text-lg">
                     <span>المبلغ الإجمالي:</span>
                     <span id="cartTotalPrice">0 ج.م</span>
                 </div>
-                <button onclick="openCustomerModal()" id="checkoutBtn" disabled class="w-full bg-amber-400 disabled:opacity-50 text-slate-950 font-black py-3 text-xs">إتمام الطلب عبر الواتساب</button>
+                <button onclick="openCustomerModal()" id="checkoutBtn" disabled class="w-full bg-textPrimary disabled:opacity-50 text-white font-black py-3 rounded-xl text-xs hover:bg-goldAccent transition">إتمام الطلب عبر الواتساب</button>
             </div>
         </div>
     </div>
@@ -510,7 +507,7 @@
 
                         const thumb = document.createElement('img');
                         thumb.src = base64;
-                        thumb.className = "w-12 h-12 object-cover border border-amber-500/30";
+                        thumb.className = "w-12 h-12 object-cover border border-borderLight rounded-lg";
                         container.appendChild(thumb);
                     };
                     img.src = e.target.result;
@@ -615,7 +612,7 @@
 
             const thumbsContainer = document.getElementById('detailThumbnails');
             thumbsContainer.innerHTML = images.map(img => `
-                <img src="${img}" onclick="document.getElementById('detailMainImg').src='${img}'" class="w-12 h-12 object-cover border border-amber-500/30 cursor-pointer hover:border-amber-400">
+                <img src="${img}" onclick="document.getElementById('detailMainImg').src='${img}'" class="w-12 h-12 object-cover border border-borderLight rounded-lg cursor-pointer hover:border-goldAccent">
             `).join('');
 
             document.getElementById('detailAddToCartBtn').onclick = () => addToCart(w.id);
@@ -625,11 +622,11 @@
             const comments = w.comments ? Object.values(w.comments) : [];
             document.getElementById('commentsCount').textContent = comments.length;
 
-            commentsList.innerHTML = comments.length === 0 ? '<p class="text-slate-500 text-[11px]">لا يوجد تعليقات بعد.</p>' :
+            commentsList.innerHTML = comments.length === 0 ? '<p class="text-gray-400 text-[11px]">لا يوجد تعليقات بعد.</p>' :
                 comments.map(c => `
-                    <div class="bg-brandDark/80 p-2 border border-amber-500/10">
-                        <span class="font-bold text-amber-400">${escapeHtml(c.author)}:</span>
-                        <span class="text-slate-200">${escapeHtml(c.text)}</span>
+                    <div class="bg-bgMain p-2 rounded-lg border border-borderLight">
+                        <span class="font-bold text-goldAccent">${escapeHtml(c.author)}:</span>
+                        <span class="text-textPrimary">${escapeHtml(c.text)}</span>
                     </div>
                 `).join('');
 
@@ -728,25 +725,25 @@
             }
 
             grid.innerHTML = filtered.map(watch => `
-                <div class="glass-panel p-4 flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300 group relative">
-                    <div onclick="openWatchDetailModal('${watch.id}')" class="relative w-full h-52 overflow-hidden mb-4 bg-brandDark border border-amber-500/10 cursor-pointer">
+                <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between hover:border-goldAccent/50 transition-all duration-300 group relative">
+                    <div onclick="openWatchDetailModal('${watch.id}')" class="relative w-full h-56 overflow-hidden rounded-xl mb-4 bg-bgMain border border-borderLight cursor-pointer flex items-center justify-center">
                         <img src="${escapeHtml(watch.image)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         ${isAdmin ? `
                             <div class="absolute top-2 left-2 flex gap-1 z-10" onclick="event.stopPropagation()">
-                                <button onclick="openAddWatchModal('${watch.id}')" class="w-7 h-7 bg-brandDark text-amber-300 border border-amber-500/30 flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>
-                                <button onclick="deleteWatch('${watch.id}')" class="w-7 h-7 bg-brandDark text-rose-300 border border-rose-500/30 flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>
+                                <button onclick="openAddWatchModal('${watch.id}')" class="w-8 h-8 bg-white text-textPrimary border border-borderLight rounded-lg flex items-center justify-center text-xs shadow hover:text-goldAccent"><i class="fa-solid fa-pen"></i></button>
+                                <button onclick="deleteWatch('${watch.id}')" class="w-8 h-8 bg-white text-rose-600 border border-borderLight rounded-lg flex items-center justify-center text-xs shadow hover:bg-rose-50"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         ` : ''}
                     </div>
 
                     <div onclick="openWatchDetailModal('${watch.id}')" class="cursor-pointer">
-                        <h4 class="text-base font-bold text-slate-100 group-hover:text-amber-300 line-clamp-1 mb-1">${escapeHtml(watch.title)}</h4>
-                        <p class="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed min-h-[32px]">${escapeHtml(watch.desc || '')}</p>
+                        <h4 class="text-base font-bold text-textPrimary group-hover:text-goldAccent transition line-clamp-1 mb-1">${escapeHtml(watch.title)}</h4>
+                        <p class="text-xs text-gray-500 line-clamp-2 mb-4 leading-relaxed min-h-[32px]">${escapeHtml(watch.desc || '')}</p>
                     </div>
 
-                    <div class="pt-3 border-t border-amber-500/10 flex items-center justify-between">
-                        <div class="text-base font-black text-amber-300 font-mono">${Number(watch.price).toLocaleString()} <span class="text-xs text-slate-300">ج.م</span></div>
-                        <button onclick="addToCart('${watch.id}')" class="bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/40 p-2 text-xs font-bold flex items-center gap-1.5 transition-all"><i class="fa-solid fa-cart-plus"></i> إضافة للسلة</button>
+                    <div class="pt-3 border-t border-borderLight flex items-center justify-between">
+                        <div class="text-lg font-black text-goldAccent font-mono">${Number(watch.price).toLocaleString()} <span class="text-xs text-textPrimary font-sans">ج.م</span></div>
+                        <button onclick="addToCart('${watch.id}')" class="bg-textPrimary text-white hover:bg-goldAccent p-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"><i class="fa-solid fa-cart-plus"></i> إضافة للسلة</button>
                     </div>
                 </div>
             `).join('');
@@ -769,16 +766,16 @@
             document.getElementById('checkoutBtn').disabled = cart.length === 0;
 
             document.getElementById('cartItemsContainer').innerHTML = cart.map(i => `
-                <div class="bg-brandDark p-2.5 border border-amber-500/20 flex items-center justify-between text-xs">
-                    <img src="${escapeHtml(i.image)}" class="w-10 h-10 object-cover border border-amber-500/20">
-                    <div class="flex-1 px-2">
-                        <h5 class="font-bold text-slate-100 line-clamp-1">${escapeHtml(i.title)}</h5>
-                        <div class="text-amber-400 font-mono">${Number(i.price).toLocaleString()} ج.م</div>
+                <div class="bg-bgMain p-3 rounded-xl border border-borderLight flex items-center justify-between text-xs">
+                    <img src="${escapeHtml(i.image)}" class="w-12 h-12 object-cover rounded-lg border border-borderLight">
+                    <div class="flex-1 px-3">
+                        <h5 class="font-bold text-textPrimary line-clamp-1">${escapeHtml(i.title)}</h5>
+                        <div class="text-goldAccent font-mono font-bold">${Number(i.price).toLocaleString()} ج.م</div>
                     </div>
-                    <div class="flex items-center gap-2 bg-brandPanel border border-amber-500/20 px-2 py-1">
-                        <button onclick="updateCartQty('${i.id}', -1)" class="text-slate-400 hover:text-amber-400 font-bold px-1">-</button>
-                        <span class="text-slate-100 font-bold">${i.qty}</span>
-                        <button onclick="updateCartQty('${i.id}', 1)" class="text-slate-400 hover:text-amber-400 font-bold px-1">+</button>
+                    <div class="flex items-center gap-2 bg-white border border-borderLight rounded-lg px-2 py-1">
+                        <button onclick="updateCartQty('${i.id}', -1)" class="text-gray-400 hover:text-goldAccent font-bold px-1">-</button>
+                        <span class="text-textPrimary font-bold">${i.qty}</span>
+                        <button onclick="updateCartQty('${i.id}', 1)" class="text-gray-400 hover:text-goldAccent font-bold px-1">+</button>
                     </div>
                 </div>
             `).join('');
