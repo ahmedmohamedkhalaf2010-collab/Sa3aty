@@ -38,20 +38,13 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #050505;
-            background-image: 
-                radial-gradient(rgba(250, 204, 21, 0.12) 1px, transparent 1.5px),
-                radial-gradient(rgba(234, 179, 8, 0.08) 1px, transparent 1.5px),
-                radial-gradient(circle at top, #18181b 0%, #0d0d0e 50%, #050505 100%);
-            background-size: 80px 80px, 120px 120px, 100% 100%;
-            background-position: 0 0, 40px 40px, 0 0;
-            background-attachment: fixed;
+            background: radial-gradient(circle at top, #18181b 0%, #0d0d0e 50%, #050505 100%);
             min-height: 100vh;
             color: #f1f5f9;
         }
 
         .glass-panel {
-            background: rgba(18, 18, 20, 0.85);
+            background: rgba(18, 18, 20, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(250, 204, 21, 0.2);
@@ -59,7 +52,7 @@
         }
 
         .glass-nav {
-            background: rgba(5, 5, 5, 0.92);
+            background: rgba(5, 5, 5, 0.90);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(250, 204, 21, 0.25);
         }
@@ -88,58 +81,41 @@
     <header class="glass-nav sticky top-0 z-40 px-4 lg:px-8 py-3 transition-all">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             
-            <!-- Left Controls: Tabs & Custom Order Button -->
-            <div class="flex items-center space-x-2 sm:space-x-3 space-x-reverse">
+            <!-- Left Controls: Tabs & Lang -->
+            <div class="flex items-center space-x-3 space-x-reverse">
                 <div class="hidden md:flex items-center bg-brandDark p-1 border border-amber-500/20">
                     <button onclick="filterCategory('all')" id="tab-all" class="px-4 py-1.5 text-xs font-bold transition-all text-amber-300 bg-amber-500/20 border border-amber-500/40">
-                        <i class="fa-solid fa-border-all ml-1"></i> <span>الكل</span>
+                        <i class="fa-solid fa-border-all ml-1"></i> <span id="txt-tab-all">الكل</span>
                     </button>
                     <button onclick="filterCategory('offers')" id="tab-offers" class="px-4 py-1.5 text-xs font-bold transition-all text-slate-400 hover:text-amber-300">
-                        <i class="fa-solid fa-fire text-amber-400 ml-1"></i> <span>العروض</span>
+                        <i class="fa-solid fa-fire text-amber-400 ml-1"></i> <span id="txt-tab-offers">العروض</span>
                     </button>
                 </div>
 
-                <!-- Custom Request Button for Users -->
-                <button onclick="openCustomRequestModal()" class="bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-400 font-bold px-3 py-1.5 text-xs transition-all flex items-center gap-1.5">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <span>طلب ساعة عمولة</span>
+                <button onclick="toggleLanguage()" class="px-2.5 py-1.5 bg-brandDark border border-amber-500/30 text-amber-400 hover:bg-amber-500/10 text-xs font-black transition-all flex items-center gap-1">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="langSwitchText">EN</span>
                 </button>
             </div>
 
             <!-- Center Logo Image -->
-            <a href="#" onclick="filterCategory('all')" class="flex flex-col items-center group">
-                <svg class="h-10 sm:h-12 w-auto group-hover:scale-105 transition-transform duration-300" viewBox="0 0 520 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#FDE047" />
-                            <stop offset="50%" stop-color="#EAB308" />
-                            <stop offset="100%" stop-color="#CA8A04" />
-                        </linearGradient>
-                    </defs>
-                    <text x="10" y="90" font-family="'Cairo', sans-serif" font-weight="900" font-size="95" fill="url(#goldGrad)">S</text>
-                    <g transform="translate(115, 20)">
-                        <circle cx="38" cy="45" r="36" stroke="url(#goldGrad)" stroke-width="7" fill="#0d0d0e"/>
-                        <circle cx="38" cy="45" r="30" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="2 4" fill="none"/>
-                        <line x1="38" y1="45" x2="38" y2="24" stroke="url(#goldGrad)" stroke-width="3.5" stroke-linecap="round"/>
-                        <line x1="38" y1="45" x2="52" y2="45" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round"/>
-                        <circle cx="38" cy="45" r="3.5" fill="url(#goldGrad)"/>
-                        <rect x="74" y="40" width="4" height="10" rx="1" fill="url(#goldGrad)"/>
-                    </g>
-                    <text x="215" y="95" font-family="'Cairo', sans-serif" font-weight="900" font-size="110" fill="url(#goldGrad)">3</text>
-                    <text x="325" y="90" font-family="'Cairo', sans-serif" font-weight="800" font-size="80" fill="url(#goldGrad)">aty</text>
-                </svg>
+            <a href="#" onclick="filterCategory('all')" class="flex items-center gap-2 group">
+                <i class="fa-solid fa-clock text-amber-400 text-2xl group-hover:rotate-12 transition-transform"></i>
+                <span class="text-xl font-black tracking-wider text-amber-400">SA3ATY</span>
             </a>
 
             <!-- Right Controls: Add Watch, Cart & Admin -->
-            <div class="flex items-center space-x-2 sm:space-x-3 space-x-reverse">
+            <div class="flex items-center space-x-3 space-x-reverse">
                 <button id="ownerAddBtn" onclick="openAddWatchModal()" class="hidden bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-3 py-1.5 text-xs shadow-lg gold-glow transition-all active:scale-95 flex items-center gap-1">
                     <i class="fa-solid fa-plus text-sm"></i>
-                    <span class="hidden sm:inline">إضافة ساعة</span>
+                    <span id="txt-add-btn" class="hidden sm:inline">إضافة ساعة</span>
                 </button>
 
                 <button onclick="openCartModal()" class="relative p-2 bg-brandDark border border-amber-500/30 text-amber-400 hover:bg-amber-500/10 transition-all">
                     <i class="fa-solid fa-bag-shopping text-base"></i>
-                    <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-amber-400 text-slate-950 text-[10px] font-black w-4 h-4 flex items-center justify-center border border-brandDark shadow">0</span>
+                    <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-amber-400 text-slate-950 text-[10px] font-black w-4 h-4 flex items-center justify-center border border-brandDark shadow">
+                        0
+                    </span>
                 </button>
 
                 <button id="adminToggleBtn" onclick="handleAdminToggle()" class="p-2 bg-brandDark border border-slate-700 text-slate-400 hover:text-amber-400 hover:border-amber-500/40 transition-all" title="وضع الأدمن">
@@ -152,135 +128,191 @@
     <!-- Main Content Body -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
         
-        <!-- Admin Mode Banner -->
         <div id="adminBanner" class="hidden mb-6 p-4 bg-amber-500/10 border border-amber-500/40 flex flex-wrap justify-between items-center text-amber-200 gap-2">
             <div class="flex items-center space-x-3 space-x-reverse text-sm">
                 <i class="fa-solid fa-crown text-amber-400 text-lg"></i>
-                <span>أهلاً بك يا <strong>صاحب المتجر!</strong> (وضع الأدمن مفعّل).</span>
+                <span id="txt-admin-banner">أهلاً بك يا <strong>صاحب المتجر!</strong> (وضع الأدمن مفعّل).</span>
             </div>
-            <button onclick="logoutAdmin()" class="text-xs text-rose-400 hover:text-rose-300 underline font-bold">خروج من وضع الأدمن</button>
+            <button onclick="logoutAdmin()" id="txt-admin-logout" class="text-xs text-rose-400 hover:text-rose-300 underline font-bold">
+                خروج من وضع الأدمن
+            </button>
         </div>
 
-        <!-- Filter & Search Controls -->
         <div class="glass-panel p-4 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="relative w-full md:w-80">
                 <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-1/2 -translate-y-1/2 text-amber-500/60 text-sm"></i>
-                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ابحث باسم الساعة..." class="w-full bg-brandDark border border-amber-500/20 pr-10 pl-4 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400 transition-colors">
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ابحث باسم الساعة..."
+                    class="w-full bg-brandDark border border-amber-500/20 pr-10 pl-4 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400 transition-colors">
             </div>
 
             <div class="flex items-center justify-between md:justify-end w-full md:w-auto gap-4">
                 <span id="productCount" class="text-xs text-amber-400/90 font-semibold">جاري تحميل البيانات...</span>
                 <select id="sortSelect" onchange="handleSortChange()" class="bg-brandDark border border-amber-500/20 text-slate-200 text-xs sm:text-sm px-3 py-2.5 focus:outline-none focus:border-amber-400 cursor-pointer">
-                    <option value="newest">الأحدث إضافة</option>
-                    <option value="price-low">السعر: من الأقل للأعلى</option>
-                    <option value="price-high">السعر: من الأعلى للأقل</option>
+                    <option value="newest" id="opt-newest">الأحدث إضافة</option>
+                    <option value="price-low" id="opt-price-low">السعر: من الأقل للأعلى</option>
+                    <option value="price-high" id="opt-price-high">السعر: من الأعلى للأقل</option>
                 </select>
             </div>
         </div>
 
         <!-- Watches Product Grid -->
         <div id="watchesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden flex-col items-center justify-center text-center py-20 px-4 glass-panel my-6 border border-dashed border-amber-500/30">
+            <h3 id="txt-empty-title" class="text-xl font-bold text-slate-200 mb-2">المتجر فاضي حالياً!</h3>
+        </div>
     </main>
 
-    <!-- Custom Watch Request Modal -->
-    <div id="customRequestModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <!-- Watch Details & Comments Modal -->
+    <div id="watchDetailModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-panel max-w-3xl w-full p-6 sm:p-8 border border-amber-500/40 relative my-8">
+            <button onclick="closeWatchDetailModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Image Slider -->
+                <div>
+                    <div class="w-full h-64 sm:h-80 bg-brandDark border border-amber-500/20 overflow-hidden mb-3">
+                        <img id="detailMainImg" src="" class="w-full h-full object-contain">
+                    </div>
+                    <div id="detailThumbnails" class="flex gap-2 overflow-x-auto pb-2"></div>
+                </div>
+
+                <!-- Info & Comments -->
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <h2 id="detailTitle" class="text-xl font-bold text-slate-100 mb-2"></h2>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span id="detailPrice" class="text-xl font-black text-amber-300 font-mono"></span>
+                            <span id="detailOldPrice" class="text-xs text-slate-500 line-through font-mono"></span>
+                        </div>
+                        <p id="detailDesc" class="text-xs text-slate-300 leading-relaxed mb-4 bg-brandDark/50 p-3 border border-amber-500/10"></p>
+                        
+                        <button id="detailAddToCartBtn" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-2.5 text-xs sm:text-sm mb-6 shadow-lg gold-glow flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
+                        </button>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <div class="border-t border-amber-500/20 pt-4">
+                        <h4 class="text-xs font-bold text-amber-400 mb-2 flex items-center gap-1.5">
+                            <i class="fa-solid fa-comments"></i> التعليقات والآراء (<span id="commentsCount">0</span>)
+                        </h4>
+                        
+                        <div id="commentsList" class="space-y-2 max-h-36 overflow-y-auto pr-1 mb-3 text-xs"></div>
+
+                        <form onsubmit="handleAddComment(event)" class="flex gap-2">
+                            <input type="text" id="commentAuthorInput" placeholder="اسمك" required class="w-1/3 bg-brandDark border border-amber-500/20 px-2 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                            <input type="text" id="commentTextInput" placeholder="اكتب تعليقك هنا..." required class="w-2/3 bg-brandDark border border-amber-500/20 px-2 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                            <button type="submit" class="bg-amber-500 text-slate-950 font-bold px-3 py-1.5 text-xs hover:bg-amber-400">إرسال</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Password Modal -->
+    <div id="passwordModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-md w-full p-6 sm:p-8 border border-amber-500/40 relative">
-            <button onclick="closeCustomRequestModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
+            <button onclick="closePasswordModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-            
-            <h3 class="text-lg font-bold text-amber-300 mb-4 flex items-center gap-2">
-                <i class="fa-solid fa-wand-magic-sparkles"></i> طلب ساعة بمواصفات خاصة
-            </h3>
-            
-            <form onsubmit="sendCustomRequestToWhatsApp(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">الاسم بالكامل</label>
-                    <input type="text" id="reqName" required placeholder="اسمك..." class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">وصف الشكل / الموديل المطلوبة</label>
-                    <textarea id="reqDesc" rows="3" required placeholder="اكتب المواصفات، الماركة، أو لون الساعة..." class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400"></textarea>
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">رابط صورة الساعة (اختياري)</label>
-                    <input type="url" id="reqImgUrl" placeholder="https://..." class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
-                </div>
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 text-xs flex items-center justify-center gap-2 transition-all">
-                    <i class="fa-brands fa-whatsapp text-sm"></i> إرسال الطلب مباشر للواتساب
-                </button>
+            <form onsubmit="verifyAdminPin(event)" class="space-y-4">
+                <input type="password" id="adminPinInput" placeholder="أدخل الرمز السري..." required class="w-full bg-brandDark border border-amber-500/30 px-4 py-3 text-center tracking-widest text-xl text-amber-300 focus:outline-none focus:border-amber-400">
+                <p id="pinErrorMsg" class="text-xs text-rose-400 hidden text-center">الرمز السري خاطئ!</p>
+                <button type="submit" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 font-extrabold py-3 text-sm text-slate-950">دخول كصاحب المتجر</button>
             </form>
         </div>
     </div>
 
-    <!-- Modal Add / Edit Watch -->
-    <div id="watchModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-lg w-full p-6 sm:p-8 border border-amber-500/40 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeWatchModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white">
-                <i class="fa-solid fa-xmark text-lg"></i>
+    <!-- Add Watch Modal -->
+    <div id="addWatchModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-panel max-w-lg w-full p-6 sm:p-8 border border-amber-500/40 relative my-8">
+            <button onclick="closeAddWatchModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
             </button>
-            
-            <h3 id="modalTitle" class="text-lg font-bold text-amber-300 mb-4 flex items-center gap-2">
-                <i class="fa-solid fa-plus-circle"></i> إضافة ساعة جديدة
-            </h3>
-            
-            <form onsubmit="handleWatchSubmit(event)" class="space-y-4">
-                <input type="hidden" id="watchId">
+
+            <h3 class="text-xl font-bold text-slate-100 mb-4" id="watchModalTitle">إضافة / تعديل ساعة</h3>
+
+            <form onsubmit="handleSaveWatchSubmit(event)" class="space-y-4">
+                <input type="hidden" id="editingWatchId" value="">
+
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">اسم الساعة</label>
-                    <input type="text" id="watchTitle" required class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">اسم الساعة والموديل</label>
+                    <input type="text" id="watchTitleInput" required class="w-full bg-brandDark border border-amber-500/30 px-4 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
                 </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">صور الساعة (يمكنك اختيار أكثر من صورة)</label>
+                    <input type="file" id="watchFileInput" accept="image/*" multiple onchange="previewSelectedImages(event)" class="block w-full text-xs text-slate-300 file:py-1.5 file:px-3 file:bg-amber-500/20 file:text-amber-300 cursor-pointer bg-brandDark border border-amber-500/30 mb-2">
+                    <div id="imagesPreviewContainer" class="flex gap-2 overflow-x-auto py-2"></div>
+                    <textarea id="watchImageUrlsInput" rows="2" placeholder="أو أدخل روابط الصور مفصولة بفواصل (URL1, URL2...)" class="w-full bg-brandDark border border-amber-500/30 px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400"></textarea>
+                </div>
+
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 mb-1">السعر (ج.م)</label>
-                        <input type="number" id="watchPrice" required class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                        <input type="number" id="watchPriceInput" required class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 mb-1">السعر القديم (اختياري)</label>
-                        <input type="number" id="watchOldPrice" class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                        <input type="number" id="watchOldPriceInput" class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none">
                     </div>
                 </div>
+
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">رابط الصورة (Image URL)</label>
-                    <input type="url" id="watchImage" required placeholder="https://..." class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">تصنيف المنتَج</label>
+                    <select id="watchTagInput" class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100">
+                        <option value="regular">منتج عادي</option>
+                        <option value="offer">عرض خاص (Offers 🔥)</option>
+                    </select>
                 </div>
+
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">الوصف</label>
-                    <textarea id="watchDesc" rows="3" class="w-full bg-brandDark border border-amber-500/30 px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400"></textarea>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">وصف مختصر</label>
+                    <textarea id="watchDescInput" rows="2" class="w-full bg-brandDark border border-amber-500/30 px-3 py-1.5 text-xs text-slate-100 focus:outline-none"></textarea>
                 </div>
-                <div class="flex items-center gap-2">
-                    <input type="checkbox" id="watchIsOffer" class="accent-amber-400">
-                    <label for="watchIsOffer" class="text-xs text-slate-300">إضافة العرض لقسم العروض الخاصة</label>
+
+                <div class="flex justify-end gap-3 pt-2">
+                    <button type="button" onclick="closeAddWatchModal()" class="px-4 py-2 text-xs text-slate-400">إلغاء</button>
+                    <button type="submit" class="bg-amber-400 text-slate-950 font-black px-6 py-2 text-xs">حفظ الساعة</button>
                 </div>
-                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-2.5 text-xs transition-all">
-                    حفظ البيانات
-                </button>
             </form>
         </div>
     </div>
 
-    <!-- Modal Cart -->
-    <div id="cartModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-md w-full p-6 border border-amber-500/40 relative max-h-[90vh] flex flex-col">
-            <div class="flex justify-between items-center pb-3 border-b border-amber-500/20 mb-4">
-                <h3 class="text-base font-bold text-amber-300 flex items-center gap-2">
-                    <i class="fa-solid fa-bag-shopping"></i> سلة المشتريات
-                </h3>
-                <button onclick="closeCartModal()" class="text-slate-400 hover:text-white">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-            
-            <div id="cartItemsList" class="flex-1 overflow-y-auto space-y-3 mb-4 pr-1"></div>
+    <!-- Customer Modal -->
+    <div id="customerModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-md w-full p-6 border border-amber-500/40 relative">
+            <button onclick="closeCustomerModal()" class="absolute top-4 left-4 text-slate-400"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-lg font-bold text-slate-100 mb-4 text-center">تأكيد الطلب</h3>
+            <form onsubmit="submitCustomerOrder(event)" class="space-y-4">
+                <input type="text" id="customerNameInput" placeholder="الاسم بالكامل" required class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-xs text-slate-100">
+                <input type="tel" id="customerPhoneInput" placeholder="رقم الهاتف (واتساب)" required class="w-full bg-brandDark border border-amber-500/30 p-2.5 text-xs text-slate-100">
+                <button type="submit" class="w-full bg-emerald-600 text-white font-bold p-3 text-xs flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp"></i> إرسال عبر الواتساب</button>
+            </form>
+        </div>
+    </div>
 
-            <div class="border-t border-amber-500/20 pt-3 space-y-3">
-                <div class="flex justify-between items-center font-bold text-sm">
-                    <span class="text-slate-300">الإجمالي:</span>
-                    <span id="cartTotal" class="text-amber-400">0 ج.م</span>
+    <!-- Cart Panel -->
+    <div id="cartModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex justify-end">
+        <div class="glass-panel max-w-md w-full h-full p-6 border-r border-amber-500/30 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between border-b border-amber-500/20 pb-4 mb-4">
+                    <h3 class="text-lg font-bold text-slate-100">سلة المشتريات</h3>
+                    <button onclick="closeCartModal()" class="text-slate-400"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                <button onclick="sendCartToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 text-xs flex items-center justify-center gap-2 transition-all">
-                    <i class="fa-brands fa-whatsapp text-sm"></i> تأكيد الطلب عبر الواتساب
-                </button>
+                <div id="cartItemsContainer" class="space-y-3 max-h-[60vh] overflow-y-auto"></div>
+            </div>
+            <div class="border-t border-amber-500/20 pt-4">
+                <div class="flex justify-between mb-4 font-bold text-amber-300">
+                    <span>المبلغ الإجمالي:</span>
+                    <span id="cartTotalPrice">0 ج.م</span>
+                </div>
+                <button onclick="openCustomerModal()" id="checkoutBtn" disabled class="w-full bg-amber-400 disabled:opacity-50 text-slate-950 font-black py-3 text-xs">إتمام الطلب عبر الواتساب</button>
             </div>
         </div>
     </div>
@@ -297,7 +329,8 @@
             projectId: "sa3aty-30312",
             storageBucket: "sa3aty-30312.firebasestorage.app",
             messagingSenderId: "613567954494",
-            appId: "1:613567954494:web:6f9b2ec5db04db1f459b6f"
+            appId: "1:613567954494:web:6f9b2ec5db04db1f459b6f",
+            measurementId: "G-ZX3WF0RX25"
         };
 
         const app = initializeApp(firebaseConfig);
@@ -305,287 +338,330 @@
         const watchesRef = ref(db, 'watches');
 
         window.db = db;
-        window.watchesRef = watchesRef;
-        window.push = push;
-        window.set = set;
-        window.remove = remove;
-        window.ref = ref;
-
         window.watches = [];
-        window.cart = [];
-        window.currentCategory = 'all';
-        window.searchQuery = '';
-        window.sortBy = 'newest';
         window.STORE_PHONE = "201144387828";
+        window.currentLang = 'ar';
         window.isAdmin = false;
         window.ADMIN_PIN = "96278306";
+        window.activeCategory = 'all';
+        window.searchQuery = '';
+        window.sortBy = 'newest';
+        window.uploadedImagesBase64 = [];
+        window.currentWatchDetailId = null;
+
+        try { window.cart = JSON.parse(localStorage.getItem('sa3aty_cart')) || []; } catch(e) { window.cart = []; }
 
         onValue(watchesRef, (snapshot) => {
             const data = snapshot.val();
             window.watches = data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
             renderStore();
+            if (window.currentWatchDetailId) {
+                openWatchDetailModal(window.currentWatchDetailId);
+            }
         });
+
+        window.saveWatchToFirebase = function(watchData, editId = null) {
+            if (editId) {
+                set(ref(db, `watches/${editId}`), watchData);
+            } else {
+                set(push(watchesRef), watchData);
+            }
+        };
+
+        window.deleteWatchFromFirebase = function(id) {
+            remove(ref(db, `watches/${id}`));
+        };
+
+        window.addCommentToFirebase = function(watchId, commentData) {
+            const commentRef = push(ref(db, `watches/${watchId}/comments`));
+            set(commentRef, commentData);
+        };
     </script>
 
-    <!-- Custom Logic Script -->
+    <!-- App Main Logic -->
     <script>
-        function openCustomRequestModal() { document.getElementById('customRequestModal').classList.remove('hidden'); }
-        function closeCustomRequestModal() { document.getElementById('customRequestModal').classList.add('hidden'); }
+        window.addEventListener('DOMContentLoaded', () => { updateCartUI(); });
 
-        function sendCustomRequestToWhatsApp(e) {
-            e.preventDefault();
-            const name = document.getElementById('reqName').value.trim();
-            const desc = document.getElementById('reqDesc').value.trim();
-            const imgUrl = document.getElementById('reqImgUrl').value.trim();
+        function toggleLanguage() {
+            window.currentLang = window.currentLang === 'ar' ? 'en' : 'ar';
+            document.getElementById('langSwitchText').textContent = window.currentLang === 'ar' ? 'EN' : 'AR';
+            document.documentElement.dir = window.currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = window.currentLang;
+        }
 
-            let message = `*طلب ساعة خاصة (عمولة)* ⌚✨\n\n`;
-            message += `*الاسم:* ${name}\n`;
-            message += `*تفاصيل الطلب:* ${desc}\n`;
-            if (imgUrl) message += `*رابط الصورة:* ${imgUrl}\n`;
+        function previewSelectedImages(event) {
+            const files = Array.from(event.target.files);
+            uploadedImagesBase64 = [];
+            const container = document.getElementById('imagesPreviewContainer');
+            container.innerHTML = '';
 
-            window.open(`https://wa.me/${window.STORE_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
-            closeCustomRequestModal();
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width, height = img.height, max_size = 400;
+                        if (width > height) { if (width > max_size) { height *= max_size / width; width = max_size; } }
+                        else { if (height > max_size) { width *= max_size / height; height = max_size; } }
+                        canvas.width = width; canvas.height = height;
+                        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+                        const base64 = canvas.toDataURL('image/jpeg', 0.5);
+                        uploadedImagesBase64.push(base64);
+
+                        const thumb = document.createElement('img');
+                        thumb.src = base64;
+                        thumb.className = "w-12 h-12 object-cover border border-amber-500/30";
+                        container.appendChild(thumb);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
         }
 
         function handleAdminToggle() {
-            if (window.isAdmin) {
-                logoutAdmin();
-            } else {
-                const pin = prompt("أدخل الرقم السري للوحة الأدمن:");
-                if (pin === window.ADMIN_PIN) {
-                    window.isAdmin = true;
-                    document.getElementById('ownerAddBtn').classList.remove('hidden');
-                    document.getElementById('adminBanner').classList.remove('hidden');
-                    document.getElementById('adminLockIcon').className = "fa-solid fa-lock-open text-amber-400";
-                    renderStore();
-                } else if (pin) {
-                    alert("الرقم السري غير صحيح!");
-                }
-            }
+            if (isAdmin) { logoutAdmin(); }
+            else { document.getElementById('passwordModal').classList.remove('hidden'); }
         }
-
-        function logoutAdmin() {
-            window.isAdmin = false;
-            document.getElementById('ownerAddBtn').classList.add('hidden');
-            document.getElementById('adminBanner').classList.add('hidden');
-            document.getElementById('adminLockIcon').className = "fa-solid fa-lock text-sm";
+        function closePasswordModal() { document.getElementById('passwordModal').classList.add('hidden'); }
+        function verifyAdminPin(e) {
+            e.preventDefault();
+            if (document.getElementById('adminPinInput').value === ADMIN_PIN) {
+                isAdmin = true;
+                closePasswordModal();
+                updateAdminUIState();
+            } else { document.getElementById('pinErrorMsg').classList.remove('hidden'); }
+        }
+        function logoutAdmin() { isAdmin = false; updateAdminUIState(); }
+        function updateAdminUIState() {
+            document.getElementById('ownerAddBtn').classList.toggle('hidden', !isAdmin);
+            document.getElementById('adminBanner').classList.toggle('hidden', !isAdmin);
             renderStore();
         }
 
-        function openAddWatchModal() {
-            document.getElementById('watchId').value = '';
-            document.getElementById('watchTitle').value = '';
-            document.getElementById('watchPrice').value = '';
-            document.getElementById('watchOldPrice').value = '';
-            document.getElementById('watchImage').value = '';
-            document.getElementById('watchDesc').value = '';
-            document.getElementById('watchIsOffer').checked = false;
-            document.getElementById('modalTitle').innerText = 'إضافة ساعة جديدة';
-            document.getElementById('watchModal').classList.remove('hidden');
+        function openAddWatchModal(editId = null) {
+            document.getElementById('addWatchModal').classList.remove('hidden');
+            uploadedImagesBase64 = [];
+            document.getElementById('imagesPreviewContainer').innerHTML = '';
+
+            if (editId) {
+                const w = watches.find(item => item.id === editId);
+                if (w) {
+                    document.getElementById('editingWatchId').value = w.id;
+                    document.getElementById('watchTitleInput').value = w.title;
+                    document.getElementById('watchPriceInput').value = w.price;
+                    document.getElementById('watchOldPriceInput').value = w.oldPrice || '';
+                    document.getElementById('watchTagInput').value = w.tag || 'regular';
+                    document.getElementById('watchDescInput').value = w.desc || '';
+                    const imgs = Array.isArray(w.images) ? w.images : [w.image];
+                    document.getElementById('watchImageUrlsInput').value = imgs.join(', ');
+                }
+            } else {
+                document.getElementById('editingWatchId').value = '';
+                document.getElementById('watchTitleInput').value = '';
+                document.getElementById('watchPriceInput').value = '';
+                document.getElementById('watchOldPriceInput').value = '';
+                document.getElementById('watchDescInput').value = '';
+                document.getElementById('watchImageUrlsInput').value = '';
+            }
         }
+        function closeAddWatchModal() { document.getElementById('addWatchModal').classList.add('hidden'); }
 
-        function closeWatchModal() { document.getElementById('watchModal').classList.add('hidden'); }
+        function handleSaveWatchSubmit(e) {
+            e.preventDefault();
+            const editId = document.getElementById('editingWatchId').value;
+            const title = document.getElementById('watchTitleInput').value.trim();
+            const manualUrls = document.getElementById('watchImageUrlsInput').value.split(',').map(s => s.trim()).filter(Boolean);
+            
+            let imagesList = uploadedImagesBase64.length > 0 ? uploadedImagesBase64 : manualUrls;
+            if (imagesList.length === 0) {
+                imagesList = ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=600&auto=format&fit=crop'];
+            }
 
-        function editWatch(id) {
-            const w = window.watches.find(item => item.id === id);
-            if (!w) return;
-            document.getElementById('watchId').value = w.id;
-            document.getElementById('watchTitle').value = w.title || '';
-            document.getElementById('watchPrice').value = w.price || '';
-            document.getElementById('watchOldPrice').value = w.oldPrice || '';
-            document.getElementById('watchImage').value = w.image || '';
-            document.getElementById('watchDesc').value = w.desc || '';
-            document.getElementById('watchIsOffer').checked = !!w.isOffer;
-            document.getElementById('modalTitle').innerText = 'تعديل بيانات الساعة';
-            document.getElementById('watchModal').classList.remove('hidden');
+            const watchPayload = {
+                title,
+                image: imagesList[0],
+                images: imagesList,
+                price: parseFloat(document.getElementById('watchPriceInput').value),
+                oldPrice: parseFloat(document.getElementById('watchOldPriceInput').value) || 0,
+                tag: document.getElementById('watchTagInput').value,
+                desc: document.getElementById('watchDescInput').value.trim(),
+                createdAt: editId ? (watches.find(w => w.id === editId)?.createdAt || Date.now()) : Date.now()
+            };
+
+            if (window.saveWatchToFirebase) { window.saveWatchToFirebase(watchPayload, editId || null); }
+            closeAddWatchModal();
         }
 
         function deleteWatch(id) {
-            if (confirm("هل أنت تأكد من حذف هذه الساعة؟")) {
-                window.remove(window.ref(window.db, 'watches/' + id));
+            if (isAdmin && confirm("هل أنت متأكد من حذف هذه الساعة؟")) {
+                if (window.deleteWatchFromFirebase) { window.deleteWatchFromFirebase(id); }
             }
         }
 
-        function handleWatchSubmit(e) {
-            e.preventDefault();
-            const id = document.getElementById('watchId').value;
-            const data = {
-                title: document.getElementById('watchTitle').value,
-                price: Number(document.getElementById('watchPrice').value),
-                oldPrice: document.getElementById('watchOldPrice').value ? Number(document.getElementById('watchOldPrice').value) : null,
-                image: document.getElementById('watchImage').value,
-                desc: document.getElementById('watchDesc').value,
-                isOffer: document.getElementById('watchIsOffer').checked,
-                createdAt: Date.now()
-            };
-
-            if (id) {
-                window.set(window.ref(window.db, 'watches/' + id), data);
-            } else {
-                window.push(window.watchesRef, data);
-            }
-            closeWatchModal();
-        }
-
-        function filterCategory(cat) {
-            window.currentCategory = cat;
-            document.getElementById('tab-all').className = cat === 'all' 
-                ? 'px-4 py-1.5 text-xs font-bold transition-all text-amber-300 bg-amber-500/20 border border-amber-500/40' 
-                : 'px-4 py-1.5 text-xs font-bold transition-all text-slate-400 hover:text-amber-300';
-            document.getElementById('tab-offers').className = cat === 'offers' 
-                ? 'px-4 py-1.5 text-xs font-bold transition-all text-amber-300 bg-amber-500/20 border border-amber-500/40' 
-                : 'px-4 py-1.5 text-xs font-bold transition-all text-slate-400 hover:text-amber-300';
-            renderStore();
-        }
-
-        function handleSearch() {
-            window.searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
-            renderStore();
-        }
-
-        function handleSortChange() {
-            window.sortBy = document.getElementById('sortSelect').value;
-            renderStore();
-        }
-
-        function addToCart(id) {
-            const w = window.watches.find(item => item.id === id);
+        function openWatchDetailModal(id) {
+            const w = watches.find(item => item.id === id);
             if (!w) return;
-            const existing = window.cart.find(item => item.id === id);
-            if (existing) {
-                existing.qty++;
-            } else {
-                window.cart.push({ ...w, qty: 1 });
-            }
-            updateCartBadge();
-        }
 
-        function updateCartBadge() {
-            const totalQty = window.cart.reduce((acc, item) => acc + item.qty, 0);
-            document.getElementById('cartBadge').innerText = totalQty;
-        }
+            window.currentWatchDetailId = id;
+            document.getElementById('detailTitle').textContent = w.title;
+            document.getElementById('detailPrice').textContent = `${Number(w.price).toLocaleString()} ج.م`;
+            document.getElementById('detailOldPrice').textContent = w.oldPrice ? `${Number(w.oldPrice).toLocaleString()} ج.م` : '';
+            document.getElementById('detailDesc').textContent = w.desc || 'لا يوجد وصف إضافي.';
 
-        function openCartModal() {
-            renderCartItems();
-            document.getElementById('cartModal').classList.remove('hidden');
-        }
+            const images = Array.isArray(w.images) && w.images.length > 0 ? w.images : [w.image];
+            const mainImg = document.getElementById('detailMainImg');
+            mainImg.src = images[0];
 
-        function closeCartModal() { document.getElementById('cartModal').classList.add('hidden'); }
+            const thumbsContainer = document.getElementById('detailThumbnails');
+            thumbsContainer.innerHTML = images.map(img => `
+                <img src="${img}" onclick="document.getElementById('detailMainImg').src='${img}'" class="w-12 h-12 object-cover border border-amber-500/30 cursor-pointer hover:border-amber-400">
+            `).join('');
 
-        function changeQty(id, delta) {
-            const item = window.cart.find(i => i.id === id);
-            if (!item) return;
-            item.qty += delta;
-            if (item.qty <= 0) {
-                window.cart = window.cart.filter(i => i.id !== id);
-            }
-            updateCartBadge();
-            renderCartItems();
-        }
+            document.getElementById('detailAddToCartBtn').onclick = () => addToCart(w.id);
 
-        function renderCartItems() {
-            const list = document.getElementById('cartItemsList');
-            if (window.cart.length === 0) {
-                list.innerHTML = `<div class="text-center py-8 text-slate-500 text-xs">السلة فارغة حالياً</div>`;
-                document.getElementById('cartTotal').innerText = '0 ج.م';
-                return;
-            }
+            // Comments
+            const commentsList = document.getElementById('commentsList');
+            const comments = w.comments ? Object.values(w.comments) : [];
+            document.getElementById('commentsCount').textContent = comments.length;
 
-            let total = 0;
-            list.innerHTML = window.cart.map(item => {
-                const itemTotal = item.price * item.qty;
-                total += itemTotal;
-                return `
-                    <div class="flex items-center justify-between p-2 bg-brandDark border border-amber-500/20 text-xs">
-                        <div class="flex items-center gap-2">
-                            <img src="${item.image}" class="w-10 h-10 object-cover">
-                            <div>
-                                <div class="font-bold text-slate-200">${item.title}</div>
-                                <div class="text-amber-400 font-bold">${item.price} ج.م</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button onclick="changeQty('${item.id}', -1)" class="w-5 h-5 bg-zinc-800 text-amber-400 font-bold flex items-center justify-center">-</button>
-                            <span class="text-slate-200 font-bold">${item.qty}</span>
-                            <button onclick="changeQty('${item.id}', 1)" class="w-5 h-5 bg-zinc-800 text-amber-400 font-bold flex items-center justify-center">+</button>
-                        </div>
+            commentsList.innerHTML = comments.length === 0 ? '<p class="text-slate-500 text-[11px]">لا يوجد تعليقات بعد.</p>' :
+                comments.map(c => `
+                    <div class="bg-brandDark/80 p-2 border border-amber-500/10">
+                        <span class="font-bold text-amber-400">${escapeHtml(c.author)}:</span>
+                        <span class="text-slate-200">${escapeHtml(c.text)}</span>
                     </div>
-                `;
-            }).join('');
+                `).join('');
 
-            document.getElementById('cartTotal').innerText = total + ' ج.م';
+            document.getElementById('watchDetailModal').classList.remove('hidden');
         }
 
-        function sendCartToWhatsApp() {
-            if (window.cart.length === 0) return alert("السلة فارغة!");
-            let msg = `*طلب جديد من متجر ساعاتي* ⌚✨\n\n`;
-            let total = 0;
-            window.cart.forEach((item, index) => {
-                const itemTotal = item.price * item.qty;
-                total += itemTotal;
-                msg += `${index + 1}. *${item.title}* - العدد: ${item.qty} - السعر: ${itemTotal} ج.م\n`;
-            });
-            msg += `\n*الإجمالي:* ${total} ج.م`;
-            window.open(`https://wa.me/${window.STORE_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+        function closeWatchDetailModal() {
+            window.currentWatchDetailId = null;
+            document.getElementById('watchDetailModal').classList.add('hidden');
         }
+
+        function handleAddComment(e) {
+            e.preventDefault();
+            if (!window.currentWatchDetailId) return;
+
+            const author = document.getElementById('commentAuthorInput').value.trim();
+            const text = document.getElementById('commentTextInput').value.trim();
+
+            if (author && text && window.addCommentToFirebase) {
+                window.addCommentToFirebase(window.currentWatchDetailId, { author, text, timestamp: Date.now() });
+                document.getElementById('commentTextInput').value = '';
+            }
+        }
+
+        function filterCategory(cat) { activeCategory = cat; renderStore(); }
+        function handleSearch() { searchQuery = document.getElementById('searchInput').value.trim().toLowerCase(); renderStore(); }
+        function handleSortChange() { sortBy = document.getElementById('sortSelect').value; renderStore(); }
 
         function renderStore() {
             const grid = document.getElementById('watchesGrid');
-            let items = [...(window.watches || [])];
+            const emptyState = document.getElementById('emptyState');
+            let filtered = (window.watches || []).filter(w => activeCategory === 'offers' ? (w.tag === 'offer' || w.oldPrice > w.price) : true);
 
-            if (window.currentCategory === 'offers') {
-                items = items.filter(w => w.isOffer);
-            }
+            if (searchQuery) { filtered = filtered.filter(w => w.title.toLowerCase().includes(searchQuery)); }
+            filtered.sort((a, b) => sortBy === 'price-low' ? a.price - b.price : sortBy === 'price-high' ? b.price - a.price : (b.createdAt || 0) - (a.createdAt || 0));
 
-            if (window.searchQuery) {
-                items = items.filter(w => w.title.toLowerCase().includes(window.searchQuery));
-            }
+            document.getElementById('productCount').textContent = `${filtered.length} ساعة معروضة`;
 
-            if (window.sortBy === 'price-low') {
-                items.sort((a, b) => a.price - b.price);
-            } else if (window.sortBy === 'price-high') {
-                items.sort((a, b) => b.price - a.price);
-            } else {
-                items.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-            }
-
-            document.getElementById('productCount').textContent = `${items.length} ساعة معروضة`;
-
-            if (items.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 text-sm">لا توجد ساعات مطابقة للبحث حالياً.</div>`;
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
                 return;
+            } else {
+                emptyState.classList.add('hidden');
+                emptyState.classList.remove('flex');
             }
 
-            grid.innerHTML = items.map(w => `
-                <div class="glass-panel p-4 flex flex-col justify-between relative group">
-                    ${w.isOffer ? '<span class="absolute top-2 right-2 bg-amber-500 text-black font-black text-[10px] px-2 py-0.5 z-10">عرض خاص</span>' : ''}
-                    <div>
-                        <div class="overflow-hidden mb-3 h-48 bg-black flex items-center justify-center">
-                            <img src="${w.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
-                        </div>
-                        <h4 class="font-bold text-sm text-slate-100 mb-1 line-clamp-1">${w.title}</h4>
-                        <p class="text-xs text-slate-400 line-clamp-2 mb-3">${w.desc || 'ساعة أنيقة وعصرية'}</p>
+            grid.innerHTML = filtered.map(watch => `
+                <div class="glass-panel p-4 flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300 group relative">
+                    <div onclick="openWatchDetailModal('${watch.id}')" class="relative w-full h-52 overflow-hidden mb-4 bg-brandDark border border-amber-500/10 cursor-pointer">
+                        <img src="${escapeHtml(watch.image)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        ${isAdmin ? `
+                            <div class="absolute top-2 left-2 flex gap-1 z-10" onclick="event.stopPropagation()">
+                                <button onclick="openAddWatchModal('${watch.id}')" class="w-7 h-7 bg-brandDark text-amber-300 border border-amber-500/30 flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>
+                                <button onclick="deleteWatch('${watch.id}')" class="w-7 h-7 bg-brandDark text-rose-300 border border-rose-500/30 flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        ` : ''}
                     </div>
 
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-amber-400 font-extrabold text-base">${w.price} ج.م</span>
-                            ${w.oldPrice ? `<span class="text-xs text-slate-500 line-through">${w.oldPrice} ج.م</span>` : ''}
-                        </div>
+                    <div onclick="openWatchDetailModal('${watch.id}')" class="cursor-pointer">
+                        <h4 class="text-base font-bold text-slate-100 group-hover:text-amber-300 line-clamp-1 mb-1">${escapeHtml(watch.title)}</h4>
+                        <p class="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed min-h-[32px]">${escapeHtml(watch.desc || '')}</p>
+                    </div>
 
-                        <div class="flex items-center gap-2">
-                            <button onclick="addToCart('${w.id}')" class="flex-1 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 font-bold py-2 text-xs transition-all flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-cart-plus"></i> إضـافة للسـلة
-                            </button>
-                            ${window.isAdmin ? `
-                                <button onclick="editWatch('${w.id}')" class="p-2 bg-blue-600/20 text-blue-400 border border-blue-500/30 text-xs"><i class="fa-solid fa-pen"></i></button>
-                                <button onclick="deleteWatch('${w.id}')" class="p-2 bg-rose-600/20 text-rose-400 border border-rose-500/30 text-xs"><i class="fa-solid fa-trash"></i></button>
-                            ` : ''}
-                        </div>
+                    <div class="pt-3 border-t border-amber-500/10 flex items-center justify-between">
+                        <div class="text-base font-black text-amber-300 font-mono">${Number(watch.price).toLocaleString()} <span class="text-xs text-slate-300">ج.م</span></div>
+                        <button onclick="addToCart('${watch.id}')" class="bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/40 p-2 text-xs font-bold flex items-center gap-1.5 transition-all"><i class="fa-solid fa-cart-plus"></i> إضافة للسلة</button>
                     </div>
                 </div>
             `).join('');
         }
+
+        function addToCart(id) {
+            const watch = watches.find(w => w.id === id);
+            if (!watch) return;
+            const existing = cart.find(i => i.id === id);
+            if (existing) { existing.qty += 1; }
+            else { cart.push({ id: watch.id, title: watch.title, price: watch.price, image: watch.image, qty: 1 }); }
+            try { localStorage.setItem('sa3aty_cart', JSON.stringify(cart)); } catch(e){}
+            updateCartUI();
+            openCartModal();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartBadge').textContent = cart.reduce((s, i) => s + i.qty, 0);
+            document.getElementById('cartTotalPrice').textContent = `${cart.reduce((s, i) => s + (i.price * i.qty), 0).toLocaleString()} ج.م`;
+            document.getElementById('checkoutBtn').disabled = cart.length === 0;
+
+            document.getElementById('cartItemsContainer').innerHTML = cart.map(i => `
+                <div class="bg-brandDark p-2.5 border border-amber-500/20 flex items-center justify-between text-xs">
+                    <img src="${escapeHtml(i.image)}" class="w-10 h-10 object-cover border border-amber-500/20">
+                    <div class="flex-1 px-2">
+                        <h5 class="font-bold text-slate-100 line-clamp-1">${escapeHtml(i.title)}</h5>
+                        <div class="text-amber-400 font-mono">${Number(i.price).toLocaleString()} ج.م</div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-brandPanel border border-amber-500/20 px-2 py-1">
+                        <button onclick="updateCartQty('${i.id}', -1)" class="text-slate-400 hover:text-amber-400 font-bold px-1">-</button>
+                        <span class="text-slate-100 font-bold">${i.qty}</span>
+                        <button onclick="updateCartQty('${i.id}', 1)" class="text-slate-400 hover:text-amber-400 font-bold px-1">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateCartQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+            try { localStorage.setItem('sa3aty_cart', JSON.stringify(cart)); } catch(e){}
+            updateCartUI();
+        }
+
+        function openCartModal() { document.getElementById('cartModal').classList.remove('hidden'); }
+        function closeCartModal() { document.getElementById('cartModal').classList.add('hidden'); }
+        function openCustomerModal() { closeCartModal(); document.getElementById('customerModal').classList.remove('hidden'); }
+        function closeCustomerModal() { document.getElementById('customerModal').classList.add('hidden'); }
+
+        function submitCustomerOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('customerNameInput').value.trim();
+            const phone = document.getElementById('customerPhoneInput').value.trim();
+            let message = `طلب جديد من: ${name} (${phone})\n\nالطلبات:\n`;
+            cart.forEach((i, idx) => { message += `${idx + 1}. ${i.title} (${i.qty}) - ${i.price * i.qty} ج.م\n`; });
+            message += `\nالإجمالي: ${cart.reduce((s, i) => s + (i.price * i.qty), 0)} ج.م`;
+            window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
+            closeCustomerModal();
+        }
+
+        function escapeHtml(str) { return String(str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
     </script>
 </body>
 </html>
