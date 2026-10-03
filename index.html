@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sa3aty | Sa3aty Store </title>
+    <title>sa3aty | متجر ساعاتي الفاخر</title>
     <!-- Favicon (Tab Logo) -->
     <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/L6byHBpx/image.jpg">
     
@@ -101,6 +101,11 @@
             border-color: rgba(212, 175, 55, 0.4);
         }
 
+        /* دمج الخلفية السوداء للوجو لتصبح شفافة تلقائياً */
+        .logo-blend-screen {
+            mix-blend-mode: screen;
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -147,10 +152,10 @@
                 </button>
             </div>
 
-            <!-- Center Rectangular Logo (Large Rectangle Frame, Retaining Aspect Ratio) -->
+            <!-- Center Logo Section (Cleaned & Seamless Integration) -->
             <a href="#" onclick="filterCategory('all')" class="flex items-center justify-center group">
-                <div class="w-32 sm:w-48 h-16 sm:h-20 bg-cardBg/80 border-2 border-goldAccent rounded-2xl flex items-center justify-center p-2 shadow-lg shadow-goldAccent/20 group-hover:scale-105 transition-transform duration-300">
-                    <img src="https://i.postimg.cc/L6byHBpx/image.jpg" alt="SA3ATY Logo" class="w-full h-full object-contain">
+                <div class="px-4 py-2 bg-cardBg/90 border-2 border-goldAccent rounded-2xl flex items-center justify-center shadow-lg shadow-goldAccent/20 group-hover:scale-105 transition-transform duration-300">
+                    <img src="https://i.postimg.cc/L6byHBpx/image.jpg" alt="SA3ATY Logo" class="h-12 sm:h-16 w-auto object-contain logo-blend-screen">
                 </div>
             </a>
 
@@ -727,7 +732,7 @@
             if (caseMat) { msg += `▫ *الهيكل/الإطار:* ${caseMat}\n`; }
             if (dialCol) { msg += `▫️ *لون المينا:* ${dialCol}\n`; }
             if (strapMat) { msg += `▫️ *نوع السير:* ${strapMat}\n`; }
-            if (engrave) { msg += `✍️️ *النقش المطلوبة:* ${engrave}\n`; }
+            if (engrave) { msg += `✍ *النقش المطلوبة:* ${engrave}\n`; }
             if (customWatchImageBase64) { msg += `🖼️ *(ملاحظة: تم إرفاق صورة التصميم المطلوبة، برجاء إرسالها هنا في الشات)*\n`; }
 
             msg += `\nأرجو إفادتي بالتكلفة المتاحة ومدة التنفيذ وشكراً!`;
