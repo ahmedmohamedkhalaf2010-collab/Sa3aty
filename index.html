@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sa3aty | متجر ساعاتي الفاخر</title>
+    <!-- Favicon (Tab Logo) -->
+    <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/L6byHBpx/image.jpg">
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -19,20 +22,19 @@
                         cairo: ['Cairo', 'sans-serif'],
                     },
                     colors: {
-                        bgMain: '#090A0F',       // أسود ليلي عميق
-                        cardBg: '#12141D',       // كروت داكنة فاخرة
-                        cardHover: '#1A1D2B',    // عند التمرير على الكارت
-                        textPrimary: '#F8FAFC',  // أبيض فاتح جداً
-                        textMuted: '#94A3B8',    // رمادي للوصف
-                        goldAccent: '#D4AF37',   // ذهبي ملكي (Royal Gold)
-                        goldHover: '#B59226',    // ذهبي غامق
+                        bgMain: '#090A0F',
+                        cardBg: '#12141D',
+                        cardHover: '#1A1D2B',
+                        textPrimary: '#F8FAFC',
+                        textMuted: '#94A3B8',
+                        goldAccent: '#D4AF37',
+                        goldHover: '#B59226',
                         goldGlow: 'rgba(212, 175, 55, 0.15)',
-                        borderDark: '#1E2230',   // حدود داكنة أنيقة
-                        // ألوان إضافية فاخرة
-                        neonPurple: '#8B5CF6',   // بنفسجي نيون فاخر
-                        neonCyan: '#06B6D4',     // تيركواز نيون
-                        roseLuxury: '#F43F5E',   // عنابي / روز
-                        emeraldCustom: '#10B981',// أخضر زمرّدي
+                        borderDark: '#1E2230',
+                        neonPurple: '#8B5CF6',
+                        neonCyan: '#06B6D4',
+                        roseLuxury: '#F43F5E',
+                        emeraldCustom: '#10B981',
                     }
                 }
             }
@@ -52,7 +54,6 @@
             overflow-x: hidden;
         }
 
-        /* خلفية إضاءات النيون الخفيفة للمظهر المظلم */
         .bg-glow-gold {
             position: fixed;
             width: 500px;
@@ -77,7 +78,6 @@
             pointer-events: none;
         }
 
-        /* زجاج داكن فاخر */
         .glass-panel {
             background: rgba(18, 20, 29, 0.75);
             backdrop-filter: blur(16px);
@@ -118,15 +118,14 @@
 </head>
 <body class="flex flex-col min-h-screen selection:bg-goldAccent selection:text-black relative">
 
-    <!-- خلفية الإضاءات الملكية -->
     <div class="bg-glow-gold"></div>
     <div class="bg-glow-purple"></div>
 
     <!-- Header / Navbar -->
-    <header class="glass-nav sticky top-0 z-40 px-4 lg:px-8 py-3.5 transition-all">
+    <header class="glass-nav sticky top-0 z-40 px-4 lg:px-8 py-3 transition-all">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             
-            <!-- Left Controls: Tabs, Custom Builder & Lang -->
+            <!-- Left Controls -->
             <div class="flex items-center space-x-3 space-x-reverse">
                 <div class="hidden md:flex items-center bg-cardBg p-1 border border-borderDark rounded-xl">
                     <button onclick="filterCategory('all')" id="tab-all" class="px-4 py-1.5 text-xs font-bold transition-all text-black bg-goldAccent rounded-lg shadow-sm">
@@ -137,7 +136,6 @@
                     </button>
                 </div>
 
-                <!-- Custom Watch Button -->
                 <button onclick="openCustomWatchModal()" class="bg-goldAccent/10 border border-goldAccent/30 hover:bg-goldAccent hover:text-black text-goldAccent px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <span>صمّم ساعتك</span>
@@ -149,13 +147,13 @@
                 </button>
             </div>
 
-            <!-- Center Logo -->
-            <a href="#" onclick="filterCategory('all')" class="flex items-center gap-2 group">
-                <i class="fa-solid fa-clock text-goldAccent text-2xl group-hover:rotate-12 transition-transform"></i>
-                <span class="text-xl font-black tracking-widest text-textPrimary">SA3ATY</span>
+            <!-- Center Logo Image & Brand Name -->
+            <a href="#" onclick="filterCategory('all')" class="flex items-center gap-2.5 group">
+                <img src="https://i.postimg.cc/L6byHBpx/image.jpg" alt="SA3ATY Logo" class="h-11 w-11 object-cover rounded-full border-2 border-goldAccent shadow-md shadow-goldAccent/20 group-hover:scale-105 transition-transform duration-300">
+                <span class="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-goldAccent via-yellow-200 to-goldHover tracking-wider hidden sm:inline">SA3ATY</span>
             </a>
 
-            <!-- Right Controls: Add Watch, Cart & Admin -->
+            <!-- Right Controls -->
             <div class="flex items-center space-x-3 space-x-reverse">
                 <button id="ownerAddBtn" onclick="openAddWatchModal()" class="hidden bg-goldAccent hover:bg-goldHover text-black font-black px-3.5 py-1.5 text-xs rounded-xl shadow-md gold-glow transition-all active:scale-95 flex items-center gap-1">
                     <i class="fa-solid fa-plus text-sm"></i>
@@ -229,7 +227,6 @@
             </div>
 
             <form onsubmit="submitCustomWatchOrder(event)" class="space-y-4 text-xs">
-                <!-- Image Upload Option -->
                 <div class="bg-bgMain p-3 border border-borderDark rounded-xl">
                     <label class="block font-semibold text-goldAccent mb-1 flex items-center gap-1.5">
                         <i class="fa-solid fa-image"></i> عندك صورة للديزاين المطلوب؟ (اختياري)
@@ -240,7 +237,6 @@
                     </div>
                 </div>
 
-                <!-- Custom Free Text Option -->
                 <div>
                     <label class="block font-semibold text-textPrimary mb-1">وصف أو تفاصيل الساعة المطلوبة (اختياري)</label>
                     <textarea id="customFreeText" rows="2" placeholder="اكتب كل التفاصيل اللي في دماغك هنا..." class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
@@ -315,7 +311,6 @@
             </button>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Image Slider -->
                 <div>
                     <div class="w-full h-64 sm:h-80 bg-bgMain rounded-2xl border border-borderDark overflow-hidden mb-3 flex items-center justify-center">
                         <img id="detailMainImg" src="" class="w-full h-full object-contain">
@@ -323,7 +318,6 @@
                     <div id="detailThumbnails" class="flex gap-2 overflow-x-auto pb-2"></div>
                 </div>
 
-                <!-- Info & Comments -->
                 <div class="flex flex-col justify-between">
                     <div>
                         <h2 id="detailTitle" class="text-xl font-bold text-textPrimary mb-2"></h2>
@@ -338,7 +332,6 @@
                         </button>
                     </div>
 
-                    <!-- Comments Section -->
                     <div class="border-t border-borderDark pt-4">
                         <h4 class="text-xs font-bold text-goldAccent mb-2 flex items-center gap-1.5">
                             <i class="fa-solid fa-comments"></i> التعليقات والآراء (<span id="commentsCount">0</span>)
@@ -622,7 +615,7 @@
             
             let imagesList = uploadedImagesBase64.length > 0 ? uploadedImagesBase64 : manualUrls;
             if (imagesList.length === 0) {
-                imagesList = ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=600&auto=format&fit=crop'];
+                imagesList = ['https://i.postimg.cc/L6byHBpx/image.jpg'];
             }
 
             const watchPayload = {
@@ -667,7 +660,6 @@
 
             document.getElementById('detailAddToCartBtn').onclick = () => addToCart(w.id);
 
-            // Comments
             const commentsList = document.getElementById('commentsList');
             const comments = w.comments ? Object.values(w.comments) : [];
             document.getElementById('commentsCount').textContent = comments.length;
@@ -701,7 +693,6 @@
             }
         }
 
-        // Custom Watch Builder Logic
         function openCustomWatchModal() { document.getElementById('customWatchModal').classList.remove('hidden'); }
         function closeCustomWatchModal() { document.getElementById('customWatchModal').classList.add('hidden'); }
 
@@ -732,7 +723,7 @@
             msg += `👤 *العميل:* ${name}\n`;
 
             if (freeText) { msg += `📝 *التفاصيل المطلوبة:* ${freeText}\n`; }
-            if (caseMat) { msg += `▫️️ *الهيكل/الإطار:* ${caseMat}\n`; }
+            if (caseMat) { msg += `▫ *الهيكل/الإطار:* ${caseMat}\n`; }
             if (dialCol) { msg += `▫️ *لون المينا:* ${dialCol}\n`; }
             if (strapMat) { msg += `▫️ *نوع السير:* ${strapMat}\n`; }
             if (engrave) { msg += `✍️ *النقش المطلوبة:* ${engrave}\n`; }
