@@ -142,7 +142,7 @@
 
                 <button onclick="openCustomWatchModal()" class="bg-goldAccent/10 border border-goldAccent/30 hover:bg-goldAccent hover:text-black text-goldAccent px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <span>صمّم ساعتك</span>
+                    <span id="txt-custom-btn">صمّم ساعتك</span>
                 </button>
 
                 <button onclick="toggleLanguage()" class="px-3 py-1.5 bg-cardBg border border-borderDark text-textPrimary hover:border-goldAccent text-xs font-black rounded-xl transition-all flex items-center gap-1">
@@ -212,6 +212,7 @@
 
         <!-- Empty State -->
         <div id="emptyState" class="hidden flex-col items-center justify-center text-center py-20 px-4 glass-panel rounded-2xl my-6 border border-dashed border-borderDark">
+            <i class="fa-solid fa-clock text-4xl text-textMuted mb-3"></i>
             <h3 id="txt-empty-title" class="text-xl font-bold text-textPrimary mb-2">المتجر فاضي حالياً!</h3>
         </div>
     </main>
@@ -225,13 +226,13 @@
 
             <div class="text-center mb-6">
                 <i class="fa-solid fa-wand-magic-sparkles text-goldAccent text-3xl mb-2"></i>
-                <h3 class="text-xl font-bold text-textPrimary">صمّم ساعتك الخاصة على ذوقك ✨</h3>
-                <p class="text-xs text-textMuted mt-1">اختر المواصفات، أو ارفع صورة للساعة المطلوبة واكتب التفاصيل بسهولة</p>
+                <h3 id="txt-custom-title" class="text-xl font-bold text-textPrimary">صمّم ساعتك الخاصة على ذوقك ✨</h3>
+                <p id="txt-custom-sub" class="text-xs text-textMuted mt-1">اختر المواصفات، أو ارفع صورة للساعة المطلوبة واكتب التفاصيل بسهولة</p>
             </div>
 
             <form onsubmit="submitCustomWatchOrder(event)" class="space-y-4 text-xs">
                 <div class="bg-bgMain p-3 border border-borderDark rounded-xl">
-                    <label class="block font-semibold text-goldAccent mb-1 flex items-center gap-1.5">
+                    <label id="lbl-custom-img" class="block font-semibold text-goldAccent mb-1 flex items-center gap-1.5">
                         <i class="fa-solid fa-image"></i> عندك صورة للديزاين المطلوب؟ (اختياري)
                     </label>
                     <input type="file" id="customWatchImage" accept="image/*" onchange="previewCustomImage(event)" class="block w-full text-gray-400 file:py-1.5 file:px-3 file:bg-goldAccent/10 file:text-goldAccent file:rounded-lg file:border-0 cursor-pointer bg-cardBg border border-borderDark rounded-lg mb-2">
@@ -241,19 +242,19 @@
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-textPrimary mb-1">وصف أو تفاصيل الساعة المطلوبة (اختياري)</label>
+                    <label id="lbl-custom-desc" class="block font-semibold text-textPrimary mb-1">وصف أو تفاصيل الساعة المطلوبة (اختياري)</label>
                     <textarea id="customFreeText" rows="2" placeholder="اكتب كل التفاصيل اللي في دماغك هنا..." class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
                 </div>
 
                 <div class="relative flex py-1 items-center">
                     <div class="flex-grow border-t border-borderDark"></div>
-                    <span class="flex-shrink mx-3 text-gray-500 text-[10px]">أو اختر المواصفات الجاهزة</span>
+                    <span id="lbl-custom-or" class="flex-shrink mx-3 text-gray-500 text-[10px]">أو اختر المواصفات الجاهزة</span>
                     <div class="flex-grow border-t border-borderDark"></div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-textPrimary mb-1">نوع الهيكل</label>
+                        <label id="lbl-custom-case" class="block font-semibold text-textPrimary mb-1">نوع الهيكل</label>
                         <select id="customCase" class="w-full bg-bgMain border border-borderDark rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
                             <option value="">بدون تحديد</option>
                             <option value="فضي استيل">فضي استيل</option>
@@ -264,7 +265,7 @@
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-textPrimary mb-1">لون المينا</label>
+                        <label id="lbl-custom-dial" class="block font-semibold text-textPrimary mb-1">لون المينا</label>
                         <select id="customDial" class="w-full bg-bgMain border border-borderDark rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
                             <option value="">بدون تحديد</option>
                             <option value="أسود كلاسيك">أسود كلاسيك</option>
@@ -277,7 +278,7 @@
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-textPrimary mb-1">نوع السير</label>
+                        <label id="lbl-custom-strap" class="block font-semibold text-textPrimary mb-1">نوع السير</label>
                         <select id="customStrap" class="w-full bg-bgMain border border-borderDark rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
                             <option value="">بدون تحديد</option>
                             <option value="جلد طبيعي أسود">جلد طبيعي أسود</option>
@@ -289,17 +290,17 @@
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-textPrimary mb-1">نقش اسم خاص</label>
+                        <label id="lbl-custom-engrave" class="block font-semibold text-textPrimary mb-1">نقش اسم خاص</label>
                         <input type="text" id="customEngraving" placeholder="مثال: Ahmed" class="w-full bg-bgMain border border-borderDark rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
                     </div>
                 </div>
 
                 <div class="border-t border-borderDark pt-3">
-                    <label class="block font-semibold text-textPrimary mb-1">اسمك الكريم</label>
+                    <label id="lbl-custom-name" class="block font-semibold text-textPrimary mb-1">اسمك الكريم</label>
                     <input type="text" id="customCustomerName" required placeholder="ادخل اسمك بالكامل" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent mb-3">
                 </div>
 
-                <button type="submit" class="w-full bg-emeraldCustom hover:bg-emerald-600 text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
+                <button type="submit" id="btn-submit-custom" class="w-full bg-emeraldCustom hover:bg-emerald-600 text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
                     <i class="fa-brands fa-whatsapp text-base"></i> إرسال الطلب عبر الواتساب
                 </button>
             </form>
@@ -331,13 +332,13 @@
                         <p id="detailDesc" class="text-xs text-textMuted leading-relaxed mb-4 bg-bgMain p-3 rounded-xl border border-borderDark"></p>
                         
                         <button id="detailAddToCartBtn" class="w-full bg-goldAccent hover:bg-goldHover text-black font-bold py-3 rounded-xl text-xs sm:text-sm mb-6 shadow-md transition-all duration-300 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
+                            <i class="fa-solid fa-cart-plus"></i> <span id="txt-detail-add">إضافة للسلة</span>
                         </button>
                     </div>
 
                     <div class="border-t border-borderDark pt-4">
                         <h4 class="text-xs font-bold text-goldAccent mb-2 flex items-center gap-1.5">
-                            <i class="fa-solid fa-comments"></i> التعليقات والآراء (<span id="commentsCount">0</span>)
+                            <i class="fa-solid fa-comments"></i> <span id="txt-comments-title">التعليقات والآراء</span> (<span id="commentsCount">0</span>)
                         </h4>
                         
                         <div id="commentsList" class="space-y-2 max-h-36 overflow-y-auto pr-1 mb-3 text-xs"></div>
@@ -345,7 +346,7 @@
                         <form onsubmit="handleAddComment(event)" class="flex gap-2">
                             <input type="text" id="commentAuthorInput" placeholder="اسمك" required class="w-1/3 bg-bgMain border border-borderDark rounded-lg px-2.5 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
                             <input type="text" id="commentTextInput" placeholder="اكتب تعليقك هنا..." required class="w-2/3 bg-bgMain border border-borderDark rounded-lg px-2.5 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
-                            <button type="submit" class="bg-goldAccent text-black font-bold px-4 py-1.5 rounded-lg text-xs hover:bg-goldHover transition">إرسال</button>
+                            <button type="submit" id="btn-send-comment" class="bg-goldAccent text-black font-bold px-4 py-1.5 rounded-lg text-xs hover:bg-goldHover transition">إرسال</button>
                         </form>
                     </div>
                 </div>
@@ -360,9 +361,10 @@
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <form onsubmit="verifyAdminPin(event)" class="space-y-4">
+                <h3 class="text-center font-bold text-lg text-goldAccent">تسجيل دخول الأدمن</h3>
                 <input type="password" id="adminPinInput" placeholder="أدخل الرمز السري..." required class="w-full bg-bgMain border border-borderDark rounded-xl px-4 py-3 text-center tracking-widest text-xl text-goldAccent font-bold focus:outline-none focus:border-goldAccent">
                 <p id="pinErrorMsg" class="text-xs text-roseLuxury hidden text-center font-bold">الرمز السري خاطئ!</p>
-                <button type="submit" class="w-full bg-goldAccent hover:bg-goldHover text-black font-extrabold py-3 rounded-xl text-sm transition">دخول كصاحب المتجر</button>
+                <button type="submit" id="btn-admin-login" class="w-full bg-goldAccent hover:bg-goldHover text-black font-extrabold py-3 rounded-xl text-sm transition">دخول كصاحب المتجر</button>
             </form>
         </div>
     </div>
@@ -427,11 +429,11 @@
     <div id="customerModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="bg-cardBg rounded-3xl max-w-md w-full p-6 border border-borderDark shadow-2xl relative text-textPrimary">
             <button onclick="closeCustomerModal()" class="absolute top-4 left-4 text-gray-500 hover:text-textPrimary"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-lg font-bold text-textPrimary mb-4 text-center">تأكيد الطلب</h3>
+            <h3 id="txt-checkout-title" class="text-lg font-bold text-textPrimary mb-4 text-center">تأكيد الطلب</h3>
             <form onsubmit="submitCustomerOrder(event)" class="space-y-4">
                 <input type="text" id="customerNameInput" placeholder="الاسم بالكامل" required class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
                 <input type="tel" id="customerPhoneInput" placeholder="رقم الهاتف (واتساب)" required class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
-                <button type="submit" class="w-full bg-emeraldCustom text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-emerald-600 transition"><i class="fa-brands fa-whatsapp"></i> إرسال عبر الواتساب</button>
+                <button type="submit" id="btn-send-order" class="w-full bg-emeraldCustom text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-emerald-600 transition"><i class="fa-brands fa-whatsapp"></i> إرسال عبر الواتساب</button>
             </form>
         </div>
     </div>
@@ -441,7 +443,7 @@
         <div class="bg-cardBg max-w-md w-full h-full p-6 border-r border-borderDark shadow-2xl flex flex-col justify-between text-textPrimary">
             <div>
                 <div class="flex items-center justify-between border-b border-borderDark pb-4 mb-4">
-                    <h3 class="text-lg font-bold text-textPrimary flex items-center gap-2">
+                    <h3 id="txt-cart-title" class="text-lg font-bold text-textPrimary flex items-center gap-2">
                         <i class="fa-solid fa-bag-shopping text-goldAccent"></i> سلة المشتريات
                     </h3>
                     <button onclick="closeCartModal()" class="text-gray-500 hover:text-textPrimary"><i class="fa-solid fa-xmark"></i></button>
@@ -450,7 +452,7 @@
             </div>
             <div class="border-t border-borderDark pt-4">
                 <div class="flex justify-between mb-4 font-bold text-goldAccent text-lg">
-                    <span>المبلغ الإجمالي:</span>
+                    <span id="txt-total-label">المبلغ الإجمالي:</span>
                     <span id="cartTotalPrice">0 ج.م</span>
                 </div>
                 <button onclick="openCustomerModal()" id="checkoutBtn" disabled class="w-full bg-goldAccent disabled:opacity-50 text-black font-black py-3 rounded-xl text-xs hover:bg-goldHover transition">إتمام الطلب عبر الواتساب</button>
@@ -522,13 +524,99 @@
 
     <!-- App Main Logic -->
     <script>
+        const translations = {
+            ar: {
+                all: 'الكل',
+                offers: 'العروض 🔥',
+                customBtn: 'صمّم ساعتك',
+                addBtn: 'إضافة ساعة',
+                searchPlaceholder: 'ابحث باسم الساعة...',
+                newest: 'الأحدث إضافة',
+                priceLow: 'السعر: من الأقل للأعلى',
+                priceHigh: 'السعر: من الأعلى للأقل',
+                emptyTitle: 'المتجر فاضي حالياً!',
+                customTitle: 'صمّم ساعتك الخاصة على ذوقك ✨',
+                customSub: 'اختر المواصفات، أو ارفع صورة للساعة المطلوبة واكتب التفاصيل بسهولة',
+                customImgLbl: 'عندك صورة للديزاين المطلوب؟ (اختياري)',
+                customDescLbl: 'وصف أو تفاصيل الساعة المطلوبة (اختياري)',
+                customOrLbl: 'أو اختر المواصفات الجاهزة',
+                customCaseLbl: 'نوع الهيكل',
+                customDialLbl: 'لون المينا',
+                customStrapLbl: 'نوع السير',
+                customEngraveLbl: 'نقش اسم خاص',
+                customNameLbl: 'اسمك الكريم',
+                sendWhatsapp: 'إرسال الطلب عبر الواتساب',
+                addToCart: 'إضافة للسلة',
+                commentsTitle: 'التعليقات والآراء',
+                cartTitle: 'سلة المشتريات',
+                totalLabel: 'المبلغ الإجمالي:',
+                checkoutBtn: 'إتمام الطلب عبر الواتساب',
+                currency: 'ج.م'
+            },
+            en: {
+                all: 'All',
+                offers: 'Offers 🔥',
+                customBtn: 'Custom Watch',
+                addBtn: 'Add Watch',
+                searchPlaceholder: 'Search watch by name...',
+                newest: 'Newest',
+                priceLow: 'Price: Low to High',
+                priceHigh: 'Price: High to Low',
+                emptyTitle: 'Store is currently empty!',
+                customTitle: 'Design Your Custom Watch ✨',
+                customSub: 'Choose specifications or upload an image of your desired design',
+                customImgLbl: 'Have a design picture? (Optional)',
+                customDescLbl: 'Description or specific details (Optional)',
+                customOrLbl: 'OR choose preset specifications',
+                customCaseLbl: 'Case Material',
+                customDialLbl: 'Dial Color',
+                customStrapLbl: 'Strap Type',
+                customEngraveLbl: 'Custom Engraving',
+                customNameLbl: 'Your Full Name',
+                sendWhatsapp: 'Send Order via WhatsApp',
+                addToCart: 'Add to Cart',
+                commentsTitle: 'Reviews & Comments',
+                cartTitle: 'Shopping Cart',
+                totalLabel: 'Total Price:',
+                checkoutBtn: 'Checkout via WhatsApp',
+                currency: 'EGP'
+            }
+        };
+
         window.addEventListener('DOMContentLoaded', () => { updateCartUI(); });
 
         function toggleLanguage() {
             window.currentLang = window.currentLang === 'ar' ? 'en' : 'ar';
-            document.getElementById('langSwitchText').textContent = window.currentLang === 'ar' ? 'EN' : 'AR';
-            document.documentElement.dir = window.currentLang === 'ar' ? 'rtl' : 'ltr';
-            document.documentElement.lang = window.currentLang;
+            const lang = window.currentLang;
+            document.getElementById('langSwitchText').textContent = lang === 'ar' ? 'EN' : 'AR';
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+
+            const t = translations[lang];
+            document.getElementById('txt-tab-all').textContent = t.all;
+            document.getElementById('txt-tab-offers').textContent = t.offers;
+            document.getElementById('txt-custom-btn').textContent = t.customBtn;
+            document.getElementById('txt-add-btn').textContent = t.addBtn;
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.getElementById('opt-newest').textContent = t.newest;
+            document.getElementById('opt-price-low').textContent = t.priceLow;
+            document.getElementById('opt-price-high').textContent = t.priceHigh;
+            document.getElementById('txt-empty-title').textContent = t.emptyTitle;
+            document.getElementById('txt-custom-title').textContent = t.customTitle;
+            document.getElementById('txt-custom-sub').textContent = t.customSub;
+            document.getElementById('lbl-custom-or').textContent = t.customOrLbl;
+            document.getElementById('lbl-custom-case').textContent = t.customCaseLbl;
+            document.getElementById('lbl-custom-dial').textContent = t.customDialLbl;
+            document.getElementById('lbl-custom-strap').textContent = t.customStrapLbl;
+            document.getElementById('lbl-custom-engrave').textContent = t.customEngraveLbl;
+            document.getElementById('lbl-custom-name').textContent = t.customNameLbl;
+            document.getElementById('txt-detail-add').textContent = t.addToCart;
+            document.getElementById('txt-comments-title').textContent = t.commentsTitle;
+            document.getElementById('txt-cart-title').childNodes[1].textContent = " " + t.cartTitle;
+            document.getElementById('txt-total-label').textContent = t.totalLabel;
+            document.getElementById('checkoutBtn').textContent = t.checkoutBtn;
+
+            renderStore();
         }
 
         function previewSelectedImages(event) {
@@ -537,18 +625,19 @@
             const container = document.getElementById('imagesPreviewContainer');
             container.innerHTML = '';
 
+            let processedCount = 0;
             files.forEach(file => {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const img = new Image();
                     img.onload = function() {
                         const canvas = document.createElement('canvas');
-                        let width = img.width, height = img.height, max_size = 400;
+                        let width = img.width, height = img.height, max_size = 500;
                         if (width > height) { if (width > max_size) { height *= max_size / width; width = max_size; } }
                         else { if (height > max_size) { width *= max_size / height; height = max_size; } }
                         canvas.width = width; canvas.height = height;
                         canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-                        const base64 = canvas.toDataURL('image/jpeg', 0.5);
+                        const base64 = canvas.toDataURL('image/jpeg', 0.6);
                         uploadedImagesBase64.push(base64);
 
                         const thumb = document.createElement('img');
@@ -572,6 +661,8 @@
             if (document.getElementById('adminPinInput').value === ADMIN_PIN) {
                 isAdmin = true;
                 closePasswordModal();
+                document.getElementById('adminPinInput').value = '';
+                document.getElementById('pinErrorMsg').classList.add('hidden');
                 updateAdminUIState();
             } else { document.getElementById('pinErrorMsg').classList.remove('hidden'); }
         }
@@ -646,11 +737,12 @@
             const w = watches.find(item => item.id === id);
             if (!w) return;
 
+            const curr = translations[window.currentLang].currency;
             window.currentWatchDetailId = id;
             document.getElementById('detailTitle').textContent = w.title;
-            document.getElementById('detailPrice').textContent = `${Number(w.price).toLocaleString()} ج.م`;
-            document.getElementById('detailOldPrice').textContent = w.oldPrice ? `${Number(w.oldPrice).toLocaleString()} ج.م` : '';
-            document.getElementById('detailDesc').textContent = w.desc || 'لا يوجد وصف إضافي.';
+            document.getElementById('detailPrice').textContent = `${Number(w.price).toLocaleString()} ${curr}`;
+            document.getElementById('detailOldPrice').textContent = w.oldPrice ? `${Number(w.oldPrice).toLocaleString()} ${curr}` : '';
+            document.getElementById('detailDesc').textContent = w.desc || (window.currentLang === 'ar' ? 'لا يوجد وصف إضافي.' : 'No additional description available.');
 
             const images = Array.isArray(w.images) && w.images.length > 0 ? w.images : [w.image];
             const mainImg = document.getElementById('detailMainImg');
@@ -667,7 +759,7 @@
             const comments = w.comments ? Object.values(w.comments) : [];
             document.getElementById('commentsCount').textContent = comments.length;
 
-            commentsList.innerHTML = comments.length === 0 ? '<p class="text-gray-500 text-[11px]">لا يوجد تعليقات بعد.</p>' :
+            commentsList.innerHTML = comments.length === 0 ? `<p class="text-gray-500 text-[11px]">${window.currentLang === 'ar' ? 'لا يوجد تعليقات بعد.' : 'No comments yet.'}</p>` :
                 comments.map(c => `
                     <div class="bg-bgMain p-2 rounded-lg border border-borderDark">
                         <span class="font-bold text-goldAccent">${escapeHtml(c.author)}:</span>
@@ -738,13 +830,20 @@
             closeCustomWatchModal();
         }
 
-        function filterCategory(cat) { activeCategory = cat; renderStore(); }
+        function filterCategory(cat) { 
+            activeCategory = cat; 
+            document.getElementById('tab-all').className = cat === 'all' ? 'px-4 py-1.5 text-xs font-bold transition-all text-black bg-goldAccent rounded-lg shadow-sm' : 'px-4 py-1.5 text-xs font-bold transition-all text-textMuted hover:text-roseLuxury';
+            document.getElementById('tab-offers').className = cat === 'offers' ? 'px-4 py-1.5 text-xs font-bold transition-all text-black bg-goldAccent rounded-lg shadow-sm' : 'px-4 py-1.5 text-xs font-bold transition-all text-textMuted hover:text-roseLuxury';
+            renderStore(); 
+        }
+
         function handleSearch() { searchQuery = document.getElementById('searchInput').value.trim().toLowerCase(); renderStore(); }
         function handleSortChange() { sortBy = document.getElementById('sortSelect').value; renderStore(); }
 
         function renderStore() {
             const grid = document.getElementById('watchesGrid');
             const emptyState = document.getElementById('emptyState');
+            const curr = translations[window.currentLang].currency;
             
             let filtered = (window.watches || []).filter(w => {
                 if (activeCategory === 'offers') {
@@ -756,7 +855,7 @@
             if (searchQuery) { filtered = filtered.filter(w => w.title.toLowerCase().includes(searchQuery)); }
             filtered.sort((a, b) => sortBy === 'price-low' ? a.price - b.price : sortBy === 'price-high' ? b.price - a.price : (b.createdAt || 0) - (a.createdAt || 0));
 
-            document.getElementById('productCount').textContent = `${filtered.length} ساعة معروضة`;
+            document.getElementById('productCount').textContent = window.currentLang === 'ar' ? `${filtered.length} ساعة معروضة` : `${filtered.length} Watches`;
 
             if (filtered.length === 0) {
                 grid.innerHTML = '';
@@ -786,8 +885,8 @@
                     </div>
 
                     <div class="pt-3 border-t border-borderDark flex items-center justify-between">
-                        <div class="text-lg font-black text-goldAccent font-mono">${Number(watch.price).toLocaleString()} <span class="text-xs text-textPrimary font-sans">ج.م</span></div>
-                        <button onclick="addToCart('${watch.id}')" class="bg-goldAccent text-black hover:bg-goldHover p-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"><i class="fa-solid fa-cart-plus"></i> إضافة للسلة</button>
+                        <div class="text-lg font-black text-goldAccent font-mono">${Number(watch.price).toLocaleString()} <span class="text-xs text-textPrimary font-sans">${curr}</span></div>
+                        <button onclick="addToCart('${watch.id}')" class="bg-goldAccent text-black hover:bg-goldHover p-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"><i class="fa-solid fa-cart-plus"></i> ${translations[window.currentLang].addToCart}</button>
                     </div>
                 </div>
             `).join('');
@@ -805,8 +904,9 @@
         }
 
         function updateCartUI() {
+            const curr = translations[window.currentLang].currency;
             document.getElementById('cartBadge').textContent = cart.reduce((s, i) => s + i.qty, 0);
-            document.getElementById('cartTotalPrice').textContent = `${cart.reduce((s, i) => s + (i.price * i.qty), 0).toLocaleString()} ج.م`;
+            document.getElementById('cartTotalPrice').textContent = `${cart.reduce((s, i) => s + (i.price * i.qty), 0).toLocaleString()} ${curr}`;
             document.getElementById('checkoutBtn').disabled = cart.length === 0;
 
             document.getElementById('cartItemsContainer').innerHTML = cart.map(i => `
@@ -814,7 +914,7 @@
                     <img src="${escapeHtml(i.image)}" class="w-12 h-12 object-cover rounded-lg border border-borderDark">
                     <div class="flex-1 px-3">
                         <h5 class="font-bold text-textPrimary line-clamp-1">${escapeHtml(i.title)}</h5>
-                        <div class="text-goldAccent font-mono font-bold">${Number(i.price).toLocaleString()} ج.م</div>
+                        <div class="text-goldAccent font-mono font-bold">${Number(i.price).toLocaleString()} ${curr}</div>
                     </div>
                     <div class="flex items-center gap-2 bg-cardBg border border-borderDark rounded-lg px-2 py-1">
                         <button onclick="updateCartQty('${i.id}', -1)" class="text-gray-400 hover:text-goldAccent font-bold px-1">-</button>
@@ -843,9 +943,10 @@
             e.preventDefault();
             const name = document.getElementById('customerNameInput').value.trim();
             const phone = document.getElementById('customerPhoneInput').value.trim();
+            const curr = translations[window.currentLang].currency;
             let message = `طلب جديد من: ${name} (${phone})\n\nالطلبات:\n`;
-            cart.forEach((i, idx) => { message += `${idx + 1}. ${i.title} (${i.qty}) - ${i.price * i.qty} ج.م\n`; });
-            message += `\nالإجمالي: ${cart.reduce((s, i) => s + (i.price * i.qty), 0)} ج.م`;
+            cart.forEach((i, idx) => { message += `${idx + 1}. ${i.title} (${i.qty}) - ${i.price * i.qty} ${curr}\n`; });
+            message += `\nالإجمالي: ${cart.reduce((s, i) => s + (i.price * i.qty), 0)} ${curr}`;
             window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
             closeCustomerModal();
         }
