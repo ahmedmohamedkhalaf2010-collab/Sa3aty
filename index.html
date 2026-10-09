@@ -145,6 +145,11 @@
                     <span id="txt-custom-btn">صمّم ساعتك</span>
                 </button>
 
+                <button onclick="openQuizModal()" class="bg-neonPurple/10 border border-neonPurple/30 hover:bg-neonPurple hover:text-white text-neonPurple px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-compass"></i>
+                    <span id="txt-quiz-btn">مساعد الاختيار</span>
+                </button>
+
                 <button onclick="toggleLanguage()" class="px-3 py-1.5 bg-cardBg border border-borderDark text-textPrimary hover:border-goldAccent text-xs font-black rounded-xl transition-all flex items-center gap-1">
                     <i class="fa-solid fa-globe text-goldAccent"></i>
                     <span id="langSwitchText">EN</span>
@@ -216,6 +221,40 @@
             <h3 id="txt-empty-title" class="text-xl font-bold text-textPrimary mb-2">المتجر فاضي حالياً!</h3>
         </div>
     </main>
+
+    <!-- Watch Finder Quiz Modal -->
+    <div id="quizModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cardBg rounded-3xl max-w-md w-full p-6 border border-borderDark shadow-2xl relative text-textPrimary">
+            <button onclick="closeQuizModal()" class="absolute top-4 left-4 text-gray-500 hover:text-textPrimary">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <i class="fa-solid fa-compass text-neonPurple text-3xl mb-2"></i>
+                <h3 class="text-lg font-bold text-textPrimary">مساعد اختيار الساعة المثالية ⏱️</h3>
+                <p class="text-xs text-textMuted mt-1">اختر إجاباتك وسنقترح عليك الساعات المناسبة لذوقك</p>
+            </div>
+            
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold mb-1 text-goldAccent">ما هي المناسبة؟</label>
+                    <select id="quizOccasion" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary">
+                        <option value="all">كل المناسبات</option>
+                        <option value="classic">رسمي / بدلة وكلاسيك</option>
+                        <option value="sport">رياضي / استخدام يومي</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1 text-goldAccent">نوع الأستك المفضل؟</label>
+                    <select id="quizStrap" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary">
+                        <option value="all">أي نوع</option>
+                        <option value="leather">جلد طبيعي</option>
+                        <option value="steel">معدن استيل</option>
+                    </select>
+                </div>
+                <button onclick="applyQuizFilter()" class="w-full bg-neonPurple hover:bg-purple-700 text-white font-bold p-3 rounded-xl transition">عرض الساعات المقترحة ✨</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Custom Watch Builder Modal -->
     <div id="customWatchModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
@@ -307,7 +346,7 @@
         </div>
     </div>
 
-    <!-- Watch Details & Comments Modal -->
+    <!-- Watch Details & Interactive Features Modal -->
     <div id="watchDetailModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-cardBg rounded-3xl max-w-3xl w-full p-6 sm:p-8 border border-borderDark shadow-2xl relative my-8 text-textPrimary">
             <button onclick="closeWatchDetailModal()" class="absolute top-4 left-4 text-gray-500 hover:text-textPrimary">
@@ -316,9 +355,34 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <div class="w-full h-64 sm:h-80 bg-bgMain rounded-2xl border border-borderDark overflow-hidden mb-3 flex items-center justify-center">
-                        <img id="detailMainImg" src="" class="w-full h-full object-contain">
+                    <div id="mainImgWrapper" class="w-full h-64 sm:h-80 bg-bgMain rounded-2xl border border-borderDark overflow-hidden mb-3 flex items-center justify-center relative transition-all">
+                        <img id="detailMainImg" src="" class="w-full h-full object-contain transition-all duration-300">
                     </div>
+                    
+                    <!-- Lume & Ticking Sound Controls -->
+                    <div class="flex items-center gap-2 mb-3 p-2 bg-bgMain rounded-xl border border-borderDark justify-around">
+                        <button onclick="toggleLumeEffect()" class="text-[11px] font-bold text-emeraldCustom hover:text-white flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-moon"></i>
+                            <span>تجربة الـ Lume (في الضلمة)</span>
+                        </button>
+                        <span class="text-borderDark">|</span>
+                        <button id="tickingBtn" onclick="toggleWatchSound()" class="text-[11px] font-bold text-goldAccent hover:text-white flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>استمع لدقات الساعة ⏱️</span>
+                        </button>
+                    </div>
+
+                    <!-- Virtual Strap Changer -->
+                    <div class="mb-3 p-2.5 bg-bgMain rounded-xl border border-borderDark">
+                        <label class="block text-[11px] font-bold text-textPrimary mb-1.5">مغير الأستك الافتراضي (Strap Changer):</label>
+                        <div class="flex gap-1.5 flex-wrap">
+                            <button onclick="changeStrapOverlay('normal')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-textPrimary">الأصلي</button>
+                            <button onclick="changeStrapOverlay('black-leather')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-gray-300">جلد أسود</button>
+                            <button onclick="changeStrapOverlay('brown-leather')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-amber-600">جلد بني</button>
+                            <button onclick="changeStrapOverlay('gold')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-goldAccent">ذهبي فاخر</button>
+                        </div>
+                    </div>
+
                     <div id="detailThumbnails" class="flex gap-2 overflow-x-auto pb-2"></div>
                 </div>
 
@@ -522,7 +586,7 @@
         };
     </script>
 
-    <!-- App Main Logic -->
+    <!-- App Main & Interactive Logic -->
     <script>
         const translations = {
             ar: {
@@ -619,13 +683,85 @@
             renderStore();
         }
 
+        // --- Interactive Audio & Visual Features ---
+        let isLumeActive = false;
+        function toggleLumeEffect() {
+            const mainImg = document.getElementById('detailMainImg');
+            isLumeActive = !isLumeActive;
+            if (isLumeActive) {
+                mainImg.style.filter = "brightness(0.35) contrast(1.6) drop-shadow(0px 0px 14px #10B981)";
+            } else {
+                mainImg.style.filter = "none";
+            }
+        }
+
+        let audioCtx = null;
+        let tickingInterval = null;
+        let isTicking = false;
+
+        function playTickSound() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.035);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.035);
+        }
+
+        function toggleWatchSound() {
+            const btn = document.getElementById('tickingBtn');
+            if (!isTicking) {
+                isTicking = true;
+                btn.classList.add('text-roseLuxury');
+                btn.querySelector('span').textContent = "إيقاف الصوت";
+                tickingInterval = setInterval(playTickSound, 500);
+            } else {
+                isTicking = false;
+                clearInterval(tickingInterval);
+                btn.classList.remove('text-roseLuxury');
+                btn.querySelector('span').textContent = "استمع لدقات الساعة ⏱️";
+            }
+        }
+
+        function changeStrapOverlay(strapType) {
+            const mainImg = document.getElementById('detailMainImg');
+            isLumeActive = false;
+            switch(strapType) {
+                case 'black-leather':
+                    mainImg.style.filter = "grayscale(1) contrast(1.3)";
+                    break;
+                case 'brown-leather':
+                    mainImg.style.filter = "sepia(0.6) hue-rotate(-25deg)";
+                    break;
+                case 'gold':
+                    mainImg.style.filter = "sepia(0.9) saturate(3) hue-rotate(10deg)";
+                    break;
+                default:
+                    mainImg.style.filter = "none";
+            }
+        }
+
+        function openQuizModal() { document.getElementById('quizModal').classList.remove('hidden'); }
+        function closeQuizModal() { document.getElementById('quizModal').classList.add('hidden'); }
+        function applyQuizFilter() {
+            const strap = document.getElementById('quizStrap').value;
+            closeQuizModal();
+            renderStore();
+        }
+
         function previewSelectedImages(event) {
             const files = Array.from(event.target.files);
             uploadedImagesBase64 = [];
             const container = document.getElementById('imagesPreviewContainer');
             container.innerHTML = '';
 
-            let processedCount = 0;
             files.forEach(file => {
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -747,6 +883,7 @@
             const images = Array.isArray(w.images) && w.images.length > 0 ? w.images : [w.image];
             const mainImg = document.getElementById('detailMainImg');
             mainImg.src = images[0];
+            mainImg.style.filter = "none";
 
             const thumbsContainer = document.getElementById('detailThumbnails');
             thumbsContainer.innerHTML = images.map(img => `
@@ -772,6 +909,7 @@
 
         function closeWatchDetailModal() {
             window.currentWatchDetailId = null;
+            if (isTicking) toggleWatchSound();
             document.getElementById('watchDetailModal').classList.add('hidden');
         }
 
