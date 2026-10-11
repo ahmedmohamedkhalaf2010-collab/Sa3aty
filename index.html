@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sa3aty | متجر ساعاتي الفاخر</title>
     <!-- Favicon (Tab Logo) -->
-    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg">
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/nMh5xqCS/Gemini-Generated-Image-x8zs8dx8zs8dx8zs-1.jpg">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,8 +23,8 @@
                     },
                     colors: {
                         bgMain: '#000000',
-                        cardBg: '#12141D',
-                        cardHover: '#1A1D2B',
+                        cardBg: '#10121a',
+                        cardHover: '#181b26',
                         textPrimary: '#F8FAFC',
                         textMuted: '#94A3B8',
                         goldAccent: '#D4AF37',
@@ -79,15 +79,15 @@
         }
 
         .glass-panel {
-            background: rgba(18, 20, 29, 0.75);
+            background: rgba(16, 18, 26, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
         }
 
         .glass-nav {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -101,8 +101,9 @@
             border-color: rgba(212, 175, 55, 0.4);
         }
 
-        .logo-blend-screen {
-            mix-blend-mode: screen;
+        .logo-blend {
+            mix-blend-mode: lighten;
+            background-color: transparent;
         }
 
         ::-webkit-scrollbar {
@@ -125,6 +126,7 @@
     <div class="bg-glow-gold"></div>
     <div class="bg-glow-purple"></div>
 
+    <!-- Header / Navbar -->
     <header class="glass-nav sticky top-0 z-40 px-4 lg:px-8 py-2 transition-all">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             
@@ -155,9 +157,9 @@
                 </button>
             </div>
 
-            <!-- Center Logo Section -->
+            <!-- Center Logo Section (Updated) -->
             <a href="#" onclick="filterCategory('all')" class="flex items-center justify-center group py-1">
-                <img src="https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg" alt="SA3ATY Logo" class="h-16 sm:h-24 w-auto object-contain logo-blend-screen transition-transform duration-300 group-hover:scale-105">
+                <img src="https://i.ibb.co/nMh5xqCS/Gemini-Generated-Image-x8zs8dx8zs8dx8zs-1.jpg" alt="SA3ATY Logo" class="h-16 sm:h-24 w-auto object-contain logo-blend transition-transform duration-300 group-hover:scale-105">
             </a>
 
             <!-- Right Controls -->
@@ -181,6 +183,7 @@
         </div>
     </header>
 
+    <!-- Main Content Body -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 z-10">
         
         <div id="adminBanner" class="hidden mb-6 p-4 bg-goldAccent/10 border border-goldAccent/30 rounded-2xl flex flex-wrap justify-between items-center text-textPrimary gap-2">
@@ -219,7 +222,6 @@
             <h3 id="txt-empty-title" class="text-xl font-bold text-textPrimary mb-2">المتجر فاضي حالياً!</h3>
         </div>
     </main>
-
 
     <!-- Watch Finder Quiz Modal -->
     <div id="quizModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
@@ -523,6 +525,7 @@
         </div>
     </div>
 
+    <!-- Firebase App Modules -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, push, remove, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -584,6 +587,7 @@
         };
     </script>
 
+    <!-- App Main & Interactive Logic -->
     <script>
         const translations = {
             ar: {
@@ -841,7 +845,7 @@
             
             let imagesList = uploadedImagesBase64.length > 0 ? uploadedImagesBase64 : manualUrls;
             if (imagesList.length === 0) {
-                imagesList = ['https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg'];
+                imagesList = ['https://i.ibb.co/nMh5xqCS/Gemini-Generated-Image-x8zs8dx8zs8dx8zs-1.jpg'];
             }
 
             const watchPayload = {
