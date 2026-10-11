@@ -22,7 +22,7 @@
                         cairo: ['Cairo', 'sans-serif'],
                     },
                     colors: {
-                        bgMain: '#090A0F',
+                        bgMain: '#000000',
                         cardBg: '#12141D',
                         cardHover: '#1A1D2B',
                         textPrimary: '#F8FAFC',
@@ -44,7 +44,7 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #090A0F;
+            background-color: #000000;
             background-image: 
                 radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
@@ -87,7 +87,7 @@
         }
 
         .glass-nav {
-            background: rgba(9, 10, 15, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -109,7 +109,7 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #090A0F;
+            background: #000000;
         }
         ::-webkit-scrollbar-thumb {
             background: #1E2230;
@@ -125,7 +125,6 @@
     <div class="bg-glow-gold"></div>
     <div class="bg-glow-purple"></div>
 
-    <!-- Header / Navbar -->
     <header class="glass-nav sticky top-0 z-40 px-4 lg:px-8 py-2 transition-all">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             
@@ -156,7 +155,7 @@
                 </button>
             </div>
 
-            <!-- Center Logo Section (Updated) -->
+            <!-- Center Logo Section -->
             <a href="#" onclick="filterCategory('all')" class="flex items-center justify-center group py-1">
                 <img src="https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg" alt="SA3ATY Logo" class="h-16 sm:h-24 w-auto object-contain logo-blend-screen transition-transform duration-300 group-hover:scale-105">
             </a>
@@ -182,7 +181,6 @@
         </div>
     </header>
 
-    <!-- Main Content Body -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 z-10">
         
         <div id="adminBanner" class="hidden mb-6 p-4 bg-goldAccent/10 border border-goldAccent/30 rounded-2xl flex flex-wrap justify-between items-center text-textPrimary gap-2">
@@ -221,6 +219,7 @@
             <h3 id="txt-empty-title" class="text-xl font-bold text-textPrimary mb-2">المتجر فاضي حالياً!</h3>
         </div>
     </main>
+
 
     <!-- Watch Finder Quiz Modal -->
     <div id="quizModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
@@ -524,7 +523,6 @@
         </div>
     </div>
 
-    <!-- Firebase App Modules -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, push, remove, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -586,7 +584,6 @@
         };
     </script>
 
-    <!-- App Main & Interactive Logic -->
     <script>
         const translations = {
             ar: {
