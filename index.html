@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LA7ZA | LA7ZA Store</title>
+    <title>LA7ZA | LA7ZA Store </title>
     <!-- Favicon (Tab Logo) -->
-    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/7tZCPpq2/2.jpg">
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,9 +22,9 @@
                         cairo: ['Cairo', 'sans-serif'],
                     },
                     colors: {
-                        bgMain: '#000000',
-                        cardBg: '#10121a',
-                        cardHover: '#181b26',
+                        bgMain: '#090A0F',
+                        cardBg: '#12141D',
+                        cardHover: '#1A1D2B',
                         textPrimary: '#F8FAFC',
                         textMuted: '#94A3B8',
                         goldAccent: '#D4AF37',
@@ -44,7 +44,7 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #000000;
+            background-color: #090A0F;
             background-image: 
                 radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
@@ -79,15 +79,15 @@
         }
 
         .glass-panel {
-            background: rgba(16, 18, 26, 0.85);
+            background: rgba(18, 20, 29, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
         .glass-nav {
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(9, 10, 15, 0.85);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -101,16 +101,15 @@
             border-color: rgba(212, 175, 55, 0.4);
         }
 
-        .logo-blend {
-            mix-blend-mode: lighten;
-            background-color: transparent;
+        .logo-blend-screen {
+            mix-blend-mode: screen;
         }
 
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #000000;
+            background: #090A0F;
         }
         ::-webkit-scrollbar-thumb {
             background: #1E2230;
@@ -131,7 +130,7 @@
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             
             <!-- Left Controls -->
-            <div class="flex items-center space-x-3 space-x-reverse">
+            <div class="flex items-center space-x-3 space-x-reverse flex-wrap gap-y-2">
                 <div class="hidden md:flex items-center bg-cardBg p-1 border border-borderDark rounded-xl">
                     <button onclick="filterCategory('all')" id="tab-all" class="px-4 py-1.5 text-xs font-bold transition-all text-black bg-goldAccent rounded-lg shadow-sm">
                         <i class="fa-solid fa-border-all ml-1"></i> <span id="txt-tab-all">الكل</span>
@@ -151,15 +150,21 @@
                     <span id="txt-quiz-btn">مساعد الاختيار</span>
                 </button>
 
+                <button onclick="openFeedbackModal()" class="bg-roseLuxury/10 border border-roseLuxury/30 hover:bg-roseLuxury hover:text-white text-roseLuxury px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <span id="txt-feedback-btn">الشكاوى والتعديل</span>
+                </button>
+
                 <button onclick="toggleLanguage()" class="px-3 py-1.5 bg-cardBg border border-borderDark text-textPrimary hover:border-goldAccent text-xs font-black rounded-xl transition-all flex items-center gap-1">
                     <i class="fa-solid fa-globe text-goldAccent"></i>
                     <span id="langSwitchText">EN</span>
                 </button>
             </div>
 
-            <!-- Center Logo Section (Updated) -->
-            <a href="#" onclick="filterCategory('all')" class="flex items-center justify-center group py-1">
-                <img src="https://i.ibb.co/7tZCPpq2/2.jpg" alt="SA3ATY Logo" class="h-16 sm:h-24 w-auto object-contain logo-blend transition-transform duration-300 group-hover:scale-105">
+            <!-- Center Logo Section -->
+            <a href="#" onclick="filterCategory('all')" class="flex items-center justify-center group py-1 gap-2">
+                <img src="https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg" alt="LA7ZA Logo" class="h-14 sm:h-20 w-auto object-contain logo-blend-screen transition-transform duration-300 group-hover:scale-105">
+                <span class="text-xl sm:text-2xl font-black text-goldAccent tracking-widest font-mono">LA7ZA</span>
             </a>
 
             <!-- Right Controls -->
@@ -223,6 +228,34 @@
         </div>
     </main>
 
+    <!-- Feedback & Complaints Modal -->
+    <div id="feedbackModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cardBg rounded-3xl max-w-md w-full p-6 border border-borderDark shadow-2xl relative text-textPrimary">
+            <button onclick="closeFeedbackModal()" class="absolute top-4 left-4 text-gray-500 hover:text-textPrimary">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <i class="fa-solid fa-triangle-exclamation text-roseLuxury text-3xl mb-2"></i>
+                <h3 class="text-lg font-bold text-textPrimary">الشكاوى والتعديلات 📝</h3>
+                <p class="text-xs text-textMuted mt-1">يهمنا رأيك! اكتب لنا أي نقطة ضايقتك أو تحب نعدلها في الخدمة أو المنتجات</p>
+            </div>
+            
+            <form onsubmit="submitFeedbackOrder(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold mb-1 text-goldAccent">اسمك الكريِم</label>
+                    <input type="text" id="feedbackName" required placeholder="ادخل اسمك" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent">
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1 text-goldAccent">تفاصيل الشكوى أو التعديل المطلوب</label>
+                    <textarea id="feedbackText" rows="4" required placeholder="اكتب ملاحظاتك وتعديلاتك هنا بالتفصيل..." class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-roseLuxury hover:bg-rose-700 text-white font-bold p-3 rounded-xl transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i> إرسال الملاحظات للإدارة مباشرة
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Watch Finder Quiz Modal -->
     <div id="quizModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="bg-cardBg rounded-3xl max-w-md w-full p-6 border border-borderDark shadow-2xl relative text-textPrimary">
@@ -240,7 +273,7 @@
                     <label class="block font-semibold mb-1 text-goldAccent">ما هي المناسبة؟</label>
                     <select id="quizOccasion" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary">
                         <option value="all">كل المناسبات</option>
-                        <option value="classic">رسمي / بدلة وكلاسيك</option>
+                        <option value="classic">رسمي / كلاسيك</option>
                         <option value="sport">رياضي / استخدام يومي</option>
                     </select>
                 </div>
@@ -557,6 +590,9 @@
         window.uploadedImagesBase64 = [];
         window.customWatchImageBase64 = '';
         window.currentWatchDetailId = null;
+        window.quizFilterActive = false;
+        window.quizOccasionVal = 'all';
+        window.quizStrapVal = 'all';
 
         try { window.cart = JSON.parse(localStorage.getItem('sa3aty_cart')) || []; } catch(e) { window.cart = []; }
 
@@ -749,9 +785,29 @@
             }
         }
 
+        // Feedback & Complaints Modal Handlers
+        function openFeedbackModal() { document.getElementById('feedbackModal').classList.remove('hidden'); }
+        function closeFeedbackModal() { document.getElementById('feedbackModal').classList.add('hidden'); }
+        function submitFeedbackOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('feedbackName').value.trim();
+            const text = document.getElementById('feedbackText').value.trim();
+
+            let msg = `🚨 *شكوى / طلب تعديل جديد (متجر LA7ZA)*\n\n`;
+            msg += `👤 *العميل:* ${name}\n`;
+            msg += `📝 *التفاصيل:* ${text}\n`;
+
+            window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+            closeFeedbackModal();
+        }
+
+        // Watch Finder Quiz Modal Handlers
         function openQuizModal() { document.getElementById('quizModal').classList.remove('hidden'); }
         function closeQuizModal() { document.getElementById('quizModal').classList.add('hidden'); }
         function applyQuizFilter() {
+            window.quizOccasionVal = document.getElementById('quizOccasion').value;
+            window.quizStrapVal = document.getElementById('quizStrap').value;
+            window.quizFilterActive = true;
             closeQuizModal();
             renderStore();
         }
@@ -845,7 +901,7 @@
             
             let imagesList = uploadedImagesBase64.length > 0 ? uploadedImagesBase64 : manualUrls;
             if (imagesList.length === 0) {
-                imagesList = ['https://i.ibb.co/7tZCPpq2/2.jpg'];
+                imagesList = ['https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg'];
             }
 
             const watchPayload = {
@@ -970,6 +1026,7 @@
 
         function filterCategory(cat) { 
             activeCategory = cat; 
+            window.quizFilterActive = false; // Reset quiz filter when switching tabs
             document.getElementById('tab-all').className = cat === 'all' ? 'px-4 py-1.5 text-xs font-bold transition-all text-black bg-goldAccent rounded-lg shadow-sm' : 'px-4 py-1.5 text-xs font-bold transition-all text-textMuted hover:text-roseLuxury';
             document.getElementById('tab-offers').className = cat === 'offers' ? 'px-4 py-1.5 text-xs font-bold transition-all text-black bg-goldAccent rounded-lg shadow-sm' : 'px-4 py-1.5 text-xs font-bold transition-all text-textMuted hover:text-roseLuxury';
             renderStore(); 
@@ -989,6 +1046,15 @@
                 }
                 return true;
             });
+
+            if (window.quizFilterActive) {
+                if (window.quizOccasionVal !== 'all') {
+                    filtered = filtered.filter(w => (w.desc || '').toLowerCase().includes(window.quizOccasionVal) || (w.title || '').toLowerCase().includes(window.quizOccasionVal));
+                }
+                if (window.quizStrapVal !== 'all') {
+                    filtered = filtered.filter(w => (w.desc || '').toLowerCase().includes(window.quizStrapVal) || (w.title || '').toLowerCase().includes(window.quizStrapVal));
+                }
+            }
 
             if (searchQuery) { filtered = filtered.filter(w => w.title.toLowerCase().includes(searchQuery)); }
             filtered.sort((a, b) => sortBy === 'price-low' ? a.price - b.price : sortBy === 'price-high' ? b.price - a.price : (b.createdAt || 0) - (a.createdAt || 0));
@@ -1082,7 +1148,7 @@
             const name = document.getElementById('customerNameInput').value.trim();
             const phone = document.getElementById('customerPhoneInput').value.trim();
             const curr = translations[window.currentLang].currency;
-            let message = `طلب جديد من: ${name} (${phone})\n\nالطلبات:\n`;
+            let message = `طلب جديد من متجر LA7ZA:\nالاسم: ${name} (${phone})\n\nالطلبات:\n`;
             cart.forEach((i, idx) => { message += `${idx + 1}. ${i.title} (${i.qty}) - ${i.price * i.qty} ${curr}\n`; });
             message += `\nالإجمالي: ${cart.reduce((s, i) => s + (i.price * i.qty), 0)} ${curr}`;
             window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
