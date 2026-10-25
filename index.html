@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LA7ZA | متجر لحظة للفي الخامات</title>
+    <title>LA7ZA | matgar sa3aty el fa5er</title>
     <!-- Favicon (Tab Logo) -->
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg">
     
@@ -133,26 +133,26 @@
             <div class="flex items-center space-x-3 space-x-reverse flex-wrap gap-y-2">
                 <div class="hidden md:flex items-center bg-cardBg p-1 border border-borderDark rounded-xl">
                     <button onclick="filterCategory('all')" id="tab-all" class="px-4 py-1.5 text-xs font-bold transition-all text-black bg-goldAccent rounded-lg shadow-sm">
-                        <i class="fa-solid fa-border-all ml-1"></i> <span id="txt-tab-all">الكل</span>
+                        <i class="fa-solid fa-border-all ml-1"></i> <span id="txt-tab-all">el kol</span>
                     </button>
                     <button onclick="filterCategory('offers')" id="tab-offers" class="px-4 py-1.5 text-xs font-bold transition-all text-textMuted hover:text-roseLuxury">
-                        <i class="fa-solid fa-fire text-roseLuxury ml-1"></i> <span id="txt-tab-offers">العروض</span>
+                        <i class="fa-solid fa-fire text-roseLuxury ml-1"></i> <span id="txt-tab-offers">el 3orod 🔥</span>
                     </button>
                 </div>
 
                 <button onclick="openCustomWatchModal()" class="bg-goldAccent/10 border border-goldAccent/30 hover:bg-goldAccent hover:text-black text-goldAccent px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <span id="txt-custom-btn">صمّم ساعتك</span>
+                    <span id="txt-custom-btn">samem sa3tak</span>
                 </button>
 
                 <button onclick="openQuizModal()" class="bg-neonPurple/10 border border-neonPurple/30 hover:bg-neonPurple hover:text-white text-neonPurple px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
                     <i class="fa-solid fa-compass"></i>
-                    <span id="txt-quiz-btn">مساعد الاختيار</span>
+                    <span id="txt-quiz-btn">mosa3ed el e5tiyar</span>
                 </button>
 
                 <button onclick="openFeedbackModal()" class="bg-roseLuxury/10 border border-roseLuxury/30 hover:bg-roseLuxury hover:text-white text-roseLuxury px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5">
                     <i class="fa-solid fa-comment-dots"></i>
-                    <span id="txt-feedback-btn">الشكاوى والتعديل</span>
+                    <span id="txt-feedback-btn">el shakawy wel ta3deel</span>
                 </button>
 
                 <button onclick="toggleLanguage()" class="px-3 py-1.5 bg-cardBg border border-borderDark text-textPrimary hover:border-goldAccent text-xs font-black rounded-xl transition-all flex items-center gap-1">
@@ -161,7 +161,7 @@
                 </button>
             </div>
 
-            <!-- Center Logo Section (Logo Only) -->
+            <!-- Center Logo Section -->
             <a href="#" onclick="filterCategory('all')" class="flex items-center justify-center group py-1">
                 <img src="https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg" alt="LA7ZA Logo" class="h-16 sm:h-24 w-auto object-contain logo-blend-screen transition-transform duration-300 group-hover:scale-105">
             </a>
@@ -170,7 +170,7 @@
             <div class="flex items-center space-x-3 space-x-reverse">
                 <button id="ownerAddBtn" onclick="openAddWatchModal()" class="hidden bg-goldAccent hover:bg-goldHover text-black font-black px-3.5 py-1.5 text-xs rounded-xl shadow-md gold-glow transition-all active:scale-95 flex items-center gap-1">
                     <i class="fa-solid fa-plus text-sm"></i>
-                    <span id="txt-add-btn" class="hidden sm:inline">إضافة ساعة</span>
+                    <span id="txt-add-btn" class="hidden sm:inline">edaft sa3a</span>
                 </button>
 
                 <button onclick="openCartModal()" class="relative p-2.5 bg-cardBg border border-borderDark text-textPrimary hover:border-goldAccent rounded-xl transition-all">
@@ -180,7 +180,7 @@
                     </span>
                 </button>
 
-                <button id="adminToggleBtn" onclick="handleAdminToggle()" class="p-2.5 bg-cardBg border border-borderDark text-gray-500 hover:text-goldAccent hover:border-goldAccent rounded-xl transition-all" title="وضع الأدمن">
+                <button id="adminToggleBtn" onclick="handleAdminToggle()" class="p-2.5 bg-cardBg border border-borderDark text-gray-500 hover:text-goldAccent hover:border-goldAccent rounded-xl transition-all" title="wad3 el admin">
                     <i id="adminLockIcon" class="fa-solid fa-lock text-sm"></i>
                 </button>
             </div>
@@ -193,26 +193,26 @@
         <div id="adminBanner" class="hidden mb-6 p-4 bg-goldAccent/10 border border-goldAccent/30 rounded-2xl flex flex-wrap justify-between items-center text-textPrimary gap-2">
             <div class="flex items-center space-x-3 space-x-reverse text-sm font-semibold">
                 <i class="fa-solid fa-crown text-goldAccent text-lg"></i>
-                <span id="txt-admin-banner">أهلاً بك يا <strong>صاحب المتجر!</strong> (وضع الأدمن مفعّل).</span>
+                <span id="txt-admin-banner">Ahlan ya saheb el matgar! (Wad3 el Admin mo-fa3al).</span>
             </div>
             <button onclick="logoutAdmin()" id="txt-admin-logout" class="text-xs text-roseLuxury hover:underline font-bold">
-                خروج من وضع الأدمن
+                khorog mn wad3 el admin
             </button>
         </div>
 
         <div class="glass-panel p-4 mb-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="relative w-full md:w-80">
                 <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
-                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ابحث باسم الساعة..."
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="eb7as b esm el sa3a..."
                     class="w-full bg-bgMain border border-borderDark rounded-xl pr-10 pl-4 py-2.5 text-xs sm:text-sm text-textPrimary placeholder-gray-500 focus:outline-none focus:border-goldAccent transition-colors">
             </div>
 
             <div class="flex items-center justify-between md:justify-end w-full md:w-auto gap-4">
-                <span id="productCount" class="text-xs text-textMuted font-bold">جاري تحميل البيانات...</span>
+                <span id="productCount" class="text-xs text-textMuted font-bold">jary ta7meel el bayanat...</span>
                 <select id="sortSelect" onchange="handleSortChange()" class="bg-bgMain border border-borderDark rounded-xl text-textPrimary text-xs sm:text-sm px-3 py-2.5 focus:outline-none focus:border-goldAccent cursor-pointer font-semibold">
-                    <option value="newest" id="opt-newest">الأحدث إضافة</option>
-                    <option value="price-low" id="opt-price-low">السعر: من الأقل للأعلى</option>
-                    <option value="price-high" id="opt-price-high">السعر: من الأعلى للأقل</option>
+                    <option value="newest" id="opt-newest">el ahdath edafa</option>
+                    <option value="price-low" id="opt-price-low">el se3r: mn el a2al lel a3la</option>
+                    <option value="price-high" id="opt-price-high">el se3r: mn el a3la lel a2al</option>
                 </select>
             </div>
         </div>
@@ -223,7 +223,7 @@
         <!-- Empty State -->
         <div id="emptyState" class="hidden flex-col items-center justify-center text-center py-20 px-4 glass-panel rounded-2xl my-6 border border-dashed border-borderDark">
             <i class="fa-solid fa-clock text-4xl text-textMuted mb-3"></i>
-            <h3 id="txt-empty-title" class="text-xl font-bold text-textPrimary mb-2">المتجر فاضي حالياً!</h3>
+            <h3 id="txt-empty-title" class="text-xl font-bold text-textPrimary mb-2">el matgar fady 7alyan!</h3>
         </div>
     </main>
 
@@ -235,21 +235,21 @@
             </button>
             <div class="text-center mb-6">
                 <i class="fa-solid fa-triangle-exclamation text-roseLuxury text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-textPrimary">الشكاوى والتعديلات 📝</h3>
-                <p class="text-xs text-textMuted mt-1">يهمنا رأيك! اكتب لنا أي نقطة ضايقتك أو تحب نعدلها في الخدمة أو المنتجات</p>
+                <h3 class="text-lg font-bold text-textPrimary">el shakawy wel ta3delat 📝</h3>
+                <p class="text-xs text-textMuted mt-1">e3tebarna raghy! ektob elshakwa aw el ta3deel elly 3ayzo</p>
             </div>
             
             <form onsubmit="submitFeedbackOrder(event)" class="space-y-4 text-xs">
                 <div>
-                    <label class="block font-semibold mb-1 text-goldAccent">اسمك الكريِم</label>
-                    <input type="text" id="feedbackName" required placeholder="ادخل اسمك" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent">
+                    <label class="block font-semibold mb-1 text-goldAccent">esmok el kareem</label>
+                    <input type="text" id="feedbackName" required placeholder="ed5ol esmok" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent">
                 </div>
                 <div>
-                    <label class="block font-semibold mb-1 text-goldAccent">تفاصيل الشكوى أو التعديل المطلوب</label>
-                    <textarea id="feedbackText" rows="4" required placeholder="اكتب ملاحظاتك وتعديلاتك هنا بالتفصيل..." class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
+                    <label class="block font-semibold mb-1 text-goldAccent">tafsil el shakwa aw el ta3deel</label>
+                    <textarea id="feedbackText" rows="4" required placeholder="ektob molahazatak hena..." class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
                 </div>
                 <button type="submit" class="w-full bg-roseLuxury hover:bg-rose-700 text-white font-bold p-3 rounded-xl transition flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-base"></i> إرسال الملاحظات للإدارة مباشرة
+                    <i class="fa-brands fa-whatsapp text-base"></i> ersal el molahazat lel edara
                 </button>
             </form>
         </div>
@@ -263,28 +263,27 @@
             </button>
             <div class="text-center mb-6">
                 <i class="fa-solid fa-compass text-neonPurple text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-textPrimary">مساعد اختيار الساعة المثالية ⏱️</h3>
-                <p class="text-xs text-textMuted mt-1">اختر إجاباتك وسنقترح عليك الساعات المناسبة لذوقك</p>
+                <h3 class="text-lg font-bold text-textPrimary">mosa3ed ektiyar el sa3a ⏱️</h3>
             </div>
             
             <div class="space-y-4 text-xs">
                 <div>
-                    <label class="block font-semibold mb-1 text-goldAccent">ما هي المناسبة؟</label>
+                    <label class="block font-semibold mb-1 text-goldAccent">el monasaba?</label>
                     <select id="quizOccasion" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary">
-                        <option value="all">كل المناسبات</option>
-                        <option value="classic">رسمي / كلاسيك</option>
-                        <option value="sport">رياضي / استخدام يومي</option>
+                        <option value="all">kol el monasabat</option>
+                        <option value="classic">rasmy / classic</option>
+                        <option value="sport">ryady / estkhdam yawmy</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block font-semibold mb-1 text-goldAccent">نوع الأستك المفضل؟</label>
+                    <label class="block font-semibold mb-1 text-goldAccent">no3 el astak?</label>
                     <select id="quizStrap" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary">
-                        <option value="all">أي نوع</option>
-                        <option value="leather">جلد طبيعي</option>
-                        <option value="steel">معدن استيل</option>
+                        <option value="all">ay no3</option>
+                        <option value="leather">gild</option>
+                        <option value="steel">ma3dan steel</option>
                     </select>
                 </div>
-                <button onclick="applyQuizFilter()" class="w-full bg-neonPurple hover:bg-purple-700 text-white font-bold p-3 rounded-xl transition">عرض الساعات المقترحة ✨</button>
+                <button onclick="applyQuizFilter()" class="w-full bg-neonPurple hover:bg-purple-700 text-white font-bold p-3 rounded-xl transition">3ard el sa3at el moqtaraha ✨</button>
             </div>
         </div>
     </div>
@@ -298,14 +297,13 @@
 
             <div class="text-center mb-6">
                 <i class="fa-solid fa-wand-magic-sparkles text-goldAccent text-3xl mb-2"></i>
-                <h3 id="txt-custom-title" class="text-xl font-bold text-textPrimary">صمّم ساعتك الخاصة على ذوقك ✨</h3>
-                <p id="txt-custom-sub" class="text-xs text-textMuted mt-1">اختر المواصفات، أو ارفع صورة للساعة المطلوبة واكتب التفاصيل بسهولة</p>
+                <h3 id="txt-custom-title" class="text-xl font-bold text-textPrimary">samem sa3atak el 5asa ✨</h3>
             </div>
 
             <form onsubmit="submitCustomWatchOrder(event)" class="space-y-4 text-xs">
                 <div class="bg-bgMain p-3 border border-borderDark rounded-xl">
-                    <label id="lbl-custom-img" class="block font-semibold text-goldAccent mb-1 flex items-center gap-1.5">
-                        <i class="fa-solid fa-image"></i> عندك صورة للديزاين المطلوب؟ (اختياري)
+                    <label class="block font-semibold text-goldAccent mb-1 flex items-center gap-1.5">
+                        <i class="fa-solid fa-image"></i> 3andak sora lel design? (e5tyary)
                     </label>
                     <input type="file" id="customWatchImage" accept="image/*" onchange="previewCustomImage(event)" class="block w-full text-gray-400 file:py-1.5 file:px-3 file:bg-goldAccent/10 file:text-goldAccent file:rounded-lg file:border-0 cursor-pointer bg-cardBg border border-borderDark rounded-lg mb-2">
                     <div id="customImgPreview" class="hidden justify-center items-center">
@@ -314,66 +312,17 @@
                 </div>
 
                 <div>
-                    <label id="lbl-custom-desc" class="block font-semibold text-textPrimary mb-1">وصف أو تفاصيل الساعة المطلوبة (اختياري)</label>
-                    <textarea id="customFreeText" rows="2" placeholder="اكتب كل التفاصيل اللي في دماغك هنا..." class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
-                </div>
-
-                <div class="relative flex py-1 items-center">
-                    <div class="flex-grow border-t border-borderDark"></div>
-                    <span id="lbl-custom-or" class="flex-shrink mx-3 text-gray-500 text-[10px]">أو اختر المواصفات الجاهزة</span>
-                    <div class="flex-grow border-t border-borderDark"></div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label id="lbl-custom-case" class="block font-semibold text-textPrimary mb-1">نوع الهيكل</label>
-                        <select id="customCase" class="w-full bg-bgMain border border-borderDark rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
-                            <option value="">بدون تحديد</option>
-                            <option value="فضي استيل">فضي استيل</option>
-                            <option value="ذهبي فاخر">ذهبي فاخر</option>
-                            <option value="أسود مطفي">أسود مطفي</option>
-                            <option value="روز جولد">روز جولد</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label id="lbl-custom-dial" class="block font-semibold text-textPrimary mb-1">لون المينا</label>
-                        <select id="customDial" class="w-full bg-bgMain border border-borderDark rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
-                            <option value="">بدون تحديد</option>
-                            <option value="أسود كلاسيك">أسود كلاسيك</option>
-                            <option value="أبيض ناصع">أبيض ناصع</option>
-                            <option value="أزرق ملكي">أزرق ملكي</option>
-                            <option value="أخضر زمردي">أخضر زمردي</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label id="lbl-custom-strap" class="block font-semibold text-textPrimary mb-1">نوع السير</label>
-                        <select id="customStrap" class="w-full bg-bgMain border border-borderDark rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
-                            <option value="">بدون تحديد</option>
-                            <option value="جلد طبيعي أسود">جلد طبيعي أسود</option>
-                            <option value="جلد طبيعي بني">جلد طبيعي بني</option>
-                            <option value="معدن استيل فضي">معدن استيل فضي</option>
-                            <option value="معدن استيل ذهبي">معدن استيل ذهبي</option>
-                            <option value="مطاط رياضي">مطاط رياضي</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label id="lbl-custom-engrave" class="block font-semibold text-textPrimary mb-1">نقش اسم خاص</label>
-                        <input type="text" id="customEngraving" placeholder="مثال: Ahmed" class="w-full bg-bgMain border border-borderDark rounded-xl p-2 text-textPrimary focus:outline-none focus:border-goldAccent">
-                    </div>
+                    <label class="block font-semibold text-textPrimary mb-1">wasf el sa3a el matloba</label>
+                    <textarea id="customFreeText" rows="2" placeholder="ektob kol el tafasil hena..." class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
                 </div>
 
                 <div class="border-t border-borderDark pt-3">
-                    <label id="lbl-custom-name" class="block font-semibold text-textPrimary mb-1">اسمك الكريم</label>
-                    <input type="text" id="customCustomerName" required placeholder="ادخل اسمك بالكامل" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent mb-3">
+                    <label class="block font-semibold text-textPrimary mb-1">esmok el kareem</label>
+                    <input type="text" id="customCustomerName" required placeholder="ed5ol esmok bel kamel" class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-textPrimary focus:outline-none focus:border-goldAccent mb-3">
                 </div>
 
-                <button type="submit" id="btn-submit-custom" class="w-full bg-emeraldCustom hover:bg-emerald-600 text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
-                    <i class="fa-brands fa-whatsapp text-base"></i> إرسال الطلب عبر الواتساب
+                <button type="submit" class="w-full bg-emeraldCustom hover:bg-emerald-600 text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-base"></i> ersal el talab 3abr el whatsapp
                 </button>
             </form>
         </div>
@@ -396,23 +345,29 @@
                     <div class="flex items-center gap-2 mb-3 p-2 bg-bgMain rounded-xl border border-borderDark justify-around">
                         <button onclick="toggleLumeEffect()" class="text-[11px] font-bold text-emeraldCustom hover:text-white flex items-center gap-1.5 transition">
                             <i class="fa-solid fa-moon"></i>
-                            <span>تجربة الـ Lume (في الضلمة)</span>
+                            <span>tagrobet el Lume</span>
                         </button>
                         <span class="text-borderDark">|</span>
                         <button id="tickingBtn" onclick="toggleWatchSound()" class="text-[11px] font-bold text-goldAccent hover:text-white flex items-center gap-1.5 transition">
                             <i class="fa-solid fa-volume-high"></i>
-                            <span>استمع لدقات الساعة ⏱️</span>
+                            <span>estama3 le daqat el sa3a ⏱️</span>
                         </button>
+                    </div>
+
+                    <!-- Colors & Variant Switcher -->
+                    <div id="colorVariantsSection" class="mb-3 p-2.5 bg-bgMain rounded-xl border border-borderDark hidden">
+                        <label class="block text-[11px] font-bold text-goldAccent mb-1.5"><i class="fa-solid fa-palette"></i> el alwan el mota7a (e5tar loon):</label>
+                        <div id="colorVariantsList" class="flex gap-2 flex-wrap"></div>
                     </div>
 
                     <!-- Virtual Strap Changer -->
                     <div class="mb-3 p-2.5 bg-bgMain rounded-xl border border-borderDark">
-                        <label class="block text-[11px] font-bold text-textPrimary mb-1.5">مغير الأستك الافتراضي (Strap Changer):</label>
+                        <label class="block text-[11px] font-bold text-textPrimary mb-1.5">mogeer el astak el eftardy:</label>
                         <div class="flex gap-1.5 flex-wrap">
-                            <button onclick="changeStrapOverlay('normal')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-textPrimary">الأصلي</button>
-                            <button onclick="changeStrapOverlay('black-leather')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-gray-300">جلد أسود</button>
-                            <button onclick="changeStrapOverlay('brown-leather')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-amber-600">جلد بني</button>
-                            <button onclick="changeStrapOverlay('gold')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-goldAccent">ذهبي فاخر</button>
+                            <button onclick="changeStrapOverlay('normal')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-textPrimary">el asly</button>
+                            <button onclick="changeStrapOverlay('black-leather')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-gray-300">gild aswad</button>
+                            <button onclick="changeStrapOverlay('brown-leather')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-amber-600">gild bony</button>
+                            <button onclick="changeStrapOverlay('gold')" class="px-2 py-1 text-[10px] bg-cardBg border border-borderDark rounded-lg hover:border-goldAccent text-goldAccent">zahaby</button>
                         </div>
                     </div>
 
@@ -429,21 +384,21 @@
                         <p id="detailDesc" class="text-xs text-textMuted leading-relaxed mb-4 bg-bgMain p-3 rounded-xl border border-borderDark"></p>
                         
                         <button id="detailAddToCartBtn" class="w-full bg-goldAccent hover:bg-goldHover text-black font-bold py-3 rounded-xl text-xs sm:text-sm mb-6 shadow-md transition-all duration-300 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-cart-plus"></i> <span id="txt-detail-add">إضافة للسلة</span>
+                            <i class="fa-solid fa-cart-plus"></i> <span id="txt-detail-add">edafa lel sala</span>
                         </button>
                     </div>
 
                     <div class="border-t border-borderDark pt-4">
                         <h4 class="text-xs font-bold text-goldAccent mb-2 flex items-center gap-1.5">
-                            <i class="fa-solid fa-comments"></i> <span id="txt-comments-title">التعليقات والآراء</span> (<span id="commentsCount">0</span>)
+                            <i class="fa-solid fa-comments"></i> <span id="txt-comments-title">el ta3liqat</span> (<span id="commentsCount">0</span>)
                         </h4>
                         
                         <div id="commentsList" class="space-y-2 max-h-36 overflow-y-auto pr-1 mb-3 text-xs"></div>
 
                         <form onsubmit="handleAddComment(event)" class="flex gap-2">
-                            <input type="text" id="commentAuthorInput" placeholder="اسمك" required class="w-1/3 bg-bgMain border border-borderDark rounded-lg px-2.5 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
-                            <input type="text" id="commentTextInput" placeholder="اكتب تعليقك هنا..." required class="w-2/3 bg-bgMain border border-borderDark rounded-lg px-2.5 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
-                            <button type="submit" id="btn-send-comment" class="bg-goldAccent text-black font-bold px-4 py-1.5 rounded-lg text-xs hover:bg-goldHover transition">إرسال</button>
+                            <input type="text" id="commentAuthorInput" placeholder="esmok" required class="w-1/3 bg-bgMain border border-borderDark rounded-lg px-2.5 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
+                            <input type="text" id="commentTextInput" placeholder="ektob ta3leeqak..." required class="w-2/3 bg-bgMain border border-borderDark rounded-lg px-2.5 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
+                            <button type="submit" class="bg-goldAccent text-black font-bold px-4 py-1.5 rounded-lg text-xs hover:bg-goldHover transition">ersal</button>
                         </form>
                     </div>
                 </div>
@@ -458,65 +413,71 @@
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <form onsubmit="verifyAdminPin(event)" class="space-y-4">
-                <h3 class="text-center font-bold text-lg text-goldAccent">تسجيل دخول الأدمن</h3>
-                <input type="password" id="adminPinInput" placeholder="أدخل الرمز السري..." required class="w-full bg-bgMain border border-borderDark rounded-xl px-4 py-3 text-center tracking-widest text-xl text-goldAccent font-bold focus:outline-none focus:border-goldAccent">
-                <p id="pinErrorMsg" class="text-xs text-roseLuxury hidden text-center font-bold">الرمز السري خاطئ!</p>
-                <button type="submit" id="btn-admin-login" class="w-full bg-goldAccent hover:bg-goldHover text-black font-extrabold py-3 rounded-xl text-sm transition">دخول كصاحب المتجر</button>
+                <h3 class="text-center font-bold text-lg text-goldAccent">tesgel do5ol el Admin</h3>
+                <input type="password" id="adminPinInput" placeholder="ed5ol el rmz el sery..." required class="w-full bg-bgMain border border-borderDark rounded-xl px-4 py-3 text-center tracking-widest text-xl text-goldAccent font-bold focus:outline-none focus:border-goldAccent">
+                <p id="pinErrorMsg" class="text-xs text-roseLuxury hidden text-center font-bold">el rmz el sery 5ate2!</p>
+                <button type="submit" class="w-full bg-goldAccent hover:bg-goldHover text-black font-extrabold py-3 rounded-xl text-sm transition">do5ol</button>
             </form>
         </div>
     </div>
 
-    <!-- Add Watch Modal -->
+    <!-- Add Watch Modal (Admin Only) -->
     <div id="addWatchModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-cardBg rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-borderDark shadow-2xl relative my-8 text-textPrimary">
             <button onclick="closeAddWatchModal()" class="absolute top-5 left-5 text-gray-500 hover:text-textPrimary">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
 
-            <h3 class="text-xl font-bold text-textPrimary mb-4" id="watchModalTitle">إضافة / تعديل ساعة</h3>
+            <h3 class="text-xl font-bold text-textPrimary mb-4">edaft / ta3deel sa3a (Admin)</h3>
 
             <form onsubmit="handleSaveWatchSubmit(event)" class="space-y-4">
                 <input type="hidden" id="editingWatchId" value="">
 
                 <div>
-                    <label class="block text-xs font-semibold text-textPrimary mb-1">اسم الساعة والموديل</label>
+                    <label class="block text-xs font-semibold text-textPrimary mb-1">esm el sa3a</label>
                     <input type="text" id="watchTitleInput" required class="w-full bg-bgMain border border-borderDark rounded-xl px-4 py-2 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-textPrimary mb-1">صور الساعة (يمكنك اختيار أكثر من صورة)</label>
-                    <input type="file" id="watchFileInput" accept="image/*" multiple onchange="previewSelectedImages(event)" class="block w-full text-xs text-gray-400 file:py-1.5 file:px-3 file:bg-goldAccent/10 file:text-goldAccent file:rounded-lg file:border-0 cursor-pointer bg-bgMain border border-borderDark rounded-xl mb-2">
+                    <label class="block text-xs font-semibold text-textPrimary mb-1">sowar el sa3a el ra2iseya (eqdar tختار kaza sora)</label>
+                    <input type="file" id="watchFileInput" accept="image/*" multiple onchange="previewSelectedImages(event)" class="block w-full text-xs text-gray-400 file:py-1.5 file:px-3 file:bg-goldAccent/10 file:text-goldAccent file:rounded-lg file:border-0 cursor-pointer bg-cardBg border border-borderDark rounded-lg mb-2">
                     <div id="imagesPreviewContainer" class="flex gap-2 overflow-x-auto py-2"></div>
-                    <textarea id="watchImageUrlsInput" rows="2" placeholder="أو أدخل روابط الصور مفصولة بفواصل (URL1, URL2...)" class="w-full bg-bgMain border border-borderDark rounded-xl px-3 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
+                </div>
+
+                <!-- Color Variants Builder for Admin -->
+                <div class="bg-bgMain p-3 border border-borderDark rounded-xl">
+                    <label class="block text-xs font-semibold text-goldAccent mb-2"><i class="fa-solid fa-palette"></i> edafat alwan we sowarha el moqabela:</label>
+                    <div id="adminColorVariantsList" class="space-y-2 mb-2"></div>
+                    <button type="button" onclick="addAdminColorRow()" class="px-3 py-1 bg-cardBg border border-borderDark text-xs font-bold text-goldAccent rounded-lg hover:border-goldAccent">+ edafat loon gedid we sortoh</button>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-semibold text-textPrimary mb-1">السعر (ج.م)</label>
+                        <label class="block text-xs font-semibold text-textPrimary mb-1">el se3r (EGP)</label>
                         <input type="number" id="watchPriceInput" required class="w-full bg-bgMain border border-borderDark rounded-xl px-3 py-2 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-textPrimary mb-1">السعر القديم (اختياري)</label>
+                        <label class="block text-xs font-semibold text-textPrimary mb-1">el se3r el qadeem (lel khsm)</label>
                         <input type="number" id="watchOldPriceInput" class="w-full bg-bgMain border border-borderDark rounded-xl px-3 py-2 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-textPrimary mb-1">تصنيف المنتَج</label>
+                    <label class="block text-xs font-semibold text-textPrimary mb-1">el tasneef</label>
                     <select id="watchTagInput" class="w-full bg-bgMain border border-borderDark rounded-xl px-3 py-2 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
-                        <option value="regular">منتج عادي</option>
-                        <option value="offer">عرض خاص (Offers 🔥)</option>
+                        <option value="regular">montag 3ady</option>
+                        <option value="offer">3ard 3as</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-textPrimary mb-1">وصف مختصر</label>
+                    <label class="block text-xs font-semibold text-textPrimary mb-1">wasf mo5tasar</label>
                     <textarea id="watchDescInput" rows="2" class="w-full bg-bgMain border border-borderDark rounded-xl px-3 py-1.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent"></textarea>
                 </div>
 
                 <div class="flex justify-end gap-3 pt-2">
-                    <button type="button" onclick="closeAddWatchModal()" class="px-4 py-2 text-xs text-gray-400 font-bold">إلغاء</button>
-                    <button type="submit" class="bg-goldAccent text-black font-black px-6 py-2 rounded-xl text-xs hover:bg-goldHover transition">حفظ الساعة</button>
+                    <button type="button" onclick="closeAddWatchModal()" class="px-4 py-2 text-xs text-gray-400 font-bold">elgha2</button>
+                    <button type="submit" class="bg-goldAccent text-black font-black px-6 py-2 rounded-xl text-xs hover:bg-goldHover transition">hefz el sa3a</button>
                 </div>
             </form>
         </div>
@@ -526,11 +487,11 @@
     <div id="customerModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="bg-cardBg rounded-3xl max-w-md w-full p-6 border border-borderDark shadow-2xl relative text-textPrimary">
             <button onclick="closeCustomerModal()" class="absolute top-4 left-4 text-gray-500 hover:text-textPrimary"><i class="fa-solid fa-xmark"></i></button>
-            <h3 id="txt-checkout-title" class="text-lg font-bold text-textPrimary mb-4 text-center">تأكيد الطلب</h3>
+            <h3 class="text-lg font-bold text-textPrimary mb-4 text-center">tawkeed el talab</h3>
             <form onsubmit="submitCustomerOrder(event)" class="space-y-4">
-                <input type="text" id="customerNameInput" placeholder="الاسم بالكامل" required class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
-                <input type="tel" id="customerPhoneInput" placeholder="رقم الهاتف (واتساب)" required class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
-                <button type="submit" id="btn-send-order" class="w-full bg-emeraldCustom text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-emerald-600 transition"><i class="fa-brands fa-whatsapp"></i> إرسال عبر الواتساب</button>
+                <input type="text" id="customerNameInput" placeholder="esmok bel kamel" required class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
+                <input type="tel" id="customerPhoneInput" placeholder="raqam el hatef (WhatsApp)" required class="w-full bg-bgMain border border-borderDark rounded-xl p-2.5 text-xs text-textPrimary focus:outline-none focus:border-goldAccent">
+                <button type="submit" class="w-full bg-emeraldCustom text-white font-bold p-3 rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-emerald-600 transition"><i class="fa-brands fa-whatsapp"></i> ersal el talab</button>
             </form>
         </div>
     </div>
@@ -540,8 +501,8 @@
         <div class="bg-cardBg max-w-md w-full h-full p-6 border-r border-borderDark shadow-2xl flex flex-col justify-between text-textPrimary">
             <div>
                 <div class="flex items-center justify-between border-b border-borderDark pb-4 mb-4">
-                    <h3 id="txt-cart-title" class="text-lg font-bold text-textPrimary flex items-center gap-2">
-                        <i class="fa-solid fa-bag-shopping text-goldAccent"></i> سلة المشتريات
+                    <h3 class="text-lg font-bold text-textPrimary flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-goldAccent"></i> salet el mohtarayat
                     </h3>
                     <button onclick="closeCartModal()" class="text-gray-500 hover:text-textPrimary"><i class="fa-solid fa-xmark"></i></button>
                 </div>
@@ -549,10 +510,10 @@
             </div>
             <div class="border-t border-borderDark pt-4">
                 <div class="flex justify-between mb-4 font-bold text-goldAccent text-lg">
-                    <span id="txt-total-label">المبلغ الإجمالي:</span>
-                    <span id="cartTotalPrice">0 ج.م</span>
+                    <span>el moblagh el egmaly:</span>
+                    <span id="cartTotalPrice">0 EGP</span>
                 </div>
-                <button onclick="openCustomerModal()" id="checkoutBtn" disabled class="w-full bg-goldAccent disabled:opacity-50 text-black font-black py-3 rounded-xl text-xs hover:bg-goldHover transition">إتمام الطلب عبر الواتساب</button>
+                <button onclick="openCustomerModal()" id="checkoutBtn" disabled class="w-full bg-goldAccent disabled:opacity-50 text-black font-black py-3 rounded-xl text-xs hover:bg-goldHover transition">etmam el talab</button>
             </div>
         </div>
     </div>
@@ -587,7 +548,6 @@
         window.searchQuery = '';
         window.sortBy = 'newest';
         window.uploadedImagesBase64 = [];
-        window.customWatchImageBase64 = '';
         window.currentWatchDetailId = null;
         window.quizFilterActive = false;
         window.quizOccasionVal = 'all';
@@ -624,102 +584,13 @@
 
     <!-- App Main & Interactive Logic -->
     <script>
-        const translations = {
-            ar: {
-                all: 'الكل',
-                offers: 'العروض 🔥',
-                customBtn: 'صمّم ساعتك',
-                addBtn: 'إضافة ساعة',
-                searchPlaceholder: 'ابحث باسم الساعة...',
-                newest: 'الأحدث إضافة',
-                priceLow: 'السعر: من الأقل للأعلى',
-                priceHigh: 'السعر: من الأعلى للأقل',
-                emptyTitle: 'المتجر فاضي حالياً!',
-                customTitle: 'صمّم ساعتك الخاصة على ذوقك ✨',
-                customSub: 'اختر المواصفات، أو ارفع صورة للساعة المطلوبة واكتب التفاصيل بسهولة',
-                customImgLbl: 'عندك صورة للديزاين المطلوب؟ (اختياري)',
-                customDescLbl: 'وصف أو تفاصيل الساعة المطلوبة (اختياري)',
-                customOrLbl: 'أو اختر المواصفات الجاهزة',
-                customCaseLbl: 'نوع الهيكل',
-                customDialLbl: 'لون المينا',
-                customStrapLbl: 'نوع السير',
-                customEngraveLbl: 'نقش اسم خاص',
-                customNameLbl: 'اسمك الكريم',
-                sendWhatsapp: 'إرسال الطلب عبر الواتساب',
-                addToCart: 'إضافة للسلة',
-                commentsTitle: 'التعليقات والآراء',
-                cartTitle: 'سلة المشتريات',
-                totalLabel: 'المبلغ الإجمالي:',
-                checkoutBtn: 'إتمام الطلب عبر الواتساب',
-                currency: 'ج.م'
-            },
-            en: {
-                all: 'All',
-                offers: 'Offers 🔥',
-                customBtn: 'Custom Watch',
-                addBtn: 'Add Watch',
-                searchPlaceholder: 'Search watch by name...',
-                newest: 'Newest',
-                priceLow: 'Price: Low to High',
-                priceHigh: 'Price: High to Low',
-                emptyTitle: 'Store is currently empty!',
-                customTitle: 'Design Your Custom Watch ✨',
-                customSub: 'Choose specifications or upload an image of your desired design',
-                customImgLbl: 'Have a design picture? (Optional)',
-                customDescLbl: 'Description or specific details (Optional)',
-                customOrLbl: 'OR choose preset specifications',
-                customCaseLbl: 'Case Material',
-                customDialLbl: 'Dial Color',
-                customStrapLbl: 'Strap Type',
-                customEngraveLbl: 'Custom Engraving',
-                customNameLbl: 'Your Full Name',
-                sendWhatsapp: 'Send Order via WhatsApp',
-                addToCart: 'Add to Cart',
-                commentsTitle: 'Reviews & Comments',
-                cartTitle: 'Shopping Cart',
-                totalLabel: 'Total Price:',
-                checkoutBtn: 'Checkout via WhatsApp',
-                currency: 'EGP'
-            }
-        };
-
         window.addEventListener('DOMContentLoaded', () => { updateCartUI(); });
 
         function toggleLanguage() {
             window.currentLang = window.currentLang === 'ar' ? 'en' : 'ar';
-            const lang = window.currentLang;
-            document.getElementById('langSwitchText').textContent = lang === 'ar' ? 'EN' : 'AR';
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            document.documentElement.lang = lang;
-
-            const t = translations[lang];
-            document.getElementById('txt-tab-all').textContent = t.all;
-            document.getElementById('txt-tab-offers').textContent = t.offers;
-            document.getElementById('txt-custom-btn').textContent = t.customBtn;
-            document.getElementById('txt-add-btn').textContent = t.addBtn;
-            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
-            document.getElementById('opt-newest').textContent = t.newest;
-            document.getElementById('opt-price-low').textContent = t.priceLow;
-            document.getElementById('opt-price-high').textContent = t.priceHigh;
-            document.getElementById('txt-empty-title').textContent = t.emptyTitle;
-            document.getElementById('txt-custom-title').textContent = t.customTitle;
-            document.getElementById('txt-custom-sub').textContent = t.customSub;
-            document.getElementById('lbl-custom-or').textContent = t.customOrLbl;
-            document.getElementById('lbl-custom-case').textContent = t.customCaseLbl;
-            document.getElementById('lbl-custom-dial').textContent = t.customDialLbl;
-            document.getElementById('lbl-custom-strap').textContent = t.customStrapLbl;
-            document.getElementById('lbl-custom-engrave').textContent = t.customEngraveLbl;
-            document.getElementById('lbl-custom-name').textContent = t.customNameLbl;
-            document.getElementById('txt-detail-add').textContent = t.addToCart;
-            document.getElementById('txt-comments-title').textContent = t.commentsTitle;
-            document.getElementById('txt-cart-title').childNodes[1].textContent = " " + t.cartTitle;
-            document.getElementById('txt-total-label').textContent = t.totalLabel;
-            document.getElementById('checkoutBtn').textContent = t.checkoutBtn;
-
             renderStore();
         }
 
-        // --- Interactive Audio & Visual Features ---
         let isLumeActive = false;
         function toggleLumeEffect() {
             const mainImg = document.getElementById('detailMainImg');
@@ -756,13 +627,13 @@
             if (!isTicking) {
                 isTicking = true;
                 btn.classList.add('text-roseLuxury');
-                btn.querySelector('span').textContent = "إيقاف الصوت";
+                btn.querySelector('span').textContent = "eyqaf el sawt";
                 tickingInterval = setInterval(playTickSound, 500);
             } else {
                 isTicking = false;
                 clearInterval(tickingInterval);
                 btn.classList.remove('text-roseLuxury');
-                btn.querySelector('span').textContent = "استمع لدقات الساعة ⏱️";
+                btn.querySelector('span').textContent = "estama3 le daqat el sa3a ⏱️";
             }
         }
 
@@ -770,37 +641,24 @@
             const mainImg = document.getElementById('detailMainImg');
             isLumeActive = false;
             switch(strapType) {
-                case 'black-leather':
-                    mainImg.style.filter = "grayscale(1) contrast(1.3)";
-                    break;
-                case 'brown-leather':
-                    mainImg.style.filter = "sepia(0.6) hue-rotate(-25deg)";
-                    break;
-                case 'gold':
-                    mainImg.style.filter = "sepia(0.9) saturate(3) hue-rotate(10deg)";
-                    break;
-                default:
-                    mainImg.style.filter = "none";
+                case 'black-leather': mainImg.style.filter = "grayscale(1) contrast(1.3)"; break;
+                case 'brown-leather': mainImg.style.filter = "sepia(0.6) hue-rotate(-25deg)"; break;
+                case 'gold': mainImg.style.filter = "sepia(0.9) saturate(3) hue-rotate(10deg)"; break;
+                default: mainImg.style.filter = "none";
             }
         }
 
-        // Feedback & Complaints Modal Handlers
         function openFeedbackModal() { document.getElementById('feedbackModal').classList.remove('hidden'); }
         function closeFeedbackModal() { document.getElementById('feedbackModal').classList.add('hidden'); }
         function submitFeedbackOrder(e) {
             e.preventDefault();
             const name = document.getElementById('feedbackName').value.trim();
             const text = document.getElementById('feedbackText').value.trim();
-
-            let msg = `🚨 *شكوى / طلب تعديل جديد (متجر LA7ZA)*\n\n`;
-            msg += `👤 *العميل:* ${name}\n`;
-            msg += `📝 *التفاصيل:* ${text}\n`;
-
+            let msg = `🚨 *Shakwa / Ta3deel Gedeed (LA7ZA)*\n\n👤 *El 3amel:* ${name}\n📝 *Tafaseel:* ${text}\n`;
             window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
             closeFeedbackModal();
         }
 
-        // Watch Finder Quiz Modal Handlers
         function openQuizModal() { document.getElementById('quizModal').classList.remove('hidden'); }
         function closeQuizModal() { document.getElementById('quizModal').classList.add('hidden'); }
         function applyQuizFilter() {
@@ -842,6 +700,21 @@
             });
         }
 
+        // Admin Color Variants Dynamic Rows
+        function addAdminColorRow(colorName = '', imageUrl = '') {
+            const list = document.getElementById('adminColorVariantsList');
+            const rowId = 'row_' + Date.now() + Math.random();
+            const div = document.createElement('div');
+            div.className = "flex gap-2 items-center bg-cardBg p-2 rounded-xl border border-borderDark";
+            div.id = rowId;
+            div.innerHTML = `
+                <input type="text" placeholder="Esm el loon (Mithal: Aswad)" class="color-name-input w-1/3 bg-bgMain border border-borderDark rounded-lg p-1 text-xs text-textPrimary" value="${colorName}">
+                <input type="text" placeholder="Rابط sora el loon da (URL)" class="color-img-input w-2/3 bg-bgMain border border-borderDark rounded-lg p-1 text-xs text-textPrimary" value="${imageUrl}">
+                <button type="button" onclick="document.getElementById('${rowId}').remove()" class="text-roseLuxury px-2"><i class="fa-solid fa-trash"></i></button>
+            `;
+            list.appendChild(div);
+        }
+
         function handleAdminToggle() {
             if (isAdmin) { logoutAdmin(); }
             else { document.getElementById('passwordModal').classList.remove('hidden'); }
@@ -868,6 +741,7 @@
             document.getElementById('addWatchModal').classList.remove('hidden');
             uploadedImagesBase64 = [];
             document.getElementById('imagesPreviewContainer').innerHTML = '';
+            document.getElementById('adminColorVariantsList').innerHTML = '';
 
             if (editId) {
                 const w = watches.find(item => item.id === editId);
@@ -878,8 +752,10 @@
                     document.getElementById('watchOldPriceInput').value = w.oldPrice || '';
                     document.getElementById('watchTagInput').value = w.tag || 'regular';
                     document.getElementById('watchDescInput').value = w.desc || '';
-                    const imgs = Array.isArray(w.images) ? w.images : [w.image];
-                    document.getElementById('watchImageUrlsInput').value = imgs.join(', ');
+                    
+                    if (w.colors && Array.isArray(w.colors)) {
+                        w.colors.forEach(c => addAdminColorRow(c.name, c.image));
+                    }
                 }
             } else {
                 document.getElementById('editingWatchId').value = '';
@@ -887,7 +763,6 @@
                 document.getElementById('watchPriceInput').value = '';
                 document.getElementById('watchOldPriceInput').value = '';
                 document.getElementById('watchDescInput').value = '';
-                document.getElementById('watchImageUrlsInput').value = '';
             }
         }
         function closeAddWatchModal() { document.getElementById('addWatchModal').classList.add('hidden'); }
@@ -896,17 +771,23 @@
             e.preventDefault();
             const editId = document.getElementById('editingWatchId').value;
             const title = document.getElementById('watchTitleInput').value.trim();
-            const manualUrls = document.getElementById('watchImageUrlsInput').value.split(',').map(s => s.trim()).filter(Boolean);
             
-            let imagesList = uploadedImagesBase64.length > 0 ? uploadedImagesBase64 : manualUrls;
-            if (imagesList.length === 0) {
-                imagesList = ['https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg'];
-            }
+            let imagesList = uploadedImagesBase64.length > 0 ? uploadedImagesBase64 : ['https://i.ibb.co/hxMHC0ZF/Gemini-Generated-Image-l7k1bbl7k1bbl7k1.jpg'];
+
+            // Collect Color variants
+            const colorRows = document.querySelectorAll('#adminColorVariantsList > div');
+            const colors = [];
+            colorRows.forEach(row => {
+                const name = row.querySelector('.color-name-input').value.trim();
+                const image = row.querySelector('.color-img-input').value.trim();
+                if(name && image) { colors.push({ name, image }); }
+            });
 
             const watchPayload = {
                 title,
                 image: imagesList[0],
                 images: imagesList,
+                colors: colors,
                 price: parseFloat(document.getElementById('watchPriceInput').value),
                 oldPrice: parseFloat(document.getElementById('watchOldPriceInput').value) || 0,
                 tag: document.getElementById('watchTagInput').value,
@@ -919,7 +800,7 @@
         }
 
         function deleteWatch(id) {
-            if (isAdmin && confirm("هل أنت متأكد من حذف هذه الساعة؟")) {
+            if (isAdmin && confirm("Are you sure you want to delete this watch?")) {
                 if (window.deleteWatchFromFirebase) { window.deleteWatchFromFirebase(id); }
             }
         }
@@ -928,17 +809,30 @@
             const w = watches.find(item => item.id === id);
             if (!w) return;
 
-            const curr = translations[window.currentLang].currency;
             window.currentWatchDetailId = id;
             document.getElementById('detailTitle').textContent = w.title;
-            document.getElementById('detailPrice').textContent = `${Number(w.price).toLocaleString()} ${curr}`;
-            document.getElementById('detailOldPrice').textContent = w.oldPrice ? `${Number(w.oldPrice).toLocaleString()} ${curr}` : '';
-            document.getElementById('detailDesc').textContent = w.desc || (window.currentLang === 'ar' ? 'لا يوجد وصف إضافي.' : 'No additional description available.');
+            document.getElementById('detailPrice').textContent = `${Number(w.price).toLocaleString()} EGP`;
+            document.getElementById('detailOldPrice').textContent = w.oldPrice ? `${Number(w.oldPrice).toLocaleString()} EGP` : '';
+            document.getElementById('detailDesc').textContent = w.desc || 'No description available.';
 
             const images = Array.isArray(w.images) && w.images.length > 0 ? w.images : [w.image];
             const mainImg = document.getElementById('detailMainImg');
             mainImg.src = images[0];
             mainImg.style.filter = "none";
+
+            // Render Color Variants Buttons if exist
+            const colorSec = document.getElementById('colorVariantsSection');
+            const colorList = document.getElementById('colorVariantsList');
+            if (w.colors && Array.isArray(w.colors) && w.colors.length > 0) {
+                colorSec.classList.remove('hidden');
+                colorList.innerHTML = w.colors.map((col, idx) => `
+                    <button onclick="switchWatchColor('${col.image}')" class="px-3 py-1.5 text-xs bg-cardBg border border-borderDark rounded-xl hover:border-goldAccent text-textPrimary flex items-center gap-1.5 transition">
+                        <span class="w-3 h-3 rounded-full bg-goldAccent inline-block"></span> ${col.name}
+                    </button>
+                `).join('');
+            } else {
+                colorSec.classList.add('hidden');
+            }
 
             const thumbsContainer = document.getElementById('detailThumbnails');
             thumbsContainer.innerHTML = images.map(img => `
@@ -950,8 +844,7 @@
             const commentsList = document.getElementById('commentsList');
             const comments = w.comments ? Object.values(w.comments) : [];
             document.getElementById('commentsCount').textContent = comments.length;
-
-            commentsList.innerHTML = comments.length === 0 ? `<p class="text-gray-500 text-[11px]">${window.currentLang === 'ar' ? 'لا يوجد تعليقات بعد.' : 'No comments yet.'}</p>` :
+            commentsList.innerHTML = comments.length === 0 ? `<p class="text-gray-500 text-[11px]">No comments yet.</p>` :
                 comments.map(c => `
                     <div class="bg-bgMain p-2 rounded-lg border border-borderDark">
                         <span class="font-bold text-goldAccent">${escapeHtml(c.author)}:</span>
@@ -960,6 +853,13 @@
                 `).join('');
 
             document.getElementById('watchDetailModal').classList.remove('hidden');
+        }
+
+        function switchWatchColor(imageUrl) {
+            const mainImg = document.getElementById('detailMainImg');
+            mainImg.src = imageUrl;
+            isLumeActive = false;
+            mainImg.style.filter = "none";
         }
 
         function closeWatchDetailModal() {
@@ -971,10 +871,8 @@
         function handleAddComment(e) {
             e.preventDefault();
             if (!window.currentWatchDetailId) return;
-
             const author = document.getElementById('commentAuthorInput').value.trim();
             const text = document.getElementById('commentTextInput').value.trim();
-
             if (author && text && window.addCommentToFirebase) {
                 window.addCommentToFirebase(window.currentWatchDetailId, { author, text, timestamp: Date.now() });
                 document.getElementById('commentTextInput').value = '';
@@ -989,7 +887,6 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    customWatchImageBase64 = e.target.result;
                     document.getElementById('customImgPreviewSrc').src = e.target.result;
                     document.getElementById('customImgPreview').classList.remove('hidden');
                     document.getElementById('customImgPreview').classList.add('flex');
@@ -1001,24 +898,8 @@
         function submitCustomWatchOrder(e) {
             e.preventDefault();
             const freeText = document.getElementById('customFreeText').value.trim();
-            const caseMat = document.getElementById('customCase').value;
-            const dialCol = document.getElementById('customDial').value;
-            const strapMat = document.getElementById('customStrap').value;
-            const engrave = document.getElementById('customEngraving').value.trim();
             const name = document.getElementById('customCustomerName').value.trim();
-
-            let msg = `🛠️ *طلب تصميم ساعة خاصة (Custom Watch)*\n\n`;
-            msg += `👤 *العميل:* ${name}\n`;
-
-            if (freeText) { msg += `📝 *التفاصيل المطلوبة:* ${freeText}\n`; }
-            if (caseMat) { msg += `▫ *الهيكل/الإطار:* ${caseMat}\n`; }
-            if (dialCol) { msg += `▫️ *لون المينا:* ${dialCol}\n`; }
-            if (strapMat) { msg += `▫️ *نوع السير:* ${strapMat}\n`; }
-            if (engrave) { msg += `✍ *النقش المطلوبة:* ${engrave}\n`; }
-            if (customWatchImageBase64) { msg += `🖼️ *(ملاحظة: تم إرفاق صورة التصميم المطلوبة، برجاء إرسالها هنا في الشات)*\n`; }
-
-            msg += `\nأرجو إفادتي بالتكلفة المتاحة ومدة التنفيذ وشكراً!`;
-
+            let msg = `🛠️ *Custom Watch Request (LA7ZA)*\n\n👤 *El 3amel:* ${name}\n📝 *Tafaseel:* ${freeText}\n`;
             window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
             closeCustomWatchModal();
         }
@@ -1037,7 +918,6 @@
         function renderStore() {
             const grid = document.getElementById('watchesGrid');
             const emptyState = document.getElementById('emptyState');
-            const curr = translations[window.currentLang].currency;
             
             let filtered = (window.watches || []).filter(w => {
                 if (activeCategory === 'offers') {
@@ -1048,17 +928,17 @@
 
             if (window.quizFilterActive) {
                 if (window.quizOccasionVal !== 'all') {
-                    filtered = filtered.filter(w => (w.desc || '').toLowerCase().includes(window.quizOccasionVal) || (w.title || '').toLowerCase().includes(window.quizOccasionVal));
+                    filtered = filtered.filter(w => (w.desc || '').toLowerCase().includes(window.quizOccasionVal));
                 }
                 if (window.quizStrapVal !== 'all') {
-                    filtered = filtered.filter(w => (w.desc || '').toLowerCase().includes(window.quizStrapVal) || (w.title || '').toLowerCase().includes(window.quizStrapVal));
+                    filtered = filtered.filter(w => (w.desc || '').toLowerCase().includes(window.quizStrapVal));
                 }
             }
 
             if (searchQuery) { filtered = filtered.filter(w => w.title.toLowerCase().includes(searchQuery)); }
             filtered.sort((a, b) => sortBy === 'price-low' ? a.price - b.price : sortBy === 'price-high' ? b.price - a.price : (b.createdAt || 0) - (a.createdAt || 0));
 
-            document.getElementById('productCount').textContent = window.currentLang === 'ar' ? `${filtered.length} ساعة معروضة` : `${filtered.length} Watches`;
+            document.getElementById('productCount').textContent = `${filtered.length} Watches`;
 
             if (filtered.length === 0) {
                 grid.innerHTML = '';
@@ -1070,29 +950,38 @@
                 emptyState.classList.remove('flex');
             }
 
-            grid.innerHTML = filtered.map(watch => `
-                <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between card-gold-glow transition-all duration-300 group relative">
-                    <div onclick="openWatchDetailModal('${watch.id}')" class="relative w-full h-56 overflow-hidden rounded-xl mb-4 bg-bgMain border border-borderDark cursor-pointer flex items-center justify-center">
-                        <img src="${escapeHtml(watch.image)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        ${isAdmin ? `
-                            <div class="absolute top-2 left-2 flex gap-1 z-10" onclick="event.stopPropagation()">
-                                <button onclick="openAddWatchModal('${watch.id}')" class="w-8 h-8 bg-cardBg text-textPrimary border border-borderDark rounded-lg flex items-center justify-center text-xs shadow hover:text-goldAccent"><i class="fa-solid fa-pen"></i></button>
-                                <button onclick="deleteWatch('${watch.id}')" class="w-8 h-8 bg-cardBg text-roseLuxury border border-borderDark rounded-lg flex items-center justify-center text-xs shadow hover:bg-rose-950/30"><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                        ` : ''}
-                    </div>
+            grid.innerHTML = filtered.map(watch => {
+                let discountBadge = '';
+                if (watch.oldPrice && watch.oldPrice > watch.price) {
+                    const discountPercent = Math.round(((watch.oldPrice - watch.price) / watch.oldPrice) * 100);
+                    discountBadge = `<span class="absolute top-2 right-2 bg-roseLuxury text-white text-[11px] font-black px-2 py-0.5 rounded-lg shadow z-10">-${discountPercent}% Khasm</span>`;
+                }
 
-                    <div onclick="openWatchDetailModal('${watch.id}')" class="cursor-pointer">
-                        <h4 class="text-base font-bold text-textPrimary group-hover:text-goldAccent transition line-clamp-1 mb-1">${escapeHtml(watch.title)}</h4>
-                        <p class="text-xs text-textMuted line-clamp-2 mb-4 leading-relaxed min-h-[32px]">${escapeHtml(watch.desc || '')}</p>
-                    </div>
+                return `
+                    <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between card-gold-glow transition-all duration-300 group relative">
+                        <div onclick="openWatchDetailModal('${watch.id}')" class="relative w-full h-56 overflow-hidden rounded-xl mb-4 bg-bgMain border border-borderDark cursor-pointer flex items-center justify-center">
+                            ${discountBadge}
+                            <img src="${escapeHtml(watch.image)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            ${isAdmin ? `
+                                <div class="absolute top-2 left-2 flex gap-1 z-10" onclick="event.stopPropagation()">
+                                    <button onclick="openAddWatchModal('${watch.id}')" class="w-8 h-8 bg-cardBg text-textPrimary border border-borderDark rounded-lg flex items-center justify-center text-xs shadow hover:text-goldAccent"><i class="fa-solid fa-pen"></i></button>
+                                    <button onclick="deleteWatch('${watch.id}')" class="w-8 h-8 bg-cardBg text-roseLuxury border border-borderDark rounded-lg flex items-center justify-center text-xs shadow hover:bg-rose-950/30"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            ` : ''}
+                        </div>
 
-                    <div class="pt-3 border-t border-borderDark flex items-center justify-between">
-                        <div class="text-lg font-black text-goldAccent font-mono">${Number(watch.price).toLocaleString()} <span class="text-xs text-textPrimary font-sans">${curr}</span></div>
-                        <button onclick="addToCart('${watch.id}')" class="bg-goldAccent text-black hover:bg-goldHover p-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"><i class="fa-solid fa-cart-plus"></i> ${translations[window.currentLang].addToCart}</button>
+                        <div onclick="openWatchDetailModal('${watch.id}')" class="cursor-pointer">
+                            <h4 class="text-base font-bold text-textPrimary group-hover:text-goldAccent transition line-clamp-1 mb-1">${escapeHtml(watch.title)}</h4>
+                            <p class="text-xs text-textMuted line-clamp-2 mb-4 leading-relaxed min-h-[32px]">${escapeHtml(watch.desc || '')}</p>
+                        </div>
+
+                        <div class="pt-3 border-t border-borderDark flex items-center justify-between">
+                            <div class="text-lg font-black text-goldAccent font-mono">${Number(watch.price).toLocaleString()} <span class="text-xs text-textPrimary font-sans">EGP</span></div>
+                            <button onclick="addToCart('${watch.id}')" class="bg-goldAccent text-black hover:bg-goldHover p-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"><i class="fa-solid fa-cart-plus"></i> Edafa</button>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function addToCart(id) {
@@ -1107,9 +996,8 @@
         }
 
         function updateCartUI() {
-            const curr = translations[window.currentLang].currency;
             document.getElementById('cartBadge').textContent = cart.reduce((s, i) => s + i.qty, 0);
-            document.getElementById('cartTotalPrice').textContent = `${cart.reduce((s, i) => s + (i.price * i.qty), 0).toLocaleString()} ${curr}`;
+            document.getElementById('cartTotalPrice').textContent = `${cart.reduce((s, i) => s + (i.price * i.qty), 0).toLocaleString()} EGP`;
             document.getElementById('checkoutBtn').disabled = cart.length === 0;
 
             document.getElementById('cartItemsContainer').innerHTML = cart.map(i => `
@@ -1117,7 +1005,7 @@
                     <img src="${escapeHtml(i.image)}" class="w-12 h-12 object-cover rounded-lg border border-borderDark">
                     <div class="flex-1 px-3">
                         <h5 class="font-bold text-textPrimary line-clamp-1">${escapeHtml(i.title)}</h5>
-                        <div class="text-goldAccent font-mono font-bold">${Number(i.price).toLocaleString()} ${curr}</div>
+                        <div class="text-goldAccent font-mono font-bold">${Number(i.price).toLocaleString()} EGP</div>
                     </div>
                     <div class="flex items-center gap-2 bg-cardBg border border-borderDark rounded-lg px-2 py-1">
                         <button onclick="updateCartQty('${i.id}', -1)" class="text-gray-400 hover:text-goldAccent font-bold px-1">-</button>
@@ -1146,10 +1034,9 @@
             e.preventDefault();
             const name = document.getElementById('customerNameInput').value.trim();
             const phone = document.getElementById('customerPhoneInput').value.trim();
-            const curr = translations[window.currentLang].currency;
-            let message = `طلب جديد من متجر LA7ZA:\nالاسم: ${name} (${phone})\n\nالطلبات:\n`;
-            cart.forEach((i, idx) => { message += `${idx + 1}. ${i.title} (${i.qty}) - ${i.price * i.qty} ${curr}\n`; });
-            message += `\nالإجمالي: ${cart.reduce((s, i) => s + (i.price * i.qty), 0)} ${curr}`;
+            let message = `Talab Gedeed mn LA7ZA:\nEl 3amel: ${name} (${phone})\n\nEl Montagat:\n`;
+            cart.forEach((i, idx) => { message += `${idx + 1}. ${i.title} (${i.qty}) - ${i.price * i.qty} EGP\n`; });
+            message += `\nEl Egmaly: ${cart.reduce((s, i) => s + (i.price * i.qty), 0)} EGP`;
             window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
             closeCustomerModal();
         }
